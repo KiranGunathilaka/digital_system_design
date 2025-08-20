@@ -1,0 +1,128 @@
+`timescale 1ns/1ps
+
+module tb_pipelined_adder_32bit;
+
+  // ---- DUT I/O ----
+  logic         clk;
+  logic         reset;
+  logic [31:0]  num_a, num_b;
+  logic         Cin;
+  logic [31:0]  sum;
+  logic         Cout;
+
+  // ---- Instantiate DUT ----
+  pipelined_adder_32bit dut (
+    .clk   (clk),
+    .reset (reset),
+    .num_a (num_a),
+    .num_b (num_b),
+    .Cin   (Cin),
+    .sum   (sum),
+    .Cout  (Cout)
+  );
+
+  initial begin
+    clk = 0;
+    forever #5 clk = ~clk; // 100 MHz
+  end
+
+  // ---- Simple expected-value record ----
+  typedef struct packed {
+    logic [31:0] sum;
+    logic        cout;
+  } exp_t;
+
+  // Pipeline latency of the DUT = 4 cycles (4x8-bit stages)
+  localparam int LAT = 4;
+
+  // Queue to hold expected results in-order
+  exp_t exp_q[$];
+
+  // Stats
+  int total_vecs = 0;
+  int errors     = 0;
+
+  // ---- Task to drive one vector and enqueue its expected result ----
+  task automatic drive_and_enqueue(input logic [31:0] a,
+                                   input logic [31:0] b,
+                                   input logic        cin);
+    logic [32:0] big;
+    begin
+      // Drive inputs before the clock edge
+      num_a = a;
+      num_b = b;
+      Cin   = cin;
+
+      // Compute expected 33-bit result (combinational "golden" model)
+      big = {1'b0, a} + {1'b0, b} + cin;
+
+      exp_q.push_back('{sum: big[31:0], cout: big[32]});
+      total_vecs++;
+    end
+  endtask
+
+  // ---- Reset and main stimulus ----
+  initial begin
+    // Wave dump (optional)
+    // $dumpfile("pipelined_adder_32bit_tb.vcd");
+    // $dumpvars(0, tb_pipelined_adder_32bit);
+
+    // Defaults
+    num_a = '0; num_b = '0; Cin = 1'b0;
+
+    // Apply reset for a few cycles
+    reset = 1'b1;
+    repeat (3) @(posedge clk);
+    reset = 1'b0;
+
+    // Provide LAT dummy cycles to align pipeline after reset
+    repeat (LAT) begin
+      drive_and_enqueue(32'h0000_0000, 32'h0000_0000, 1'b0);
+      @(posedge clk);
+    end
+
+    // ---- Directed edge cases ----
+    drive_and_enqueue(32'h0000_0000, 32'h0000_0000, 1'b0); @(posedge clk);
+    drive_and_enqueue(32'hFFFF_FFFF, 32'h0000_0001, 1'b0); @(posedge clk);
+    drive_and_enqueue(32'h7FFF_FFFF, 32'h0000_0001, 1'b0); @(posedge clk);
+    drive_and_enqueue(32'hFFFF_0000, 32'h0000_FFFF, 1'b1); @(posedge clk);
+    drive_and_enqueue(32'h1234_5678, 32'h9ABC_DEF0, 1'b0); @(posedge clk);
+    drive_and_enqueue(32'hDEAD_BEEF, 32'h1111_2222, 1'b1); @(posedge clk);
+
+
+    // Keep clocking a few cycles to drain pipeline
+    repeat (LAT+4) @(posedge clk);
+
+    // Report
+    if (errors == 0)
+      $display("\n[TB] ALL %0d TESTS PASSED", total_vecs);
+    else
+      $display("\n[TB] %0d / %0d TESTS FAILED", errors, total_vecs);
+
+    $finish;
+  end
+
+  // ---- Scoreboard: compare DUT output with oldest expected after latency ----
+  // We pop & compare once per cycle, but ignore comparisons while reset is asserted.
+  always_ff @(posedge clk) begin
+    if (reset) begin
+      // During reset, clear any queued expectations to avoid false compares
+      exp_q.delete();
+    end else begin
+      // Only start checking after we've accumulated at least LAT entries
+      if (exp_q.size() > 0) begin
+        // Because we pushed immediately when driving a vector on this same cycle,
+        // the *output* that corresponds to the vector driven LAT cycles ago is at index 0
+        exp_t ref = exp_q.pop_front();
+
+        // Compare against DUT outputs
+        if ({Cout, sum} !== {ref.cout, ref.sum}) begin
+          errors++;
+          $display("[%0t] MISMATCH: got Cout=%0b sum=%h  |  exp Cout=%0b sum=%h",
+                   $time, Cout, sum, ref.cout, ref.sum);
+        end
+      end
+    end
+  end
+
+endmodule

@@ -1,0 +1,63 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/IntelFPGA/sem 5/adder_32bit/simulation/modelsim
+vadder_8bit
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+!s110 1755684362
+!i10b 1
+!s100 :cnYUJ<<Aj5=[8?7gm>O]2
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I]?F0=>SPo=c5B>PAg[14a2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1755595370
+8D:/IntelFPGA/sem 5/adder_32bit/adder_8bit.sv
+FD:/IntelFPGA/sem 5/adder_32bit/adder_8bit.sv
+!i122 0
+L0 3 9
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1755684362.000000
+!s107 D:/IntelFPGA/sem 5/adder_32bit/adder_8bit.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/IntelFPGA/sem 5/adder_32bit|D:/IntelFPGA/sem 5/adder_32bit/adder_8bit.sv|
+!i113 1
+Z5 o-sv -work work
+Z6 !s92 -sv -work work {+incdir+D:/IntelFPGA/sem 5/adder_32bit}
+Z7 tCvgOpt 0
+vpipelined_adder_32bit
+R1
+!s110 1755684363
+!i10b 1
+!s100 ZDeMSE0jUE>S;DVCmY21e1
+R2
+IIFli2LbZ14gKDYnCE2?b41
+R3
+S1
+R0
+w1755684327
+8D:/IntelFPGA/sem 5/adder_32bit/pipelined_adder_32bit.sv
+FD:/IntelFPGA/sem 5/adder_32bit/pipelined_adder_32bit.sv
+!i122 1
+L0 3 118
+R4
+r1
+!s85 0
+31
+!s108 1755684363.000000
+!s107 D:/IntelFPGA/sem 5/adder_32bit/pipelined_adder_32bit.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/IntelFPGA/sem 5/adder_32bit|D:/IntelFPGA/sem 5/adder_32bit/pipelined_adder_32bit.sv|
+!i113 1
+R5
+R6
+R7

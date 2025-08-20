@@ -1,0 +1,45 @@
+`timescale 1ns/1ps
+
+module adder_32bit(
+	input logic [31:0] num1,
+	input logic [31:0] num2,
+	input logic C_in,
+	output logic [31:0] sum,
+	output logic C_out
+);
+	
+	logic c_in1 , c_in2, c_in3;
+	
+	adder_8bit adder_1(
+		.a(num1[7:0]),
+		.b(num2[7:0]),
+		.c_in(C_in),
+		.sum(sum[7:0]),
+		.c_out(c_in1)
+	);
+	
+	adder_8bit adder_2(
+		.a(num1[15:8]),
+		.b(num2[15:8]),
+		.c_in(c_in1),
+		.sum(sum[15:8]),
+		.c_out(c_in2)
+	);
+	
+	adder_8bit adder_3(
+		.a(num1[23:16]),
+		.b(num2[23:16]),
+		.c_in(c_in2),
+		.sum(sum[23:16]),
+		.c_out(c_in3)
+	);
+	
+	adder_8bit adder_4(
+		.a(num1[31:24]),
+		.b(num2[31:24]),
+		.c_in(c_in3),
+		.sum(sum[31:24]),
+		.c_out(C_out)
+	);
+	
+endmodule

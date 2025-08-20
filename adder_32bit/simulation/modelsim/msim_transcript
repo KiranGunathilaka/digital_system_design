@@ -1,0 +1,156 @@
+# Reading pref.tcl
+# do adder_32bit_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -sv -work work +incdir+D:/IntelFPGA/sem\ 5/adder_32bit {D:/IntelFPGA/sem 5/adder_32bit/adder_8bit.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 15:36:02 on Aug 20,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/IntelFPGA/sem 5/adder_32bit" D:/IntelFPGA/sem 5/adder_32bit/adder_8bit.sv 
+# -- Compiling module adder_8bit
+# 
+# Top level modules:
+# 	adder_8bit
+# End time: 15:36:03 on Aug 20,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/IntelFPGA/sem\ 5/adder_32bit {D:/IntelFPGA/sem 5/adder_32bit/pipelined_adder_32bit.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 15:36:03 on Aug 20,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/IntelFPGA/sem 5/adder_32bit" D:/IntelFPGA/sem 5/adder_32bit/pipelined_adder_32bit.sv 
+# -- Compiling module pipelined_adder_32bit
+# 
+# Top level modules:
+# 	pipelined_adder_32bit
+# End time: 15:36:03 on Aug 20,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+vip work
+# invalid command name "vip"
+vlib work
+# ** Warning: (vlib-34) Library already exists at "work".
+vlog -sv adder_8bit.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 15:36:58 on Aug 20,2025
+# vlog -reportprogress 300 -sv adder_8bit.sv 
+# ** Error: (vlog-7) Failed to open design unit file "adder_8bit.sv" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 15:36:58 on Aug 20,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vlog failed.
+cd D:/IntelFPGA
+# reading C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini
+cd sem 5
+# wrong # args: should be "cd ?dirName?"
+cd "sem 5"
+cd adder_32bit
+# reading modelsim.ini
+vlog -sv adder_8bit.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 15:38:19 on Aug 20,2025
+# vlog -reportprogress 300 -sv adder_8bit.sv 
+# -- Compiling module adder_8bit
+# 
+# Top level modules:
+# 	adder_8bit
+# End time: 15:38:19 on Aug 20,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -sv pipelined_adder_32bit.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 15:38:29 on Aug 20,2025
+# vlog -reportprogress 300 -sv pipelined_adder_32bit.sv 
+# -- Compiling module pipelined_adder_32bit
+# 
+# Top level modules:
+# 	pipelined_adder_32bit
+# End time: 15:38:29 on Aug 20,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -sv tb_pipelined_adder_32bit.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 15:38:38 on Aug 20,2025
+# vlog -reportprogress 300 -sv tb_pipelined_adder_32bit.sv 
+# -- Compiling module tb_pipelined_adder_32bit
+# ** Warning: tb_pipelined_adder_32bit.sv(85): (vlog-2244) Variable 'A' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: tb_pipelined_adder_32bit.sv(87): (vlog-2244) Variable 'B' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: tb_pipelined_adder_32bit.sv(88): (vlog-2244) Variable 'CINv' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Error: tb_pipelined_adder_32bit.sv(90): Illegal declaration after the statement near line '77'.  Declarations must precede statements.  Look for stray semicolons.
+# ** Error: tb_pipelined_adder_32bit.sv(90): (vlog-2730) Undefined variable: 'i'.
+# ** Error: (vlog-13069) tb_pipelined_adder_32bit.sv(90): near ")": syntax error, unexpected ')', expecting ';'.
+# ** Error: (vlog-13069) tb_pipelined_adder_32bit.sv(97): near "int": syntax error, unexpected "SystemVerilog keyword 'int'", expecting IDENTIFIER or genvar.
+# ** Error: tb_pipelined_adder_32bit.sv(97): (vlog-13205) Syntax error found in the scope following 'i'. Is there a missing '::'?
+# End time: 15:38:38 on Aug 20,2025, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 3
+# C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/vlog failed.
+vlog -sv tb_pipelined_adder_32bit.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 15:41:11 on Aug 20,2025
+# vlog -reportprogress 300 -sv tb_pipelined_adder_32bit.sv 
+# -- Compiling module tb_pipelined_adder_32bit
+# 
+# Top level modules:
+# 	tb_pipelined_adder_32bit
+# End time: 15:41:11 on Aug 20,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim work.tb_pipelined_adder_32bit
+# vsim work.tb_pipelined_adder_32bit 
+# Start time: 15:41:20 on Aug 20,2025
+# Loading sv_std.std
+# Loading work.tb_pipelined_adder_32bit
+# Loading work.pipelined_adder_32bit
+# Loading work.adder_8bit
+add wave -position insertpoint  \
+sim:/tb_pipelined_adder_32bit/LAT \
+sim:/tb_pipelined_adder_32bit/USE_COUT_DELAY \
+sim:/tb_pipelined_adder_32bit/clk \
+sim:/tb_pipelined_adder_32bit/reset \
+sim:/tb_pipelined_adder_32bit/num_a \
+sim:/tb_pipelined_adder_32bit/num_b \
+sim:/tb_pipelined_adder_32bit/Cin \
+sim:/tb_pipelined_adder_32bit/sum \
+sim:/tb_pipelined_adder_32bit/Cout \
+sim:/tb_pipelined_adder_32bit/exp_sum \
+sim:/tb_pipelined_adder_32bit/exp_cout \
+sim:/tb_pipelined_adder_32bit/total_vecs \
+sim:/tb_pipelined_adder_32bit/errors \
+sim:/tb_pipelined_adder_32bit/Cout_d \
+sim:/tb_pipelined_adder_32bit/Cout_aligned
+run
+# [135000] MISMATCH: got Cout=0 sum=00000000 | exp Cout=0 sum=80000000
+# [145000] MISMATCH: got Cout=1 sum=80000000 | exp Cout=1 sum=00000000
+# [155000] MISMATCH: got Cout=0 sum=00000000 | exp Cout=0 sum=acf13568
+# [165000] MISMATCH: got Cout=0 sum=acf13568 | exp Cout=0 sum=efbee112
+# [175000] MISMATCH: got Cout=0 sum=efbee112 | exp Cout=0 sum=d29e93a6
+# [185000] MISMATCH: got Cout=0 sum=d29e93a6 | exp Cout=0 sum=b8a9d171
+# [195000] MISMATCH: got Cout=1 sum=b8a9d171 | exp Cout=1 sum=3bf9d678
+run
+# [205000] MISMATCH: got Cout=0 sum=3bf9d678 | exp Cout=0 sum=41fbbe84
+# [215000] MISMATCH: got Cout=0 sum=41fbbe84 | exp Cout=0 sum=bd024f7a
+# [225000] MISMATCH: got Cout=1 sum=bd024f7a | exp Cout=1 sum=c62ea98b
+# [235000] MISMATCH: got Cout=1 sum=c62ea98b | exp Cout=1 sum=2e826a5c
+# [245000] MISMATCH: got Cout=0 sum=2e826a5c | exp Cout=0 sum=c11d4581
+# [255000] MISMATCH: got Cout=1 sum=c11d4581 | exp Cout=1 sum=d6cac9ad
+# [265000] MISMATCH: got Cout=1 sum=d6cac9ad | exp Cout=1 sum=753980eb
+# [275000] MISMATCH: got Cout=0 sum=753980eb | exp Cout=0 sum=b762e96d
+# [285000] MISMATCH: got Cout=0 sum=b762e96d | exp Cout=0 sum=65dc66cb
+# [295000] MISMATCH: got Cout=1 sum=65dc66cb | exp Cout=1 sum=54a3f6aa
+# [305000] MISMATCH: got Cout=0 sum=54a3f6aa | exp Cout=0 sum=df47b3bf
+# [315000] MISMATCH: got Cout=1 sum=df47b3bf | exp Cout=1 sum=586d88b1
+# [325000] MISMATCH: got Cout=0 sum=586d88b1 | exp Cout=0 sum=f949bbf2
+# [335000] MISMATCH: got Cout=1 sum=f949bbf2 | exp Cout=1 sum=83a45706
+# [345000] MISMATCH: got Cout=0 sum=83a45706 | exp Cout=0 sum=65f314cb
+# [355000] MISMATCH: got Cout=1 sum=65f314cb | exp Cout=1 sum=00ab0602
+# [365000] MISMATCH: got Cout=0 sum=00ab0602 | exp Cout=0 sum=be4e5f7c
+# [375000] MISMATCH: got Cout=0 sum=be4e5f7c | exp Cout=0 sum=f384dfe7
+# [385000] MISMATCH: got Cout=0 sum=f384dfe7 | exp Cout=0 sum=fb89fff7
+# [395000] MISMATCH: got Cout=0 sum=fb89fff7 | exp Cout=0 sum=bad29375
+# End time: 17:08:30 on Aug 20,2025, Elapsed time: 1:27:10
+# Errors: 0, Warnings: 0

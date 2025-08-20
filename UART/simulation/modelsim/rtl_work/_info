@@ -1,0 +1,141 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/IntelFPGA/sem 5/UART/simulation/modelsim
+vtransceiver_tb
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1755547311
+!i10b 1
+!s100 81G@gPQSlW5W?Oo;V2ZI?2
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IN^QP7V=hKDT483dljIf9>0
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1746550470
+8D:/IntelFPGA/sem 5/UART/tranceiver_tb.sv
+FD:/IntelFPGA/sem 5/UART/tranceiver_tb.sv
+!i122 4
+L0 3 62
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1755547311.000000
+!s107 D:/IntelFPGA/sem 5/UART/tranceiver_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/IntelFPGA/sem 5/UART|D:/IntelFPGA/sem 5/UART/tranceiver_tb.sv|
+!i113 1
+Z7 o-sv -work work
+Z8 !s92 -sv -work work {+incdir+D:/IntelFPGA/sem 5/UART}
+Z9 tCvgOpt 0
+vuart
+R1
+R2
+!i10b 1
+!s100 Y>TmU>zf3bJg4AIDLYhDL0
+R3
+I3cz9fAKTD`Q9l=HR4@?4[1
+R4
+S1
+R0
+w1746550486
+8D:/IntelFPGA/sem 5/UART/uart.sv
+FD:/IntelFPGA/sem 5/UART/uart.sv
+!i122 2
+L0 1 45
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/IntelFPGA/sem 5/UART/uart.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/IntelFPGA/sem 5/UART|D:/IntelFPGA/sem 5/UART/uart.sv|
+!i113 1
+R7
+R8
+R9
+vuart_rx
+R1
+R2
+!i10b 1
+!s100 0?ZOOczEG=^V@:]kCX<WO0
+R3
+IG0Vl8;Xj<zGO?4o?e=??W2
+R4
+S1
+R0
+w1746477866
+8D:/IntelFPGA/sem 5/UART/uart_rx.sv
+FD:/IntelFPGA/sem 5/UART/uart_rx.sv
+!i122 1
+Z10 L0 1 76
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/IntelFPGA/sem 5/UART/uart_rx.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/IntelFPGA/sem 5/UART|D:/IntelFPGA/sem 5/UART/uart_rx.sv|
+!i113 1
+R7
+R8
+R9
+vuart_tb
+R1
+R2
+!i10b 1
+!s100 7a]XY6KEj=OjB3d=g]]aJ2
+R3
+ISjOlAbBG1zGXg3FeA6NI`0
+R4
+S1
+R0
+w1746480068
+8D:/IntelFPGA/sem 5/UART/uart_tb.sv
+FD:/IntelFPGA/sem 5/UART/uart_tb.sv
+!i122 3
+L0 3 78
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/IntelFPGA/sem 5/UART/uart_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/IntelFPGA/sem 5/UART|D:/IntelFPGA/sem 5/UART/uart_tb.sv|
+!i113 1
+R7
+R8
+R9
+vuart_tx
+R1
+R2
+!i10b 1
+!s100 JGVUPg?9MCQl;96b_aCiC3
+R3
+I_:4AFf_?BYa7OZYIe]Xzn2
+R4
+S1
+R0
+w1746476560
+8D:/IntelFPGA/sem 5/UART/uart_tx.sv
+FD:/IntelFPGA/sem 5/UART/uart_tx.sv
+!i122 0
+R10
+R5
+r1
+!s85 0
+31
+!s108 1755547310.000000
+!s107 D:/IntelFPGA/sem 5/UART/uart_tx.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/IntelFPGA/sem 5/UART|D:/IntelFPGA/sem 5/UART/uart_tx.sv|
+!i113 1
+R7
+R8
+R9

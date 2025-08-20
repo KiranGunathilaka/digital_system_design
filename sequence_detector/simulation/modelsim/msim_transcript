@@ -1,0 +1,78 @@
+# Reading pref.tcl
+# do sequence_detector_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -sv -work work +incdir+D:/IntelFPGA/sem\ 5/sequence_detector {D:/IntelFPGA/sem 5/sequence_detector/overlapping_sequence_detector_0110.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 12:14:36 on Aug 19,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/IntelFPGA/sem 5/sequence_detector" D:/IntelFPGA/sem 5/sequence_detector/overlapping_sequence_detector_0110.sv 
+# -- Compiling module overlapping_sequence_detector_0110
+# 
+# Top level modules:
+# 	overlapping_sequence_detector_0110
+# End time: 12:14:36 on Aug 19,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/IntelFPGA/sem\ 5/sequence_detector {D:/IntelFPGA/sem 5/sequence_detector/tb_overlapping_sequence_detector_0110.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 12:14:36 on Aug 19,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/IntelFPGA/sem 5/sequence_detector" D:/IntelFPGA/sem 5/sequence_detector/tb_overlapping_sequence_detector_0110.sv 
+# -- Compiling module tb_overlapping_sequence_detector_0110
+# 
+# Top level modules:
+# 	tb_overlapping_sequence_detector_0110
+# End time: 12:14:36 on Aug 19,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+vsim work.tb_overlapping_sequence_detector_0110
+# vsim work.tb_overlapping_sequence_detector_0110 
+# Start time: 12:14:41 on Aug 19,2025
+# Loading sv_std.std
+# Loading work.tb_overlapping_sequence_detector_0110
+# Loading work.overlapping_sequence_detector_0110
+add wave -position insertpoint  \
+sim:/tb_overlapping_sequence_detector_0110/clk \
+sim:/tb_overlapping_sequence_detector_0110/reset \
+sim:/tb_overlapping_sequence_detector_0110/data_in \
+sim:/tb_overlapping_sequence_detector_0110/detected
+run
+# 
+# === Test 1: Simple 0110 sequence ===
+# PASS:                                                                                                                                                                                              Simple 0110 - Expected: 1, Got: 1
+# 
+# === Test 2: Overlapping - Overlapped with old sequence ===
+# PASS:                                                                                                                                                                                         Overlapping 0110 - Expected: 1, Got: 1
+run
+# PASS:                                                                                                                                                                                         Overlapping 0110 - Expected: 1, Got: 1
+# 
+# === Test 3: Partial sequence 011 then 0110 ===
+# PASS:                                                                                                                                                                                    Should not detect now - Expected: 0, Got: 0
+run
+# PASS:                                                                                                                                                                                  Restart after wrong bit - Expected: 1, Got: 1
+# 
+# === Test 4: Multiple 0s then 0110 ===
+# PASS:                                                                                                                                                                                    Multiple 0s then 0110 - Expected: 1, Got: 1
+# 
+# === Test 5: No detection - 0111 ===
+run
+# PASS:                                                                                                                                                                                    No detection for 0111 - Expected: 0, Got: 0
+# ** Note: $finish    : D:/IntelFPGA/sem 5/sequence_detector/tb_overlapping_sequence_detector_0110.sv(98)
+#    Time: 326 ns  Iteration: 0  Instance: /tb_overlapping_sequence_detector_0110
+# 1
+# Break in Module tb_overlapping_sequence_detector_0110 at D:/IntelFPGA/sem 5/sequence_detector/tb_overlapping_sequence_detector_0110.sv line 98
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# End time: 12:17:07 on Aug 19,2025, Elapsed time: 0:02:26
+# Errors: 0, Warnings: 0

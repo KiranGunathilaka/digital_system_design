@@ -1,0 +1,63 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/IntelFPGA/sem 5/sequence_detector/simulation/modelsim
+voverlapping_sequence_detector_0110
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1755585876
+!i10b 1
+!s100 lOhVcHlENbzk0giZWHHdV0
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IODfQ[_1z4Ba9cHBCLBo=A1
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1755585782
+8D:/IntelFPGA/sem 5/sequence_detector/overlapping_sequence_detector_0110.sv
+FD:/IntelFPGA/sem 5/sequence_detector/overlapping_sequence_detector_0110.sv
+!i122 0
+L0 22 86
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1755585876.000000
+!s107 D:/IntelFPGA/sem 5/sequence_detector/overlapping_sequence_detector_0110.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/IntelFPGA/sem 5/sequence_detector|D:/IntelFPGA/sem 5/sequence_detector/overlapping_sequence_detector_0110.sv|
+!i113 1
+Z7 o-sv -work work
+Z8 !s92 -sv -work work {+incdir+D:/IntelFPGA/sem 5/sequence_detector}
+Z9 tCvgOpt 0
+vtb_overlapping_sequence_detector_0110
+R1
+R2
+!i10b 1
+!s100 GoDi?kzV4Z@TkF]^[7Mh[1
+R3
+ICST7Q1mmdiijYkdgUVmjA0
+R4
+S1
+R0
+w1755585501
+8D:/IntelFPGA/sem 5/sequence_detector/tb_overlapping_sequence_detector_0110.sv
+FD:/IntelFPGA/sem 5/sequence_detector/tb_overlapping_sequence_detector_0110.sv
+!i122 1
+L0 3 130
+R5
+r1
+!s85 0
+31
+R6
+!s107 D:/IntelFPGA/sem 5/sequence_detector/tb_overlapping_sequence_detector_0110.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+D:/IntelFPGA/sem 5/sequence_detector|D:/IntelFPGA/sem 5/sequence_detector/tb_overlapping_sequence_detector_0110.sv|
+!i113 1
+R7
+R8
+R9

@@ -1,0 +1,11 @@
+`timescale 1ns / 1ps
+
+module adder(
+	input logic [32:0] a,
+	input logic [32:0] b,
+	input logic c_in,
+	output logic [32:0] sum,
+	output logic c_out
+);
+	assign {Cout, Sum} = A + B + Cin;
+endmodule

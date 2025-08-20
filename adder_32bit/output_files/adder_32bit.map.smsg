@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at tb_pipelined_adder_32bit.sv(9): object "Cin" differs only in case from object "CIN" in the same scope File: D:/IntelFPGA/sem 5/adder_32bit/tb_pipelined_adder_32bit.sv Line: 9

@@ -1,0 +1,140 @@
+# Reading pref.tcl
+# do UART_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -sv -work work +incdir+D:/IntelFPGA/sem\ 5/UART {D:/IntelFPGA/sem 5/UART/uart_tx.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 01:31:50 on Aug 19,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/IntelFPGA/sem 5/UART" D:/IntelFPGA/sem 5/UART/uart_tx.sv 
+# -- Compiling module uart_tx
+# 
+# Top level modules:
+# 	uart_tx
+# End time: 01:31:51 on Aug 19,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/IntelFPGA/sem\ 5/UART {D:/IntelFPGA/sem 5/UART/uart_rx.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 01:31:51 on Aug 19,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/IntelFPGA/sem 5/UART" D:/IntelFPGA/sem 5/UART/uart_rx.sv 
+# -- Compiling module uart_rx
+# 
+# Top level modules:
+# 	uart_rx
+# End time: 01:31:51 on Aug 19,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/IntelFPGA/sem\ 5/UART {D:/IntelFPGA/sem 5/UART/uart.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 01:31:51 on Aug 19,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/IntelFPGA/sem 5/UART" D:/IntelFPGA/sem 5/UART/uart.sv 
+# -- Compiling module uart
+# 
+# Top level modules:
+# 	uart
+# End time: 01:31:51 on Aug 19,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+D:/IntelFPGA/sem\ 5/UART {D:/IntelFPGA/sem 5/UART/uart_tb.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 01:31:51 on Aug 19,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/IntelFPGA/sem 5/UART" D:/IntelFPGA/sem 5/UART/uart_tb.sv 
+# -- Compiling module uart_tb
+# 
+# Top level modules:
+# 	uart_tb
+# End time: 01:31:51 on Aug 19,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -sv -work work +incdir+D:/IntelFPGA/sem\ 5/UART {D:/IntelFPGA/sem 5/UART/tranceiver_tb.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 01:31:51 on Aug 19,2025
+# vlog -reportprogress 300 -sv -work work "+incdir+D:/IntelFPGA/sem 5/UART" D:/IntelFPGA/sem 5/UART/tranceiver_tb.sv 
+# -- Compiling module transceiver_tb
+# 
+# Top level modules:
+# 	transceiver_tb
+# End time: 01:31:51 on Aug 19,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  transceiver_tb
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs=""+acc"" transceiver_tb 
+# Start time: 01:31:51 on Aug 19,2025
+# Loading sv_std.std
+# Loading work.transceiver_tb
+# ** Error: (vsim-3033) Instantiation of 'transceiver' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Instance: /transceiver_tb File: D:/IntelFPGA/sem 5/UART/tranceiver_tb.sv Line: 22
+#         Searched libraries:
+#             C:/intelFPGA_lite/20.1/modelsim_ase/altera/verilog/altera
+#             C:/intelFPGA_lite/20.1/modelsim_ase/altera/verilog/220model
+#             C:/intelFPGA_lite/20.1/modelsim_ase/altera/verilog/sgate
+#             C:/intelFPGA_lite/20.1/modelsim_ase/altera/verilog/altera_mf
+#             C:/intelFPGA_lite/20.1/modelsim_ase/altera/verilog/altera_lnsim
+#             C:/intelFPGA_lite/20.1/modelsim_ase/altera/verilog/cycloneive
+#             D:/IntelFPGA/sem 5/UART/simulation/modelsim/rtl_work
+#             D:/IntelFPGA/sem 5/UART/simulation/modelsim/rtl_work
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./UART_run_msim_rtl_verilog.do PAUSED at line 15
+vsim work.uart_tb
+# vsim work.uart_tb 
+# Start time: 01:31:51 on Aug 19,2025
+# Loading sv_std.std
+# Loading work.uart_tb
+# Loading work.uart
+# Loading work.uart_tx
+# Loading work.uart_rx
+add wave -position insertpoint  \
+sim:/uart_tb/CLOCKS_PER_PULSE \
+sim:/uart_tb/BITS_PER_WORD \
+sim:/uart_tb/clk \
+sim:/uart_tb/rstn \
+sim:/uart_tb/s_valid \
+sim:/uart_tb/s_ready \
+sim:/uart_tb/s_data \
+sim:/uart_tb/tx \
+sim:/uart_tb/rx \
+sim:/uart_tb/m_valid \
+sim:/uart_tb/m_data
+run
+# Starting simulation...
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# TX: a5 -> RX: a5 PASS
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# TX: 3c -> RX: 3c PASS
+run
+run
+run
+run
+run
+run
+run
+# End time: 01:33:40 on Aug 19,2025, Elapsed time: 0:01:49
+# Errors: 1, Warnings: 0

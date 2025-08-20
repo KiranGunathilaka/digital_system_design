@@ -1,0 +1,64 @@
+`timescale 1ns/1ps
+
+module pipeline_v2(
+  input  logic        clk, reset,
+  input  logic [31:0] num_a, num_b,
+  input  logic        Cin,
+  output logic [31:0] SUM,
+  output logic        Cout
+);
+  // Stage 0 regs
+  logic [7:0] s0_sum;  logic c1;
+  logic [7:0] a1, b1;
+  // Stage 1 regs
+  logic [7:0] s1_sum;  logic c2;
+  logic [7:0] a2, b2;
+  // Stage 2 regs
+  logic [7:0] s2_sum;  logic c3;
+  logic [7:0] a3, b3;
+  // Stage 3 regs
+  logic [7:0] s3_sum;  logic c4;
+
+  // Stage 0: add bits [7:0], forward next operands
+  always_ff @(posedge clk) begin
+    if (reset) begin
+      s0_sum <= '0; c1 <= 0; a1 <= '0; b1 <= '0;
+    end else begin
+      {c1, s0_sum} <= num_a[7:0] + num_b[7:0] + Cin;
+      a1 <= num_a[15:8];  b1 <= num_b[15:8];
+    end
+  end
+
+  // Stage 1: add bits [15:8]
+  always_ff @(posedge clk) begin
+    if (reset) begin
+      s1_sum <= '0; c2 <= 0; a2 <= '0; b2 <= '0;
+    end else begin
+      {c2, s1_sum} <= a1 + b1 + c1;
+      a2 <= num_a[23:16]; b2 <= num_b[23:16];
+    end
+  end
+
+  // Stage 2: add bits [23:16]
+  always_ff @(posedge clk) begin
+    if (reset) begin
+      s2_sum <= '0; c3 <= 0; a3 <= '0; b3 <= '0;
+    end else begin
+      {c3, s2_sum} <= a2 + b2 + c2;
+      a3 <= num_a[31:24]; b3 <= num_b[31:24];
+    end
+  end
+
+  // Stage 3: add bits [31:24]
+  always_ff @(posedge clk) begin
+    if (reset) begin
+      s3_sum <= '0; c4 <= 0;
+    end else begin
+      {c4, s3_sum} <= a3 + b3 + c3;
+    end
+  end
+
+  // Reassemble outputs (valid after 4 cycles)
+  assign SUM  = {s3_sum, s2_sum, s1_sum, s0_sum};
+  assign Cout = c4;
+endmodule

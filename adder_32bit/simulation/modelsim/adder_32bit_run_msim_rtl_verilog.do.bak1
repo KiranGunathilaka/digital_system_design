@@ -1,0 +1,10 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -sv -work work +incdir+D:/IntelFPGA/sem\ 5/adder_32bit {D:/IntelFPGA/sem 5/adder_32bit/adder_8bit.sv}
+vlog -sv -work work +incdir+D:/IntelFPGA/sem\ 5/adder_32bit {D:/IntelFPGA/sem 5/adder_32bit/pipelined_adder_32bit.sv}
+
