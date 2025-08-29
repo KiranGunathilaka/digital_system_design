@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE22F17C6
-set_global_assignment -name TOP_LEVEL_ENTITY tb_overlapping_sequence_detector_0110
+set_global_assignment -name TOP_LEVEL_ENTITY transceiver
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:41:17  AUGUST 14, 2025"
 set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
@@ -63,7 +63,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE src/uart/uart_tx.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/uart/uart_tb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/uart/uart_rx.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/uart/uart.sv
-set_global_assignment -name SYSTEMVERILOG_FILE src/uart/transceiver_tb.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/uart/transceiver.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/overlapping/tb_overlapping_sequence_detector_0110.sv
 set_global_assignment -name SYSTEMVERILOG_FILE src/overlapping/overlapping_sequence_detector_0110.sv
@@ -72,4 +71,17 @@ set_global_assignment -name SYSTEMVERILOG_FILE src/non_overlapping/sequence_dete
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_R8 -to clk
+set_location_assignment PIN_J15 -to rstn
+set_location_assignment PIN_A2 -to tx
+set_location_assignment PIN_A3 -to rx
+set_location_assignment PIN_B1 -to led_detected[6]
+set_location_assignment PIN_A15 -to led_detected[0]
+set_location_assignment PIN_A13 -to led_detected[1]
+set_location_assignment PIN_B13 -to led_detected[2]
+set_location_assignment PIN_A11 -to led_detected[3]
+set_location_assignment PIN_D1 -to led_detected[4]
+set_location_assignment PIN_F3 -to led_detected[5]
+set_location_assignment PIN_L3 -to led_detected[7]
+set_location_assignment PIN_E1 -to mode_in
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

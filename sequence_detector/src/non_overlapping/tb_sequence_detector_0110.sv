@@ -12,6 +12,7 @@ module tb_sequence_detector_0110;
     sequence_detector_0110 dut (
         .clk(clk),
         .reset(reset),
+        .en(1'b1),  // Always enable for testing
         .data_in(data_in),
         .detected(detected)
     );

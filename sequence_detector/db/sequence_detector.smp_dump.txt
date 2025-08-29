@@ -1,8 +1,23 @@
 
-State Machine - |overlapping_sequence_detector_0110|current_state
+State Machine - |transceiver|overlapping_sequence_detector_0110:u_overlap|current_state
 Name current_state.S011 current_state.S01 current_state.S0 current_state.IDLE current_state.S0110 
 current_state.IDLE 0 0 0 0 0 
 current_state.S0 0 0 1 1 0 
 current_state.S01 0 1 0 1 0 
 current_state.S011 1 0 0 1 0 
 current_state.S0110 0 0 0 1 1 
+
+State Machine - |transceiver|sequence_detector_0110:u_no_overlap|current_state
+Name current_state.S011 current_state.S01 current_state.S0 current_state.IDLE current_state.S0110 
+current_state.IDLE 0 0 0 0 0 
+current_state.S0 0 0 1 1 0 
+current_state.S01 0 1 0 1 0 
+current_state.S011 1 0 0 1 0 
+current_state.S0110 0 0 0 1 1 
+
+State Machine - |transceiver|uart:uart_inst|uart_rx:rx_inst|state
+Name state.STOP state.DATA state.START state.IDLE 
+state.IDLE 0 0 0 0 
+state.START 0 0 1 1 
+state.DATA 0 1 0 1 
+state.STOP 1 0 0 1 

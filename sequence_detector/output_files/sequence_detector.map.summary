@@ -1,14 +1,14 @@
-Analysis & Elaboration Status : Successful - Tue Aug 19 12:55:52 2025
+Analysis & Synthesis Status : Successful - Fri Aug 29 12:47:16 2025
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : sequence_detector
-Top-level Entity Name : tb_overlapping_sequence_detector_0110
+Top-level Entity Name : transceiver
 Family : Cyclone IV E
-Total logic elements : N/A until Partition Merge
-    Total combinational functions : N/A until Partition Merge
-    Dedicated logic registers : N/A until Partition Merge
-Total registers : N/A until Partition Merge
-Total pins : N/A until Partition Merge
-Total virtual pins : N/A until Partition Merge
-Total memory bits : N/A until Partition Merge
-Embedded Multiplier 9-bit elements : N/A until Partition Merge
-Total PLLs : N/A until Partition Merge
+Total logic elements : 105
+    Total combinational functions : 96
+    Dedicated logic registers : 75
+Total registers : 75
+Total pins : 13
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

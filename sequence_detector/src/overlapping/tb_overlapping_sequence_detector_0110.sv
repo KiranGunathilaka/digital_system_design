@@ -12,6 +12,7 @@ module tb_overlapping_sequence_detector_0110;
     overlapping_sequence_detector_0110 dut (
         .clk(clk),
         .reset(reset),
+        .en(1'b1), // always one for the testbench
         .data_in(data_in),
         .detected(detected)
     );

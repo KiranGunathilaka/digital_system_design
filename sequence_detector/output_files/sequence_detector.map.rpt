@@ -1,5 +1,5 @@
-Analysis & Elaboration report for sequence_detector
-Tue Aug 19 12:55:52 2025
+Analysis & Synthesis report for sequence_detector
+Fri Aug 29 12:47:16 2025
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -7,11 +7,27 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Analysis & Elaboration Summary
-  3. Parallel Compilation
-  4. Analysis & Elaboration Settings
-  5. Port Connectivity Checks: "overlapping_sequence_detector_0110:dut"
-  6. Analysis & Elaboration Messages
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |transceiver|overlapping_sequence_detector_0110:u_overlap|current_state
+  9. State Machine - |transceiver|sequence_detector_0110:u_no_overlap|current_state
+ 10. State Machine - |transceiver|uart:uart_inst|uart_rx:rx_inst|state
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: Top-level Entity: |transceiver
+ 16. Parameter Settings for User Entity Instance: uart:uart_inst
+ 17. Parameter Settings for User Entity Instance: uart:uart_inst|uart_tx:tx_inst
+ 18. Parameter Settings for User Entity Instance: uart:uart_inst|uart_rx:rx_inst
+ 19. Port Connectivity Checks: "uart:uart_inst"
+ 20. Post-Synthesis Netlist Statistics for Top Partition
+ 21. Elapsed Time Per Partition
+ 22. Analysis & Synthesis Messages
 
 
 
@@ -36,23 +52,109 @@ https://fpgasoftware.intel.com/eula.
 
 
 +----------------------------------------------------------------------------------+
-; Analysis & Elaboration Summary                                                   ;
+; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status      ; Successful - Tue Aug 19 12:55:52 2025       ;
+; Analysis & Synthesis Status        ; Successful - Fri Aug 29 12:47:16 2025       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; sequence_detector                           ;
-; Top-level Entity Name              ; tb_overlapping_sequence_detector_0110       ;
+; Top-level Entity Name              ; transceiver                                 ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; N/A until Partition Merge                   ;
-;     Total combinational functions  ; N/A until Partition Merge                   ;
-;     Dedicated logic registers      ; N/A until Partition Merge                   ;
-; Total registers                    ; N/A until Partition Merge                   ;
-; Total pins                         ; N/A until Partition Merge                   ;
-; Total virtual pins                 ; N/A until Partition Merge                   ;
-; Total memory bits                  ; N/A until Partition Merge                   ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
-; Total PLLs                         ; N/A until Partition Merge                   ;
+; Total logic elements               ; 105                                         ;
+;     Total combinational functions  ; 96                                          ;
+;     Dedicated logic registers      ; 75                                          ;
+; Total registers                    ; 75                                          ;
+; Total pins                         ; 13                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
 +------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE22F17C6       ;                    ;
+; Top-level entity name                                            ; transceiver        ; sequence_detector  ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
 
 
 +------------------------------------------+
@@ -64,173 +166,336 @@ https://fpgasoftware.intel.com/eula.
 ; Maximum allowed            ; 6           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processors 2-6         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Elaboration Settings                                                                                               ;
-+------------------------------------------------------------------+---------------------------------------+--------------------+
-; Option                                                           ; Setting                               ; Default Value      ;
-+------------------------------------------------------------------+---------------------------------------+--------------------+
-; Device                                                           ; EP4CE22F17C6                          ;                    ;
-; Top-level entity name                                            ; tb_overlapping_sequence_detector_0110 ; sequence_detector  ;
-; Family name                                                      ; Cyclone IV E                          ; Cyclone V          ;
-; Use smart compilation                                            ; Off                                   ; Off                ;
-; Enable parallel Assembler and Timing Analyzer during compilation ; On                                    ; On                 ;
-; Enable compact report table                                      ; Off                                   ; Off                ;
-; Restructure Multiplexers                                         ; Auto                                  ; Auto               ;
-; Create Debugging Nodes for IP Cores                              ; Off                                   ; Off                ;
-; Preserve fewer node names                                        ; On                                    ; On                 ;
-; Intel FPGA IP Evaluation Mode                                    ; Enable                                ; Enable             ;
-; Verilog Version                                                  ; Verilog_2001                          ; Verilog_2001       ;
-; VHDL Version                                                     ; VHDL_1993                             ; VHDL_1993          ;
-; State Machine Processing                                         ; Auto                                  ; Auto               ;
-; Safe State Machine                                               ; Off                                   ; Off                ;
-; Extract Verilog State Machines                                   ; On                                    ; On                 ;
-; Extract VHDL State Machines                                      ; On                                    ; On                 ;
-; Ignore Verilog initial constructs                                ; Off                                   ; Off                ;
-; Iteration limit for constant Verilog loops                       ; 5000                                  ; 5000               ;
-; Iteration limit for non-constant Verilog loops                   ; 250                                   ; 250                ;
-; Add Pass-Through Logic to Inferred RAMs                          ; On                                    ; On                 ;
-; Infer RAMs from Raw Logic                                        ; On                                    ; On                 ;
-; Parallel Synthesis                                               ; On                                    ; On                 ;
-; DSP Block Balancing                                              ; Auto                                  ; Auto               ;
-; NOT Gate Push-Back                                               ; On                                    ; On                 ;
-; Power-Up Don't Care                                              ; On                                    ; On                 ;
-; Remove Redundant Logic Cells                                     ; Off                                   ; Off                ;
-; Remove Duplicate Registers                                       ; On                                    ; On                 ;
-; Ignore CARRY Buffers                                             ; Off                                   ; Off                ;
-; Ignore CASCADE Buffers                                           ; Off                                   ; Off                ;
-; Ignore GLOBAL Buffers                                            ; Off                                   ; Off                ;
-; Ignore ROW GLOBAL Buffers                                        ; Off                                   ; Off                ;
-; Ignore LCELL Buffers                                             ; Off                                   ; Off                ;
-; Ignore SOFT Buffers                                              ; On                                    ; On                 ;
-; Limit AHDL Integers to 32 Bits                                   ; Off                                   ; Off                ;
-; Optimization Technique                                           ; Balanced                              ; Balanced           ;
-; Carry Chain Length                                               ; 70                                    ; 70                 ;
-; Auto Carry Chains                                                ; On                                    ; On                 ;
-; Auto Open-Drain Pins                                             ; On                                    ; On                 ;
-; Perform WYSIWYG Primitive Resynthesis                            ; Off                                   ; Off                ;
-; Auto ROM Replacement                                             ; On                                    ; On                 ;
-; Auto RAM Replacement                                             ; On                                    ; On                 ;
-; Auto DSP Block Replacement                                       ; On                                    ; On                 ;
-; Auto Shift Register Replacement                                  ; Auto                                  ; Auto               ;
-; Allow Shift Register Merging across Hierarchies                  ; Auto                                  ; Auto               ;
-; Auto Clock Enable Replacement                                    ; On                                    ; On                 ;
-; Strict RAM Replacement                                           ; Off                                   ; Off                ;
-; Allow Synchronous Control Signals                                ; On                                    ; On                 ;
-; Force Use of Synchronous Clear Signals                           ; Off                                   ; Off                ;
-; Auto RAM Block Balancing                                         ; On                                    ; On                 ;
-; Auto RAM to Logic Cell Conversion                                ; Off                                   ; Off                ;
-; Auto Resource Sharing                                            ; Off                                   ; Off                ;
-; Allow Any RAM Size For Recognition                               ; Off                                   ; Off                ;
-; Allow Any ROM Size For Recognition                               ; Off                                   ; Off                ;
-; Allow Any Shift Register Size For Recognition                    ; Off                                   ; Off                ;
-; Use LogicLock Constraints during Resource Balancing              ; On                                    ; On                 ;
-; Ignore translate_off and synthesis_off directives                ; Off                                   ; Off                ;
-; Timing-Driven Synthesis                                          ; On                                    ; On                 ;
-; Report Parameter Settings                                        ; On                                    ; On                 ;
-; Report Source Assignments                                        ; On                                    ; On                 ;
-; Report Connectivity Checks                                       ; On                                    ; On                 ;
-; Ignore Maximum Fan-Out Assignments                               ; Off                                   ; Off                ;
-; Synchronization Register Chain Length                            ; 2                                     ; 2                  ;
-; Power Optimization During Synthesis                              ; Normal compilation                    ; Normal compilation ;
-; HDL message level                                                ; Level2                                ; Level2             ;
-; Suppress Register Optimization Related Messages                  ; Off                                   ; Off                ;
-; Number of Removed Registers Reported in Synthesis Report         ; 5000                                  ; 5000               ;
-; Number of Swept Nodes Reported in Synthesis Report               ; 5000                                  ; 5000               ;
-; Number of Inverted Registers Reported in Synthesis Report        ; 100                                   ; 100                ;
-; Clock MUX Protection                                             ; On                                    ; On                 ;
-; Auto Gated Clock Conversion                                      ; Off                                   ; Off                ;
-; Block Design Naming                                              ; Auto                                  ; Auto               ;
-; SDC constraint protection                                        ; Off                                   ; Off                ;
-; Synthesis Effort                                                 ; Auto                                  ; Auto               ;
-; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                                    ; On                 ;
-; Pre-Mapping Resynthesis Optimization                             ; Off                                   ; Off                ;
-; Analysis & Synthesis Message Level                               ; Medium                                ; Medium             ;
-; Disable Register Merging Across Hierarchies                      ; Auto                                  ; Auto               ;
-; Resource Aware Inference For Block RAM                           ; On                                    ; On                 ;
-+------------------------------------------------------------------+---------------------------------------+--------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                        ;
++-------------------------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                      ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                               ; Library ;
++-------------------------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
+; src/uart/uart_tx.sv                                   ; yes             ; User SystemVerilog HDL File  ; D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_tx.sv                                   ;         ;
+; src/uart/uart_rx.sv                                   ; yes             ; User SystemVerilog HDL File  ; D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_rx.sv                                   ;         ;
+; src/uart/uart.sv                                      ; yes             ; User SystemVerilog HDL File  ; D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart.sv                                      ;         ;
+; src/uart/transceiver.sv                               ; yes             ; User SystemVerilog HDL File  ; D:/IntelFPGA/sem_5/sequence_detector/src/uart/transceiver.sv                               ;         ;
+; src/overlapping/overlapping_sequence_detector_0110.sv ; yes             ; User SystemVerilog HDL File  ; D:/IntelFPGA/sem_5/sequence_detector/src/overlapping/overlapping_sequence_detector_0110.sv ;         ;
+; src/non_overlapping/sequence_detector_0110.sv         ; yes             ; User SystemVerilog HDL File  ; D:/IntelFPGA/sem_5/sequence_detector/src/non_overlapping/sequence_detector_0110.sv         ;         ;
++-------------------------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "overlapping_sequence_detector_0110:dut"                                                 ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-; Port     ; Type   ; Severity ; Details                                                                             ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-; detected ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
++----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary              ;
++---------------------------------------------+------------+
+; Resource                                    ; Usage      ;
++---------------------------------------------+------------+
+; Estimated Total logic elements              ; 105        ;
+;                                             ;            ;
+; Total combinational functions               ; 96         ;
+; Logic element usage by number of LUT inputs ;            ;
+;     -- 4 input functions                    ; 31         ;
+;     -- 3 input functions                    ; 19         ;
+;     -- <=2 input functions                  ; 46         ;
+;                                             ;            ;
+; Logic elements by mode                      ;            ;
+;     -- normal mode                          ; 72         ;
+;     -- arithmetic mode                      ; 24         ;
+;                                             ;            ;
+; Total registers                             ; 75         ;
+;     -- Dedicated logic registers            ; 75         ;
+;     -- I/O registers                        ; 0          ;
+;                                             ;            ;
+; I/O pins                                    ; 13         ;
+;                                             ;            ;
+; Embedded Multiplier 9-bit elements          ; 0          ;
+;                                             ;            ;
+; Maximum fan-out node                        ; rstn~input ;
+; Maximum fan-out                             ; 76         ;
+; Total fan-out                               ; 600        ;
+; Average fan-out                             ; 3.05       ;
++---------------------------------------------+------------+
 
 
-+---------------------------------+
-; Analysis & Elaboration Messages ;
-+---------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                          ;
++---------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------+------------------------------------+--------------+
+; Compilation Hierarchy Node                        ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                       ; Entity Name                        ; Library Name ;
++---------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------+------------------------------------+--------------+
+; |transceiver                                      ; 96 (6)              ; 75 (6)                    ; 0           ; 0            ; 0       ; 0         ; 13   ; 0            ; |transceiver                                              ; transceiver                        ; work         ;
+;    |overlapping_sequence_detector_0110:u_overlap| ; 5 (5)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |transceiver|overlapping_sequence_detector_0110:u_overlap ; overlapping_sequence_detector_0110 ; work         ;
+;    |sequence_detector_0110:u_no_overlap|          ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |transceiver|sequence_detector_0110:u_no_overlap          ; sequence_detector_0110             ; work         ;
+;    |uart:uart_inst|                               ; 81 (0)              ; 61 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |transceiver|uart:uart_inst                               ; uart                               ; work         ;
+;       |uart_rx:rx_inst|                           ; 39 (39)             ; 30 (30)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |transceiver|uart:uart_inst|uart_rx:rx_inst               ; uart_rx                            ; work         ;
+;       |uart_tx:tx_inst|                           ; 42 (42)             ; 31 (31)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |transceiver|uart:uart_inst|uart_tx:tx_inst               ; uart_tx                            ; work         ;
++---------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------+------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |transceiver|overlapping_sequence_detector_0110:u_overlap|current_state                                    ;
++---------------------+--------------------+-------------------+------------------+--------------------+---------------------+
+; Name                ; current_state.S011 ; current_state.S01 ; current_state.S0 ; current_state.IDLE ; current_state.S0110 ;
++---------------------+--------------------+-------------------+------------------+--------------------+---------------------+
+; current_state.IDLE  ; 0                  ; 0                 ; 0                ; 0                  ; 0                   ;
+; current_state.S0    ; 0                  ; 0                 ; 1                ; 1                  ; 0                   ;
+; current_state.S01   ; 0                  ; 1                 ; 0                ; 1                  ; 0                   ;
+; current_state.S011  ; 1                  ; 0                 ; 0                ; 1                  ; 0                   ;
+; current_state.S0110 ; 0                  ; 0                 ; 0                ; 1                  ; 1                   ;
++---------------------+--------------------+-------------------+------------------+--------------------+---------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |transceiver|sequence_detector_0110:u_no_overlap|current_state                                             ;
++---------------------+--------------------+-------------------+------------------+--------------------+---------------------+
+; Name                ; current_state.S011 ; current_state.S01 ; current_state.S0 ; current_state.IDLE ; current_state.S0110 ;
++---------------------+--------------------+-------------------+------------------+--------------------+---------------------+
+; current_state.IDLE  ; 0                  ; 0                 ; 0                ; 0                  ; 0                   ;
+; current_state.S0    ; 0                  ; 0                 ; 1                ; 1                  ; 0                   ;
+; current_state.S01   ; 0                  ; 1                 ; 0                ; 1                  ; 0                   ;
+; current_state.S011  ; 1                  ; 0                 ; 0                ; 1                  ; 0                   ;
+; current_state.S0110 ; 0                  ; 0                 ; 0                ; 1                  ; 1                   ;
++---------------------+--------------------+-------------------+------------------+--------------------+---------------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------+
+; State Machine - |transceiver|uart:uart_inst|uart_rx:rx_inst|state ;
++-------------+------------+------------+-------------+-------------+
+; Name        ; state.STOP ; state.DATA ; state.START ; state.IDLE  ;
++-------------+------------+------------+-------------+-------------+
+; state.IDLE  ; 0          ; 0          ; 0           ; 0           ;
+; state.START ; 0          ; 0          ; 1           ; 1           ;
+; state.DATA  ; 0          ; 1          ; 0           ; 1           ;
+; state.STOP  ; 1          ; 0          ; 0           ; 1           ;
++-------------+------------+------------+-------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                       ;
++-----------------------------------------------------------------+----------------------------------------+
+; Register name                                                   ; Reason for Removal                     ;
++-----------------------------------------------------------------+----------------------------------------+
+; s_data[0,1,3..5,7]                                              ; Stuck at GND due to stuck port data_in ;
+; s_data[2]                                                       ; Merged with s_data[6]                  ;
+; overlapping_sequence_detector_0110:u_overlap|current_state~7    ; Lost fanout                            ;
+; overlapping_sequence_detector_0110:u_overlap|current_state~8    ; Lost fanout                            ;
+; sequence_detector_0110:u_no_overlap|current_state~7             ; Lost fanout                            ;
+; sequence_detector_0110:u_no_overlap|current_state~8             ; Lost fanout                            ;
+; uart:uart_inst|uart_rx:rx_inst|state~8                          ; Lost fanout                            ;
+; uart:uart_inst|uart_rx:rx_inst|state~9                          ; Lost fanout                            ;
+; overlapping_sequence_detector_0110:u_overlap|current_state.IDLE ; Lost fanout                            ;
+; sequence_detector_0110:u_no_overlap|current_state.IDLE          ; Lost fanout                            ;
+; Total Number of Removed Registers = 15                          ;                                        ;
++-----------------------------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 75    ;
+; Number of registers using Synchronous Clear  ; 34    ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 67    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 55    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------+
+; Inverted Register Statistics                              ;
++-------------------------------------------------+---------+
+; Inverted Register                               ; Fan out ;
++-------------------------------------------------+---------+
+; uart:uart_inst|uart_tx:tx_inst|s_packet_reg[0]  ; 1       ;
+; uart:uart_inst|uart_tx:tx_inst|s_packet_reg[1]  ; 1       ;
+; mode_in_q                                       ; 1       ;
+; uart:uart_inst|uart_tx:tx_inst|s_packet_reg[2]  ; 1       ;
+; uart:uart_inst|uart_tx:tx_inst|s_packet_reg[3]  ; 1       ;
+; uart:uart_inst|uart_tx:tx_inst|s_packet_reg[4]  ; 1       ;
+; uart:uart_inst|uart_tx:tx_inst|s_packet_reg[5]  ; 1       ;
+; uart:uart_inst|uart_tx:tx_inst|s_packet_reg[6]  ; 1       ;
+; uart:uart_inst|uart_tx:tx_inst|s_packet_reg[7]  ; 1       ;
+; uart:uart_inst|uart_tx:tx_inst|s_packet_reg[8]  ; 1       ;
+; uart:uart_inst|uart_tx:tx_inst|s_packet_reg[9]  ; 1       ;
+; uart:uart_inst|uart_tx:tx_inst|s_packet_reg[10] ; 1       ;
+; uart:uart_inst|uart_tx:tx_inst|s_packet_reg[11] ; 1       ;
+; uart:uart_inst|uart_tx:tx_inst|s_packet_reg[12] ; 1       ;
+; Total number of inverted registers = 14         ;         ;
++-------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |transceiver|uart:uart_inst|uart_tx:tx_inst|c_bits[3]          ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |transceiver|uart:uart_inst|uart_tx:tx_inst|c_clocks[8]        ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |transceiver|uart:uart_inst|uart_rx:rx_inst|c_bits[2]          ;
+; 6:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |transceiver|uart:uart_inst|uart_rx:rx_inst|c_clocks[6]        ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; Yes        ; |transceiver|uart:uart_inst|uart_tx:tx_inst|s_packet_reg[0]    ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |transceiver|uart:uart_inst|uart_tx:tx_inst|s_packet_reg[7]    ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |transceiver|sequence_detector_0110:u_no_overlap|current_state ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 12 LEs               ; 8 LEs                  ; No         ; |transceiver|uart:uart_inst|uart_rx:rx_inst|Selector3          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |transceiver ;
++------------------+-------+--------------------------------------------------+
+; Parameter Name   ; Value ; Type                                             ;
++------------------+-------+--------------------------------------------------+
+; CLOCKS_PER_PULSE ; 5208  ; Signed Integer                                   ;
+; BITS_PER_WORD    ; 8     ; Signed Integer                                   ;
++------------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart:uart_inst ;
++------------------+-------+----------------------------------+
+; Parameter Name   ; Value ; Type                             ;
++------------------+-------+----------------------------------+
+; CLOCKS_PER_PULSE ; 5208  ; Signed Integer                   ;
+; BITS_PER_WORD    ; 8     ; Signed Integer                   ;
++------------------+-------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart:uart_inst|uart_tx:tx_inst ;
++------------------+-------+--------------------------------------------------+
+; Parameter Name   ; Value ; Type                                             ;
++------------------+-------+--------------------------------------------------+
+; CLOCKS_PER_PULSE ; 5208  ; Signed Integer                                   ;
+; BITS_PER_WORD    ; 8     ; Signed Integer                                   ;
+; PACKET_SIZE      ; 13    ; Signed Integer                                   ;
++------------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart:uart_inst|uart_rx:rx_inst ;
++------------------+-------+--------------------------------------------------+
+; Parameter Name   ; Value ; Type                                             ;
++------------------+-------+--------------------------------------------------+
+; CLOCKS_PER_PULSE ; 5208  ; Signed Integer                                   ;
+; BITS_PER_WORD    ; 8     ; Signed Integer                                   ;
++------------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "uart:uart_inst"                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; m_data[7..1] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 13                          ;
+; cycloneiii_ff         ; 75                          ;
+;     CLR               ; 19                          ;
+;     CLR SLD           ; 1                           ;
+;     ENA CLR           ; 21                          ;
+;     ENA CLR SCLR      ; 26                          ;
+;     ENA SCLR          ; 8                           ;
+; cycloneiii_lcell_comb ; 97                          ;
+;     arith             ; 24                          ;
+;         2 data inputs ; 24                          ;
+;     normal            ; 73                          ;
+;         1 data inputs ; 4                           ;
+;         2 data inputs ; 19                          ;
+;         3 data inputs ; 19                          ;
+;         4 data inputs ; 31                          ;
+;                       ;                             ;
+; Max LUT depth         ; 5.00                        ;
+; Average LUT depth     ; 2.49                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Analysis & Elaboration
+Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Tue Aug 19 12:55:45 2025
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off sequence_detector -c sequence_detector --analysis_and_elaboration
+    Info: Processing started: Fri Aug 29 12:47:08 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off sequence_detector -c sequence_detector
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file src/uart/uart_tx_tb.sv
-    Info (12023): Found entity 1: uart_tx_tb File: D:/IntelFPGA/sem 5/sequence_detector/src/uart/uart_tx_tb.sv Line: 3
+    Info (12023): Found entity 1: uart_tx_tb File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_tx_tb.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file src/uart/uart_tx_rx_tb.sv
-    Info (12023): Found entity 1: uart_tx_rx_tb File: D:/IntelFPGA/sem 5/sequence_detector/src/uart/uart_tx_rx_tb.sv Line: 3
+    Info (12023): Found entity 1: uart_tx_rx_tb File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_tx_rx_tb.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file src/uart/uart_tx.sv
-    Info (12023): Found entity 1: uart_tx File: D:/IntelFPGA/sem 5/sequence_detector/src/uart/uart_tx.sv Line: 1
+    Info (12023): Found entity 1: uart_tx File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_tx.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file src/uart/uart_tb.sv
-    Info (12023): Found entity 1: uart_tb File: D:/IntelFPGA/sem 5/sequence_detector/src/uart/uart_tb.sv Line: 3
+    Info (12023): Found entity 1: uart_tb File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_tb.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file src/uart/uart_rx.sv
-    Info (12023): Found entity 1: uart_rx File: D:/IntelFPGA/sem 5/sequence_detector/src/uart/uart_rx.sv Line: 1
+    Info (12023): Found entity 1: uart_rx File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_rx.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file src/uart/uart.sv
-    Info (12023): Found entity 1: uart File: D:/IntelFPGA/sem 5/sequence_detector/src/uart/uart.sv Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file src/uart/transceiver_tb.sv
-    Info (12023): Found entity 1: transceiver_tb File: D:/IntelFPGA/sem 5/sequence_detector/src/uart/transceiver_tb.sv Line: 3
+    Info (12023): Found entity 1: uart File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file src/uart/transceiver.sv
-    Info (12023): Found entity 1: transceiver File: D:/IntelFPGA/sem 5/sequence_detector/src/uart/transceiver.sv Line: 1
+    Info (12023): Found entity 1: transceiver File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/transceiver.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file src/overlapping/tb_overlapping_sequence_detector_0110.sv
-    Info (12023): Found entity 1: tb_overlapping_sequence_detector_0110 File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 3
+    Info (12023): Found entity 1: tb_overlapping_sequence_detector_0110 File: D:/IntelFPGA/sem_5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file src/overlapping/overlapping_sequence_detector_0110.sv
-    Info (12023): Found entity 1: overlapping_sequence_detector_0110 File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/overlapping_sequence_detector_0110.sv Line: 22
+    Info (12023): Found entity 1: overlapping_sequence_detector_0110 File: D:/IntelFPGA/sem_5/sequence_detector/src/overlapping/overlapping_sequence_detector_0110.sv Line: 22
 Info (12021): Found 1 design units, including 1 entities, in source file src/non_overlapping/tb_sequence_detector_0110.sv
-    Info (12023): Found entity 1: tb_sequence_detector_0110 File: D:/IntelFPGA/sem 5/sequence_detector/src/non_overlapping/tb_sequence_detector_0110.sv Line: 3
+    Info (12023): Found entity 1: tb_sequence_detector_0110 File: D:/IntelFPGA/sem_5/sequence_detector/src/non_overlapping/tb_sequence_detector_0110.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file src/non_overlapping/sequence_detector_0110.sv
-    Info (12023): Found entity 1: sequence_detector_0110 File: D:/IntelFPGA/sem 5/sequence_detector/src/non_overlapping/sequence_detector_0110.sv Line: 22
-Info (12127): Elaborating entity "tb_overlapping_sequence_detector_0110" for the top level hierarchy
-Warning (10755): Verilog HDL warning at tb_overlapping_sequence_detector_0110.sv(10): assignments to clk create a combinational loop File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 10
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(47): \n=== Test 1: Simple 0110 sequence === File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 47
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(118): PASS: Simple 0110 - Expected: 1, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 118
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(120): FAIL: Simple 0110 - Expected: 1, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 120
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(55): \n=== Test 2: Overlapping - Overlapped with old sequence === File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 55
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(118): PASS: Overlapping 0110 - Expected: 1, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 118
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(120): FAIL: Overlapping 0110 - Expected: 1, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 120
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(118): PASS: Overlapping 0110 - Expected: 1, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 118
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(120): FAIL: Overlapping 0110 - Expected: 1, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 120
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(66): \n=== Test 3: Partial sequence 011 then 0110 === File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 66
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(118): PASS: Should not detect now - Expected: 0, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 118
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(120): FAIL: Should not detect now - Expected: 0, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 120
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(118): PASS: Restart after wrong bit - Expected: 1, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 118
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(120): FAIL: Restart after wrong bit - Expected: 1, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 120
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(79): \n=== Test 4: Multiple 0s then 0110 === File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 79
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(118): PASS: Multiple 0s then 0110 - Expected: 1, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 118
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(120): FAIL: Multiple 0s then 0110 - Expected: 1, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 120
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(89): \n=== Test 5: No detection - 0111 === File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 89
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(118): PASS: No detection for 0111 - Expected: 0, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 118
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(120): FAIL: No detection for 0111 - Expected: 0, Got: . File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 120
-Warning (10175): Verilog HDL warning at tb_overlapping_sequence_detector_0110.sv(98): ignoring unsupported system task File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 98
-Info (10648): Verilog HDL Display System Task info at tb_overlapping_sequence_detector_0110.sv(128): ERROR: Simulation timeout! Terminating... File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 128
-Warning (10175): Verilog HDL warning at tb_overlapping_sequence_detector_0110.sv(129): ignoring unsupported system task File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 129
-Info (12128): Elaborating entity "overlapping_sequence_detector_0110" for hierarchy "overlapping_sequence_detector_0110:dut" File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 17
-Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "clk" is missing source, defaulting to GND File: D:/IntelFPGA/sem 5/sequence_detector/src/overlapping/tb_overlapping_sequence_detector_0110.sv Line: 4
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 4712 megabytes
-    Info: Processing ended: Tue Aug 19 12:55:52 2025
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:15
+    Info (12023): Found entity 1: sequence_detector_0110 File: D:/IntelFPGA/sem_5/sequence_detector/src/non_overlapping/sequence_detector_0110.sv Line: 22
+Info (12127): Elaborating entity "transceiver" for the top level hierarchy
+Info (12128): Elaborating entity "uart" for hierarchy "uart:uart_inst" File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/transceiver.sv Line: 44
+Info (12128): Elaborating entity "uart_tx" for hierarchy "uart:uart_inst|uart_tx:tx_inst" File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart.sv Line: 31
+Warning (10230): Verilog HDL assignment warning at uart_tx.sv(60): truncated value with size 32 to match size of target (4) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_tx.sv Line: 60
+Warning (10230): Verilog HDL assignment warning at uart_tx.sv(64): truncated value with size 32 to match size of target (13) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_tx.sv Line: 64
+Info (12128): Elaborating entity "uart_rx" for hierarchy "uart:uart_inst|uart_rx:rx_inst" File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart.sv Line: 43
+Warning (10230): Verilog HDL assignment warning at uart_rx.sv(46): truncated value with size 32 to match size of target (13) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_rx.sv Line: 46
+Warning (10230): Verilog HDL assignment warning at uart_rx.sv(57): truncated value with size 32 to match size of target (3) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_rx.sv Line: 57
+Warning (10230): Verilog HDL assignment warning at uart_rx.sv(60): truncated value with size 32 to match size of target (13) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_rx.sv Line: 60
+Warning (10230): Verilog HDL assignment warning at uart_rx.sv(70): truncated value with size 32 to match size of target (13) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_rx.sv Line: 70
+Info (12128): Elaborating entity "sequence_detector_0110" for hierarchy "sequence_detector_0110:u_no_overlap" File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/transceiver.sv Line: 66
+Info (12128): Elaborating entity "overlapping_sequence_detector_0110" for hierarchy "overlapping_sequence_detector_0110:u_overlap" File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/transceiver.sv Line: 74
+Info (13000): Registers with preset signals will power-up high File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_tx.sv Line: 43
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 8 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 120 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 9 output pins
+    Info (21061): Implemented 107 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 4785 megabytes
+    Info: Processing ended: Fri Aug 29 12:47:16 2025
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:18
 
 

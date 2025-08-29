@@ -1,15 +1,15 @@
-Fitter Status : Successful - Tue Aug 19 12:54:56 2025
+Fitter Status : Successful - Fri Aug 29 12:47:22 2025
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : sequence_detector
-Top-level Entity Name : overlapping_sequence_detector_0110
+Top-level Entity Name : transceiver
 Family : Cyclone IV E
 Device : EP4CE22F17C6
 Timing Models : Final
-Total logic elements : 4 / 22,320 ( < 1 % )
-    Total combinational functions : 4 / 22,320 ( < 1 % )
-    Dedicated logic registers : 4 / 22,320 ( < 1 % )
-Total registers : 4
-Total pins : 4 / 154 ( 3 % )
+Total logic elements : 102 / 22,320 ( < 1 % )
+    Total combinational functions : 96 / 22,320 ( < 1 % )
+    Dedicated logic registers : 75 / 22,320 ( < 1 % )
+Total registers : 75
+Total pins : 13 / 154 ( 8 % )
 Total virtual pins : 0
 Total memory bits : 0 / 608,256 ( 0 % )
 Embedded Multiplier 9-bit elements : 0 / 132 ( 0 % )

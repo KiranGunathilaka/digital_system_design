@@ -22,6 +22,7 @@
 module overlapping_sequence_detector_0110(
     input logic clk,
     input logic reset,
+	 input logic en,
     input logic data_in,
     output logic detected
 );
@@ -41,7 +42,7 @@ module overlapping_sequence_detector_0110(
     always_ff @(posedge clk) begin
         if (reset) begin
             current_state <= IDLE;
-        end else begin
+        end else if (en) begin
             current_state <= next_state;
         end
     end
