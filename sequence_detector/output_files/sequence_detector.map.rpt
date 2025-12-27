@@ -1,5 +1,5 @@
 Analysis & Synthesis report for sequence_detector
-Fri Aug 29 12:47:16 2025
+Wed Sep 10 16:47:52 2025
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -54,15 +54,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Aug 29 12:47:16 2025       ;
+; Analysis & Synthesis Status        ; Successful - Wed Sep 10 16:47:52 2025       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; sequence_detector                           ;
 ; Top-level Entity Name              ; transceiver                                 ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 105                                         ;
-;     Total combinational functions  ; 96                                          ;
-;     Dedicated logic registers      ; 75                                          ;
-; Total registers                    ; 75                                          ;
+; Total logic elements               ; 88                                          ;
+;     Total combinational functions  ; 79                                          ;
+;     Dedicated logic registers      ; 61                                          ;
+; Total registers                    ; 61                                          ;
 ; Total pins                         ; 13                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -193,20 +193,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+------------+
 ; Resource                                    ; Usage      ;
 +---------------------------------------------+------------+
-; Estimated Total logic elements              ; 105        ;
+; Estimated Total logic elements              ; 88         ;
 ;                                             ;            ;
-; Total combinational functions               ; 96         ;
+; Total combinational functions               ; 79         ;
 ; Logic element usage by number of LUT inputs ;            ;
-;     -- 4 input functions                    ; 31         ;
-;     -- 3 input functions                    ; 19         ;
-;     -- <=2 input functions                  ; 46         ;
+;     -- 4 input functions                    ; 26         ;
+;     -- 3 input functions                    ; 25         ;
+;     -- <=2 input functions                  ; 28         ;
 ;                                             ;            ;
 ; Logic elements by mode                      ;            ;
-;     -- normal mode                          ; 72         ;
-;     -- arithmetic mode                      ; 24         ;
+;     -- normal mode                          ; 69         ;
+;     -- arithmetic mode                      ; 10         ;
 ;                                             ;            ;
-; Total registers                             ; 75         ;
-;     -- Dedicated logic registers            ; 75         ;
+; Total registers                             ; 61         ;
+;     -- Dedicated logic registers            ; 61         ;
 ;     -- I/O registers                        ; 0          ;
 ;                                             ;            ;
 ; I/O pins                                    ; 13         ;
@@ -214,9 +214,9 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements          ; 0          ;
 ;                                             ;            ;
 ; Maximum fan-out node                        ; rstn~input ;
-; Maximum fan-out                             ; 76         ;
-; Total fan-out                               ; 600        ;
-; Average fan-out                             ; 3.05       ;
+; Maximum fan-out                             ; 62         ;
+; Total fan-out                               ; 492        ;
+; Average fan-out                             ; 2.96       ;
 +---------------------------------------------+------------+
 
 
@@ -225,12 +225,12 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------+------------------------------------+--------------+
 ; Compilation Hierarchy Node                        ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                       ; Entity Name                        ; Library Name ;
 +---------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------+------------------------------------+--------------+
-; |transceiver                                      ; 96 (6)              ; 75 (6)                    ; 0           ; 0            ; 0       ; 0         ; 13   ; 0            ; |transceiver                                              ; transceiver                        ; work         ;
+; |transceiver                                      ; 79 (6)              ; 61 (6)                    ; 0           ; 0            ; 0       ; 0         ; 13   ; 0            ; |transceiver                                              ; transceiver                        ; work         ;
 ;    |overlapping_sequence_detector_0110:u_overlap| ; 5 (5)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |transceiver|overlapping_sequence_detector_0110:u_overlap ; overlapping_sequence_detector_0110 ; work         ;
 ;    |sequence_detector_0110:u_no_overlap|          ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |transceiver|sequence_detector_0110:u_no_overlap          ; sequence_detector_0110             ; work         ;
-;    |uart:uart_inst|                               ; 81 (0)              ; 61 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |transceiver|uart:uart_inst                               ; uart                               ; work         ;
-;       |uart_rx:rx_inst|                           ; 39 (39)             ; 30 (30)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |transceiver|uart:uart_inst|uart_rx:rx_inst               ; uart_rx                            ; work         ;
-;       |uart_tx:tx_inst|                           ; 42 (42)             ; 31 (31)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |transceiver|uart:uart_inst|uart_tx:tx_inst               ; uart_tx                            ; work         ;
+;    |uart:uart_inst|                               ; 64 (0)              ; 47 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |transceiver|uart:uart_inst                               ; uart                               ; work         ;
+;       |uart_rx:rx_inst|                           ; 30 (30)             ; 23 (23)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |transceiver|uart:uart_inst|uart_rx:rx_inst               ; uart_rx                            ; work         ;
+;       |uart_tx:tx_inst|                           ; 34 (34)             ; 24 (24)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |transceiver|uart:uart_inst|uart_tx:tx_inst               ; uart_tx                            ; work         ;
 +---------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------+------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -300,12 +300,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 75    ;
-; Number of registers using Synchronous Clear  ; 34    ;
+; Total registers                              ; 61    ;
+; Number of registers using Synchronous Clear  ; 20    ;
 ; Number of registers using Synchronous Load   ; 1     ;
-; Number of registers using Asynchronous Clear ; 67    ;
+; Number of registers using Asynchronous Clear ; 53    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 55    ;
+; Number of registers using Clock Enable       ; 41    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -338,12 +338,12 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |transceiver|uart:uart_inst|uart_tx:tx_inst|c_bits[3]          ;
-; 4:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |transceiver|uart:uart_inst|uart_tx:tx_inst|c_clocks[8]        ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |transceiver|uart:uart_inst|uart_tx:tx_inst|c_bits[0]          ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |transceiver|uart:uart_inst|uart_tx:tx_inst|c_clocks[1]        ;
 ; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |transceiver|uart:uart_inst|uart_rx:rx_inst|c_bits[2]          ;
-; 6:1                ; 13 bits   ; 52 LEs        ; 13 LEs               ; 39 LEs                 ; Yes        ; |transceiver|uart:uart_inst|uart_rx:rx_inst|c_clocks[6]        ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; Yes        ; |transceiver|uart:uart_inst|uart_tx:tx_inst|s_packet_reg[0]    ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |transceiver|uart:uart_inst|uart_tx:tx_inst|s_packet_reg[7]    ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 6 LEs                ; 18 LEs                 ; Yes        ; |transceiver|uart:uart_inst|uart_rx:rx_inst|c_clocks[1]        ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; Yes        ; |transceiver|uart:uart_inst|uart_tx:tx_inst|s_packet_reg[4]    ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |transceiver|uart:uart_inst|uart_tx:tx_inst|s_packet_reg[3]    ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |transceiver|sequence_detector_0110:u_no_overlap|current_state ;
 ; 8:1                ; 4 bits    ; 20 LEs        ; 12 LEs               ; 8 LEs                  ; No         ; |transceiver|uart:uart_inst|uart_rx:rx_inst|Selector3          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------+
@@ -354,7 +354,7 @@ Encoding Type:  One-Hot
 +------------------+-------+--------------------------------------------------+
 ; Parameter Name   ; Value ; Type                                             ;
 +------------------+-------+--------------------------------------------------+
-; CLOCKS_PER_PULSE ; 5208  ; Signed Integer                                   ;
+; CLOCKS_PER_PULSE ; 50    ; Signed Integer                                   ;
 ; BITS_PER_WORD    ; 8     ; Signed Integer                                   ;
 +------------------+-------+--------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -365,7 +365,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------+-------+----------------------------------+
 ; Parameter Name   ; Value ; Type                             ;
 +------------------+-------+----------------------------------+
-; CLOCKS_PER_PULSE ; 5208  ; Signed Integer                   ;
+; CLOCKS_PER_PULSE ; 50    ; Signed Integer                   ;
 ; BITS_PER_WORD    ; 8     ; Signed Integer                   ;
 +------------------+-------+----------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -376,7 +376,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------+-------+--------------------------------------------------+
 ; Parameter Name   ; Value ; Type                                             ;
 +------------------+-------+--------------------------------------------------+
-; CLOCKS_PER_PULSE ; 5208  ; Signed Integer                                   ;
+; CLOCKS_PER_PULSE ; 50    ; Signed Integer                                   ;
 ; BITS_PER_WORD    ; 8     ; Signed Integer                                   ;
 ; PACKET_SIZE      ; 13    ; Signed Integer                                   ;
 +------------------+-------+--------------------------------------------------+
@@ -388,7 +388,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------+-------+--------------------------------------------------+
 ; Parameter Name   ; Value ; Type                                             ;
 +------------------+-------+--------------------------------------------------+
-; CLOCKS_PER_PULSE ; 5208  ; Signed Integer                                   ;
+; CLOCKS_PER_PULSE ; 50    ; Signed Integer                                   ;
 ; BITS_PER_WORD    ; 8     ; Signed Integer                                   ;
 +------------------+-------+--------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -409,23 +409,23 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 13                          ;
-; cycloneiii_ff         ; 75                          ;
+; cycloneiii_ff         ; 61                          ;
 ;     CLR               ; 19                          ;
 ;     CLR SLD           ; 1                           ;
 ;     ENA CLR           ; 21                          ;
-;     ENA CLR SCLR      ; 26                          ;
+;     ENA CLR SCLR      ; 12                          ;
 ;     ENA SCLR          ; 8                           ;
-; cycloneiii_lcell_comb ; 97                          ;
-;     arith             ; 24                          ;
-;         2 data inputs ; 24                          ;
-;     normal            ; 73                          ;
+; cycloneiii_lcell_comb ; 80                          ;
+;     arith             ; 10                          ;
+;         2 data inputs ; 10                          ;
+;     normal            ; 70                          ;
 ;         1 data inputs ; 4                           ;
-;         2 data inputs ; 19                          ;
-;         3 data inputs ; 19                          ;
-;         4 data inputs ; 31                          ;
+;         2 data inputs ; 15                          ;
+;         3 data inputs ; 25                          ;
+;         4 data inputs ; 26                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 2.49                        ;
+; Max LUT depth         ; 4.00                        ;
+; Average LUT depth     ; 2.12                        ;
 +-----------------------+-----------------------------+
 
 
@@ -444,7 +444,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Fri Aug 29 12:47:08 2025
+    Info: Processing started: Wed Sep 10 16:47:43 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off sequence_detector -c sequence_detector
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -474,12 +474,12 @@ Info (12127): Elaborating entity "transceiver" for the top level hierarchy
 Info (12128): Elaborating entity "uart" for hierarchy "uart:uart_inst" File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/transceiver.sv Line: 44
 Info (12128): Elaborating entity "uart_tx" for hierarchy "uart:uart_inst|uart_tx:tx_inst" File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart.sv Line: 31
 Warning (10230): Verilog HDL assignment warning at uart_tx.sv(60): truncated value with size 32 to match size of target (4) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_tx.sv Line: 60
-Warning (10230): Verilog HDL assignment warning at uart_tx.sv(64): truncated value with size 32 to match size of target (13) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_tx.sv Line: 64
+Warning (10230): Verilog HDL assignment warning at uart_tx.sv(64): truncated value with size 32 to match size of target (6) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_tx.sv Line: 64
 Info (12128): Elaborating entity "uart_rx" for hierarchy "uart:uart_inst|uart_rx:rx_inst" File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart.sv Line: 43
-Warning (10230): Verilog HDL assignment warning at uart_rx.sv(46): truncated value with size 32 to match size of target (13) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_rx.sv Line: 46
+Warning (10230): Verilog HDL assignment warning at uart_rx.sv(46): truncated value with size 32 to match size of target (6) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_rx.sv Line: 46
 Warning (10230): Verilog HDL assignment warning at uart_rx.sv(57): truncated value with size 32 to match size of target (3) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_rx.sv Line: 57
-Warning (10230): Verilog HDL assignment warning at uart_rx.sv(60): truncated value with size 32 to match size of target (13) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_rx.sv Line: 60
-Warning (10230): Verilog HDL assignment warning at uart_rx.sv(70): truncated value with size 32 to match size of target (13) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_rx.sv Line: 70
+Warning (10230): Verilog HDL assignment warning at uart_rx.sv(60): truncated value with size 32 to match size of target (6) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_rx.sv Line: 60
+Warning (10230): Verilog HDL assignment warning at uart_rx.sv(70): truncated value with size 32 to match size of target (6) File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_rx.sv Line: 70
 Info (12128): Elaborating entity "sequence_detector_0110" for hierarchy "sequence_detector_0110:u_no_overlap" File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/transceiver.sv Line: 66
 Info (12128): Elaborating entity "overlapping_sequence_detector_0110" for hierarchy "overlapping_sequence_detector_0110:u_overlap" File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/transceiver.sv Line: 74
 Info (13000): Registers with preset signals will power-up high File: D:/IntelFPGA/sem_5/sequence_detector/src/uart/uart_tx.sv Line: 43
@@ -488,14 +488,14 @@ Info (286030): Timing-Driven Synthesis is running
 Info (17049): 8 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 120 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 103 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 9 output pins
-    Info (21061): Implemented 107 logic cells
+    Info (21061): Implemented 90 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
     Info: Peak virtual memory: 4785 megabytes
-    Info: Processing ended: Fri Aug 29 12:47:16 2025
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:18
+    Info: Processing ended: Wed Sep 10 16:47:52 2025
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:19
 
 

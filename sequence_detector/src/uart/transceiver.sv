@@ -1,5 +1,5 @@
 module transceiver #(
-    parameter CLOCKS_PER_PULSE = 5208,
+    parameter CLOCKS_PER_PULSE = 50,
     BITS_PER_WORD    = 8
 ) (
     input logic clk,

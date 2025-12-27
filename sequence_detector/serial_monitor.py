@@ -4,7 +4,7 @@ import sys
 
 # === CONFIG ===
 PORT = "COM11"       # Change to your FT232/ESP32 port (Linux ex: "/dev/ttyUSB0")
-BAUD = 9600
+BAUD = 1000000
 
 # Open serial connection
 ser = serial.Serial(PORT, BAUD, timeout=0.1)

@@ -1,5 +1,5 @@
 Flow report for sequence_detector
-Fri Aug 29 12:47:28 2025
+Wed Sep 10 16:48:05 2025
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,17 +41,17 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Fri Aug 29 12:47:28 2025       ;
+; Flow Status                        ; Successful - Wed Sep 10 16:48:05 2025       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; sequence_detector                           ;
 ; Top-level Entity Name              ; transceiver                                 ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE22F17C6                                ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 102 / 22,320 ( < 1 % )                      ;
-;     Total combinational functions  ; 96 / 22,320 ( < 1 % )                       ;
-;     Dedicated logic registers      ; 75 / 22,320 ( < 1 % )                       ;
-; Total registers                    ; 75                                          ;
+; Total logic elements               ; 88 / 22,320 ( < 1 % )                       ;
+;     Total combinational functions  ; 79 / 22,320 ( < 1 % )                       ;
+;     Dedicated logic registers      ; 61 / 22,320 ( < 1 % )                       ;
+; Total registers                    ; 61                                          ;
 ; Total pins                         ; 13 / 154 ( 8 % )                            ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 608,256 ( 0 % )                         ;
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 08/29/2025 12:47:08 ;
+; Start date & time ; 09/10/2025 16:47:44 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; sequence_detector   ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+-------------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value     ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+-------------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 238300916138085.175645182819424        ; --                ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 238300916138085.175750306322796        ; --                ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --                ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --                ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --                ; --          ; eda_board_design_signal_integrity ;
@@ -102,12 +102,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:08     ; 1.0                     ; 4785 MB             ; 00:00:18                           ;
-; Fitter               ; 00:00:05     ; 1.0                     ; 5666 MB             ; 00:00:07                           ;
-; Assembler            ; 00:00:01     ; 1.0                     ; 4685 MB             ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 4812 MB             ; 00:00:02                           ;
-; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 4642 MB             ; 00:00:01                           ;
-; Total                ; 00:00:16     ; --                      ; --                  ; 00:00:29                           ;
+; Analysis & Synthesis ; 00:00:09     ; 1.0                     ; 4785 MB             ; 00:00:19                           ;
+; Fitter               ; 00:00:05     ; 1.0                     ; 5665 MB             ; 00:00:07                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 4687 MB             ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:01     ; 1.0                     ; 4811 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4642 MB             ; 00:00:01                           ;
+; Total                ; 00:00:17     ; --                      ; --                  ; 00:00:29                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
