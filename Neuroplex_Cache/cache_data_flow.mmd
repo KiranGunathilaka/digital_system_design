@@ -1,0 +1,69 @@
+%% NeuroplexCache Data Flow Diagram
+%% Shows detailed data paths for hit and miss scenarios
+
+flowchart LR
+    subgraph HIT_PATH["HIT Path"]
+        H1["CPU Request<br/>addr, wen, size, wdata"]
+        H2["AddrDecode<br/>tag[5:0], index[8:0], offset[4:0]"]
+        H3["TagArray Read<br/>tags[3:0], valids[3:0]"]
+        H4["HitCompare<br/>hit = true<br/>hitWay[1:0]"]
+        H5["DataArray Read<br/>rLine[255:0]"]
+        H6["Word Extract<br/>getWord(line, offset)"]
+        H7["CPU Response<br/>hit=true, rdata[31:0]"]
+        H8["If Write:<br/>Word Write +<br/>Mark Dirty"]
+        
+        H1 --> H2
+        H2 --> H3
+        H2 --> H4
+        H3 --> H4
+        H4 --> H5
+        H5 --> H6
+        H6 --> H7
+        H4 --> H8
+        H8 --> H5
+    end
+
+    subgraph MISS_PATH["MISS Path"]
+        M1["CPU Request<br/>addr, wen, size, wdata"]
+        M2["AddrDecode<br/>tag[5:0], index[8:0], offset[4:0]"]
+        M3["TagArray Read<br/>tags[3:0], valids[3:0], dirties[3:0]"]
+        M4["HitCompare<br/>hit = false<br/>hasInvalid, firstInvalidWay"]
+        M5["ReplRandom<br/>victimWay[1:0]"]
+        M6["AllocWay Selection<br/>hasInvalid ? firstInvalidWay : victimWay"]
+        M7["DataArray Read<br/>Victim line[255:0]"]
+        M8{"Victim<br/>Dirty?"}
+        M9["Write-back<br/>memReq.wen=true<br/>wline[255:0]"]
+        M10["Memory Refill<br/>memReq.wen=false<br/>addr=lineBase"]
+        M11["Memory Response<br/>rline[255:0]"]
+        M12{"Write<br/>Request?"}
+        M13["Merge Word<br/>writeWordMasked()"]
+        M14["Install Tag/Data<br/>Write tag, valid, dirty<br/>Write line"]
+        M15["Word Extract<br/>getWord(finalLine, offset)"]
+        M16["CPU Response<br/>hit=false, rdata[31:0]"]
+        
+        M1 --> M2
+        M2 --> M3
+        M2 --> M4
+        M3 --> M4
+        M4 --> M5
+        M4 --> M6
+        M5 --> M6
+        M6 --> M7
+        M6 --> M8
+        M7 --> M8
+        M8 -->|Yes| M9
+        M8 -->|No| M10
+        M9 --> M10
+        M10 --> M11
+        M11 --> M12
+        M12 -->|Yes| M13
+        M12 -->|No| M14
+        M13 --> M14
+        M14 --> M15
+        M15 --> M16
+    end
+
+    style HIT_PATH fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    style MISS_PATH fill:#fff3e0,stroke:#e65100,stroke-width:2px
+
+

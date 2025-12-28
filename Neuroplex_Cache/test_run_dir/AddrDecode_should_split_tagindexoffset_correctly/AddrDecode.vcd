@@ -1,0 +1,38 @@
+$date
+2025-12-27T19:26+0000
+$end
+$version
+0.2
+$end
+$comment
+
+$end
+$timescale 1ns  $end
+$scope module AddrDecode $end
+ $var wire 6 ! io_tag $end
+ $var wire 5 " io_offset $end
+ $var wire 9 # io_index $end
+ $var wire 20 $ io_addr $end
+ $var wire 1 % clock $end
+ $var wire 1 & reset $end
+$upscope $end
+$enddefinitions $end
+$dumpvars
+0%
+0&
+b00000000000000000000 $
+b000000 !
+b00000 "
+b000000000 #
+$end
+#0
+1&
+#1
+1%
+#6
+b111111 !
+0%
+b11111 "
+0&
+b111111111 #
+b00000000000000000000 $

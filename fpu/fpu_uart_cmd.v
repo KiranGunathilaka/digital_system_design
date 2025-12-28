@@ -95,6 +95,7 @@ module fpu_uart_cmd #(
       rx_gap_cnt   <= 32'd0;
       z_wait_cnt   <= 32'd0;
     end else begin
+      // tx_dv is cleared at the start, then set conditionally in states
       tx_dv <= 1'b0;
 
       // RX gap counter (only used in RX states)
@@ -218,12 +219,49 @@ module fpu_uart_cmd #(
           end
         end
 
-        S_TX_0: if (can_tx(1'b0)) begin tx_byte <= SYNC_RESP; tx_dv <= 1'b1; state <= S_TX_1; end
-        S_TX_1: if (can_tx(1'b0)) begin tx_byte <= status;    tx_dv <= 1'b1; state <= S_TX_2; end
-        S_TX_2: if (can_tx(1'b0)) begin tx_byte <= z_buf[7:0];   tx_dv <= 1'b1; state <= S_TX_3; end
-        S_TX_3: if (can_tx(1'b0)) begin tx_byte <= z_buf[15:8];  tx_dv <= 1'b1; state <= S_TX_4; end
-        S_TX_4: if (can_tx(1'b0)) begin tx_byte <= z_buf[23:16]; tx_dv <= 1'b1; state <= S_TX_5; end
-        S_TX_5: if (can_tx(1'b0)) begin tx_byte <= z_buf[31:24]; tx_dv <= 1'b1; state <= S_WAIT_SYNC; end
+        S_TX_0: begin
+          if (!tx_active) begin
+            tx_byte <= SYNC_RESP;
+            tx_dv <= 1'b1;
+            state <= S_TX_1;
+          end
+        end
+        S_TX_1: begin
+          // Wait for transmission to complete (!tx_active) before sending next byte
+          if (!tx_active) begin
+            tx_byte <= status;
+            tx_dv <= 1'b1;
+            state <= S_TX_2;
+          end
+        end
+        S_TX_2: begin
+          if (!tx_active) begin
+            tx_byte <= z_buf[7:0];
+            tx_dv <= 1'b1;
+            state <= S_TX_3;
+          end
+        end
+        S_TX_3: begin
+          if (!tx_active) begin
+            tx_byte <= z_buf[15:8];
+            tx_dv <= 1'b1;
+            state <= S_TX_4;
+          end
+        end
+        S_TX_4: begin
+          if (!tx_active) begin
+            tx_byte <= z_buf[23:16];
+            tx_dv <= 1'b1;
+            state <= S_TX_5;
+          end
+        end
+        S_TX_5: begin
+          if (!tx_active) begin
+            tx_byte <= z_buf[31:24];
+            tx_dv <= 1'b1;
+            state <= S_WAIT_SYNC;
+          end
+        end
 
         default: state <= S_WAIT_SYNC;
       endcase

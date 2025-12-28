@@ -1,0 +1,79 @@
+%% NeuroplexCache State Machine Detailed Diagram
+%% Shows FSM states, transitions, and operations in each state
+
+stateDiagram-v2
+    [*] --> sIdle: Reset
+    
+    sIdle: sIdle State
+    sIdle: Wait for CPU request
+    sIdle: req.ready = true
+    sIdle: Latch reqReg
+    sIdle: Increment accessCnt
+    sIdle: Record reqStartCycle
+    
+    sLookup: sLookup State
+    sLookup: Tag comparison phase
+    sLookup: Read tags, valids, dirties
+    sLookup: Compare reqTag with all ways
+    sLookup: Read data line (hit way or victim way)
+    sLookup: Calculate wordOffset, reqMask
+    
+    sWbReq: sWbReq State
+    sWbReq: Write-back dirty victim
+    sWbReq: memReq.valid = true
+    sWbReq: memReq.wen = true
+    sWbReq: memReq.addr = evictBaseReg
+    sWbReq: memReq.wline = evictLineReg
+    
+    sMemReq: sMemReq State
+    sMemReq: Request memory refill
+    sMemReq: memReq.valid = true
+    sMemReq: memReq.wen = false
+    sMemReq: memReq.addr = lineBaseReg
+    
+    sWaitResp: sWaitResp State
+    sWaitResp: Wait for memory response
+    sWaitResp: memResp.ready = true
+    sWaitResp: Prepare tag/data writes
+    
+    sResp: sResp State
+    sResp: Send response to CPU
+    sResp: resp.valid = true
+    sResp: resp.bits.hit = respHitReg
+    sResp: resp.bits.rdata = respDataReg
+    sResp: Calculate latency
+    sResp: Update hit/miss cycle totals
+    
+    sIdle --> sLookup: io.req.fire
+    sLookup --> sResp: cmp.io.hit (HIT)
+    sLookup --> sWbReq: !cmp.io.hit && !hasInvalid && victimDirty (MISS + DIRTY)
+    sLookup --> sMemReq: !cmp.io.hit && (hasInvalid || !victimDirty) (MISS + CLEAN/INVALID)
+    sWbReq --> sMemReq: io.memReq.fire
+    sMemReq --> sWaitResp: io.memReq.fire
+    sWaitResp --> sResp: io.memResp.fire
+    sResp --> sIdle: io.resp.fire
+    
+    note right of sLookup
+        HIT Path:
+        - Increment hitCnt
+        - respHitReg = true
+        - respDataReg = getWord(probeLine, wordOffset)
+        - If write: update word + mark dirty
+    end note
+    
+    note right of sLookup
+        MISS Path:
+        - Increment missCnt
+        - respHitReg = false
+        - Select allocWay (invalid-first else random)
+        - If no invalid: increment evictCnt, step repl
+    end note
+    
+    note right of sWaitResp
+        On Memory Response:
+        - Install tag/valid/dirty
+        - Write refill line (or merged line if write)
+        - respDataReg = getWord(finalLine, wordOffset)
+    end note
+
+

@@ -14,8 +14,10 @@ module fpu_qp #(
   wire clk = CLOCK_50;
   wire rst = ~RESET_N;
 
-  // integer divide (rounded). For 50MHz/115200 -> 434
-  localparam integer CLKS_PER_BIT = CLK_HZ / BAUD;
+  // Properly rounded baud divider: (CLK_HZ + BAUD/2) / BAUD
+  // For 50MHz/115200: (50000000 + 57600) / 115200 = 50057600 / 115200 = 434.527... -> 434
+  // Actual baud: 50000000 / 434 = 115207.37 (error: +0.006%)
+  localparam integer CLKS_PER_BIT = (CLK_HZ + BAUD/2) / BAUD;
 
   // UART wires
   wire       rx_dv;

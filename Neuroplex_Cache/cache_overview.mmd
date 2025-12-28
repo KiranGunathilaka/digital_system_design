@@ -1,0 +1,52 @@
+%% NeuroplexCache High-Level Overview
+%% Simplified block diagram showing major components and interfaces
+
+flowchart TB
+    CPU["CPU<br/>Processor Interface"]
+    
+    subgraph CACHE["NeuroplexCache Controller"]
+        CTRL["Control FSM<br/>(6 states)"]
+        ADDR["Address Decoder<br/>tag/index/offset"]
+        TAG["Tag Array<br/>512 sets × 4 ways<br/>tags + valid + dirty"]
+        DATA["Data Array<br/>512 sets × 4 ways<br/>256 bits/line"]
+        HIT["Hit Comparator<br/>Tag match logic"]
+        REPL["Replacement Policy<br/>Random (LFSR)"]
+        STATS["Statistics<br/>Counters & Latency"]
+    end
+    
+    MEM["Memory<br/>Main Memory Interface"]
+    
+    CPU -->|req: addr, wen, size, wdata| CTRL
+    CTRL -->|resp: rdata, hit| CPU
+    
+    CTRL --> ADDR
+    ADDR -->|index| TAG
+    ADDR -->|index| DATA
+    ADDR -->|tag| HIT
+    
+    TAG -->|tags, valids| HIT
+    HIT -->|hit, hitWay| CTRL
+    HIT -->|hasInvalid, firstInvalidWay| CTRL
+    
+    REPL -->|victimWay| CTRL
+    CTRL -->|step| REPL
+    
+    CTRL -->|rWay| DATA
+    DATA -->|rLine| CTRL
+    CTRL -->|wLine, wWord| DATA
+    
+    CTRL -->|wEn, wDirtyEn| TAG
+    
+    CTRL -->|memReq: addr, wen, wline| MEM
+    MEM -->|memResp: rline| CTRL
+    
+    CTRL --> STATS
+    
+    style CPU fill:#e1f5ff,stroke:#01579b,stroke-width:3px
+    style MEM fill:#fff3e0,stroke:#e65100,stroke-width:3px
+    style CACHE fill:#f3e5f5,stroke:#4a148c,stroke-width:3px
+    style CTRL fill:#fff9c4,stroke:#f57f17,stroke-width:2px
+    style TAG fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    style DATA fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+
+

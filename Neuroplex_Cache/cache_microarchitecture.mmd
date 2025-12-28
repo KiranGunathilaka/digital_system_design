@@ -1,0 +1,226 @@
+%% NeuroplexCache Microarchitecture Block Diagram
+%% Detailed Mermaid diagram showing all components, data paths, and control flow
+
+flowchart TB
+    %% External Interfaces
+    subgraph CPU["CPU Interface"]
+        CPU_REQ["CPU Request<br/>- addr[19:0]<br/>- wen<br/>- size[1:0]<br/>- wdata[31:0]"]
+        CPU_RESP["CPU Response<br/>- rdata[31:0]<br/>- hit"]
+    end
+
+    subgraph MEM["Memory Interface"]
+        MEM_REQ["Memory Request<br/>- addr[19:0]<br/>- wen<br/>- wline[255:0]"]
+        MEM_RESP["Memory Response<br/>- rline[255:0]"]
+    end
+
+    %% Main Cache Controller
+    subgraph CTRL["Cache Controller (NeuroplexCache)"]
+        %% FSM
+        subgraph FSM["Finite State Machine"]
+            S_IDLE["sIdle<br/>Wait for CPU request"]
+            S_LOOKUP["sLookup<br/>Tag comparison"]
+            S_WB_REQ["sWbReq<br/>Write-back request"]
+            S_MEM_REQ["sMemReq<br/>Memory read request"]
+            S_WAIT_RESP["sWaitResp<br/>Wait for memory"]
+            S_RESP["sResp<br/>Send response"]
+            
+            S_IDLE -->|req.fire| S_LOOKUP
+            S_LOOKUP -->|hit| S_RESP
+            S_LOOKUP -->|miss + dirty victim| S_WB_REQ
+            S_LOOKUP -->|miss + clean/invalid| S_MEM_REQ
+            S_WB_REQ -->|memReq.fire| S_MEM_REQ
+            S_MEM_REQ -->|memReq.fire| S_WAIT_RESP
+            S_WAIT_RESP -->|memResp.fire| S_RESP
+            S_RESP -->|resp.fire| S_IDLE
+        end
+
+        %% Address Decoder
+        subgraph ADDR_DEC["AddrDecode Module"]
+            ADDR_IN["addr[19:0]"]
+            TAG_OUT["tag[5:0]<br/>bits[19:14]"]
+            INDEX_OUT["index[8:0]<br/>bits[13:5]"]
+            OFFSET_OUT["offset[4:0]<br/>bits[4:0]"]
+            ADDR_IN --> TAG_OUT
+            ADDR_IN --> INDEX_OUT
+            ADDR_IN --> OFFSET_OUT
+        end
+
+        %% Tag Array
+        subgraph TAG_ARRAY["TagArray Module<br/>(512 sets × 4 ways)"]
+            TAG_RD["Read Port<br/>rIndex[8:0]"]
+            TAG_RD_OUT["Read Output<br/>- tags[3:0][5:0]<br/>- valids[3:0]<br/>- dirties[3:0]"]
+            TAG_WR["Write Port<br/>- wEn<br/>- wIndex[8:0]<br/>- wWay[1:0]<br/>- wTag[5:0]<br/>- wValid"]
+            TAG_DIRTY_WR["Dirty Write<br/>- wDirtyEn<br/>- wDirtyVal"]
+            
+            TAG_STORAGE["Storage Arrays<br/>- tagMem[512][4][6]<br/>- validMem[512][4]<br/>- dirtyMem[512][4]"]
+            
+            TAG_RD --> TAG_STORAGE
+            TAG_STORAGE --> TAG_RD_OUT
+            TAG_WR --> TAG_STORAGE
+            TAG_DIRTY_WR --> TAG_STORAGE
+        end
+
+        %% Hit Compare
+        subgraph HIT_CMP["HitCompare Module"]
+            HIT_REQ_TAG["reqTag[5:0]"]
+            HIT_TAGS_IN["tags[3:0][5:0]"]
+            HIT_VALIDS_IN["valids[3:0]"]
+            
+            HIT_MATCH["Match Logic<br/>matches[i] = valids[i] &&<br/>(tags[i] == reqTag)"]
+            HIT_PRIO["Priority Encoder<br/>hitWay = lowest match"]
+            INVALID_DET["Invalid Detector<br/>hasInvalid, firstInvalidWay"]
+            
+            HIT_REQ_TAG --> HIT_MATCH
+            HIT_TAGS_IN --> HIT_MATCH
+            HIT_VALIDS_IN --> HIT_MATCH
+            HIT_MATCH --> HIT_PRIO
+            HIT_VALIDS_IN --> INVALID_DET
+            
+            HIT_OUT["Outputs<br/>- hit<br/>- hitVec[3:0]<br/>- hitWay[1:0]<br/>- hasInvalid<br/>- firstInvalidWay[1:0]"]
+            HIT_PRIO --> HIT_OUT
+            INVALID_DET --> HIT_OUT
+        end
+
+        %% Replacement Policy
+        subgraph REPL["ReplRandom Module<br/>(Random Replacement)"]
+            REPL_LFSR["16-bit LFSR<br/>Fibonacci LFSR<br/>taps: 16,14,13,11"]
+            REPL_STEP["step signal"]
+            REPL_SEED["seedEn, seedValue"]
+            REPL_VICTIM["victimWay[1:0]<br/>= LFSR[1:0]"]
+            
+            REPL_STEP --> REPL_LFSR
+            REPL_SEED --> REPL_LFSR
+            REPL_LFSR --> REPL_VICTIM
+        end
+
+        %% Data Array
+        subgraph DATA_ARRAY["DataArray Module<br/>(512 sets × 4 ways × 256 bits)"]
+            DATA_RD["Read Port<br/>- rIndex[8:0]<br/>- rWay[1:0]"]
+            DATA_RD_OUT["rLine[255:0]<br/>8 words × 32 bits"]
+            
+            DATA_WR_LINE["Line Write<br/>- wLineEn<br/>- wIndex[8:0]<br/>- wWay[1:0]<br/>- wLine[255:0]"]
+            DATA_WR_WORD["Word Write<br/>- wWordEn<br/>- wWordIndex[8:0]<br/>- wWordWay[1:0]<br/>- wWordOffset[2:0]<br/>- wData[31:0]<br/>- wMask[3:0]"]
+            
+            DATA_STORAGE["Storage Array<br/>mem[512][4][256]"]
+            DATA_WORD_EXTRACT["Word Extractor<br/>getWord(line, offset)"]
+            DATA_WORD_MERGE["Word Merger<br/>writeWordMasked()<br/>Byte-level masking"]
+            
+            DATA_RD --> DATA_STORAGE
+            DATA_STORAGE --> DATA_RD_OUT
+            DATA_RD_OUT --> DATA_WORD_EXTRACT
+            DATA_WR_LINE --> DATA_STORAGE
+            DATA_WR_WORD --> DATA_WORD_MERGE
+            DATA_WORD_MERGE --> DATA_STORAGE
+        end
+
+        %% Control Logic
+        subgraph CTRL_LOGIC["Control Logic & Registers"]
+            REQ_REG["reqReg<br/>Latched CPU request"]
+            RESP_HIT_REG["respHitReg"]
+            RESP_DATA_REG["respDataReg[31:0]"]
+            ALLOC_WAY_REG["allocWayReg[1:0]<br/>Replacement way"]
+            LINE_BASE_REG["lineBaseReg[19:0]<br/>Cache line base addr"]
+            EVICT_BASE_REG["evictBaseReg[19:0]<br/>Victim line base addr"]
+            EVICT_LINE_REG["evictLineReg[255:0]<br/>Victim line data"]
+            
+            WORD_OFFSET["wordOffset[2:0]<br/>= offset[4:2]"]
+            REQ_MASK["reqMask[3:0]<br/>Byte mask from size"]
+            PROBE_WAY["probeWay[1:0]<br/>= hit ? hitWay : allocWay"]
+            ALLOC_WAY_COMB["allocWayComb[1:0]<br/>= hasInvalid ?<br/>firstInvalidWay :<br/>victimWay"]
+            
+            VICTIM_TAG["victimTag[5:0]"]
+            VICTIM_DIRTY["victimDirty"]
+            VICTIM_BASE["victimBase[19:0]"]
+        end
+
+        %% Statistics & Latency
+        subgraph STATS["Statistics & Latency Tracking"]
+            CYCLE_CNT["cycle[31:0]<br/>Global cycle counter"]
+            REQ_START_CYCLE["reqStartCycle[31:0]"]
+            HIT_CYCLES_TOTAL["hitCyclesTotal[31:0]"]
+            MISS_CYCLES_TOTAL["missCyclesTotal[31:0]"]
+            LAST_LATENCY["lastLatency[31:0]"]
+            
+            ACCESS_CNT["accessCnt[31:0]"]
+            HIT_CNT["hitCnt[31:0]"]
+            MISS_CNT["missCnt[31:0]"]
+            EVICT_CNT["evictCnt[31:0]"]
+        end
+    end
+
+    %% Data Path Connections
+    CPU_REQ -->|req| ADDR_IN
+    CPU_REQ -->|latch| REQ_REG
+    
+    INDEX_OUT -->|rIndex| TAG_RD
+    INDEX_OUT -->|rIndex| DATA_RD
+    INDEX_OUT -->|wIndex| TAG_WR
+    INDEX_OUT -->|wIndex| DATA_WR_LINE
+    INDEX_OUT -->|wWordIndex| DATA_WR_WORD
+    
+    TAG_OUT -->|reqTag| HIT_REQ_TAG
+    TAG_RD_OUT -->|tags| HIT_TAGS_IN
+    TAG_RD_OUT -->|valids| HIT_VALIDS_IN
+    TAG_RD_OUT -->|dirties| VICTIM_DIRTY
+    TAG_RD_OUT -->|tags[allocWay]| VICTIM_TAG
+    
+    HIT_OUT -->|hit| FSM
+    HIT_OUT -->|hitWay| CTRL_LOGIC
+    HIT_OUT -->|hasInvalid| CTRL_LOGIC
+    HIT_OUT -->|firstInvalidWay| CTRL_LOGIC
+    
+    REPL_VICTIM -->|victimWay| ALLOC_WAY_COMB
+    ALLOC_WAY_COMB -->|allocWay| PROBE_WAY
+    PROBE_WAY -->|rWay| DATA_RD
+    
+    DATA_RD_OUT -->|probeLine| CTRL_LOGIC
+    DATA_RD_OUT -->|victim line| EVICT_LINE_REG
+    
+    OFFSET_OUT -->|offset| WORD_OFFSET
+    REQ_REG -->|size, addr[1:0]| REQ_MASK
+    REQ_REG -->|wdata| DATA_WR_WORD
+    
+    DATA_WORD_EXTRACT -->|word| RESP_DATA_REG
+    RESP_DATA_REG -->|rdata| CPU_RESP
+    RESP_HIT_REG -->|hit| CPU_RESP
+    
+    VICTIM_TAG -->|concat| VICTIM_BASE
+    INDEX_OUT -->|concat| VICTIM_BASE
+    VICTIM_BASE -->|evictBaseReg| MEM_REQ
+    EVICT_LINE_REG -->|wline| MEM_REQ
+    
+    LINE_BASE_REG -->|addr| MEM_REQ
+    MEM_RESP -->|rline| DATA_WR_LINE
+    
+    %% Control Path Connections
+    FSM -->|state| CTRL_LOGIC
+    CTRL_LOGIC -->|wEn, wDirtyEn| TAG_WR
+    CTRL_LOGIC -->|wLineEn, wWordEn| DATA_WR_LINE
+    CTRL_LOGIC -->|wWordEn| DATA_WR_WORD
+    CTRL_LOGIC -->|step| REPL_STEP
+    
+    %% Statistics Connections
+    FSM -->|state transitions| ACCESS_CNT
+    FSM -->|hit/miss| HIT_CNT
+    FSM -->|hit/miss| MISS_CNT
+    FSM -->|eviction| EVICT_CNT
+    CYCLE_CNT -->|latency calc| LAST_LATENCY
+    CYCLE_CNT -->|latency calc| HIT_CYCLES_TOTAL
+    CYCLE_CNT -->|latency calc| MISS_CYCLES_TOTAL
+
+    %% Styling
+    classDef cpuClass fill:#e1f5ff,stroke:#01579b,stroke-width:2px
+    classDef memClass fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef fsmClass fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef arrayClass fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    classDef logicClass fill:#fff9c4,stroke:#f57f17,stroke-width:2px
+    classDef statClass fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+
+    class CPU_REQ,CPU_RESP cpuClass
+    class MEM_REQ,MEM_RESP memClass
+    class S_IDLE,S_LOOKUP,S_WB_REQ,S_MEM_REQ,S_WAIT_RESP,S_RESP fsmClass
+    class TAG_ARRAY,DATA_ARRAY arrayClass
+    class ADDR_DEC,HIT_CMP,REPL,CTRL_LOGIC logicClass
+    class STATS statClass
+
+

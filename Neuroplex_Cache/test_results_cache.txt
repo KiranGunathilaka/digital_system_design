@@ -1,0 +1,325 @@
+tnr@DESKTOP-RMGE825:~/Projects/DSD_Projects/Neuroplex_Cache$ sbt "testOnly neuroplex.NeuroplexConflictTraceTest"
+[info] Loading settings for project neuroplex_cache-build from plugins.sbt ...
+[info] Loading project definition from /home/tnr/Projects/DSD_Projects/Neuroplex_Cache/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to root (in build file:/home/tnr/Projects/DSD_Projects/Neuroplex_Cache/)
+[info] Compiling 5 Scala sources to /home/tnr/Projects/DSD_Projects/Neuroplex_Cache/target/scala-2.12/test-classes ...
+
+================ NeuroplexConflictTraceTest ================
+[Config] Ways=4, NumSets=512, LineBytes=32, stride=16384
+[Trace ] two-app interleave: uniquePerApp=4, rounds=50, totalAccesses=400
+
+[AddrMap] Showing that all lines map to SAME index (conflict misses expected):
+  AppA[0] addr=0x04000 idx=0 tag=1
+  AppA[1] addr=0x08000 idx=0 tag=2
+  AppA[2] addr=0x0C000 idx=0 tag=3
+  AppA[3] addr=0x10000 idx=0 tag=4TraceTest 20s
+  AppB[0] addr=0x24000 idx=0 tag=9
+  AppB[1] addr=0x28000 idx=0 tag=10
+  AppB[2] addr=0x2C000 idx=0 tag=11
+  AppB[3] addr=0x30000 idx=0 tag=12
+[Expect] Total unique lines in that set = 8 > Ways=4 => thrashing
+[Op 000] A0-0 addr=0x04000 idx=0 tag=1 => MISS
+[Op 001] B0-0 addr=0x24000 idx=0 tag=9 => MISS
+[Op 002] A0-1 addr=0x08000 idx=0 tag=2 => MISS
+[Op 003] B0-1 addr=0x28000 idx=0 tag=10 => MISS
+[Op 004] A0-2 addr=0x0C000 idx=0 tag=3 => MISS
+[Op 005] B0-2 addr=0x2C000 idx=0 tag=11 => MISS
+[Op 006] A0-3 addr=0x10000 idx=0 tag=4 => MISS
+[Op 007] B0-3 addr=0x30000 idx=0 tag=12 => MISS
+[Op 008] A1-0 addr=0x04000 idx=0 tag=1 => MISS
+[Op 009] B1-0 addr=0x24000 idx=0 tag=9 => MISS
+[Op 010] A1-1 addr=0x08000 idx=0 tag=2 => MISS
+[Op 011] B1-1 addr=0x28000 idx=0 tag=10 => HIT
+[Op 012] A1-2 addr=0x0C000 idx=0 tag=3 => HIT
+[Op 013] B1-2 addr=0x2C000 idx=0 tag=11 => HIT
+[Op 014] A1-3 addr=0x10000 idx=0 tag=4 => MISS
+[Op 015] B1-3 addr=0x30000 idx=0 tag=12 => MISS
+[Op 016] A2-0 addr=0x04000 idx=0 tag=1 => MISS
+[Op 017] B2-0 addr=0x24000 idx=0 tag=9 => MISS
+[Op 018] A2-1 addr=0x08000 idx=0 tag=2 => MISS
+[Op 019] B2-1 addr=0x28000 idx=0 tag=10 => HIT
+[Op 020] A2-2 addr=0x0C000 idx=0 tag=3 => MISS
+[Op 021] B2-2 addr=0x2C000 idx=0 tag=11 => MISS
+[Op 022] A2-3 addr=0x10000 idx=0 tag=4 => MISS
+[Op 023] B2-3 addr=0x30000 idx=0 tag=12 => MISS
+
+[ConflictTrace] Results (from observed hit flag):
+  total=400 hits=63 misses=337 hitRate=0.1575 missRate=0.8425
+[Counters] Results (from cache internal counters):
+  access=400 hits=63 misses=337 evictions=333
+
+[Latency] Averages from cache cycle counters:
+  avgHitLatency=2.000 cyclesnflictTraceTest 333s
+  avgMissLatency=5.000 cycles
+  missPenalty  =3.000 cycles (avgMiss - avgHit)
+[PASS] NeuroplexConflictTraceTest
+
+[info] NeuroplexConflictTraceTest:
+[info] NeuroplexCache conflict-miss traces (multi-app)
+[info] - should show conflict misses under interleaved streams and report avg latencies
+[info] Run completed in 6 minutes, 6 seconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[success] Total time: 374 s (06:14), completed Dec 28, 2025, 12:23:33 AM
+tnr@DESKTOP-RMGE825:~/Projects/DSD_Projects/Neuroplex_Cache$ sbt "testOnly neuroplex.NeuroplexConflictTraceTest"
+[info] Loading settings for project neuroplex_cache-build from plugins.sbt ...
+[info] Loading project definition from /home/tnr/Projects/DSD_Projects/Neuroplex_Cache/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to root (in build file:/home/tnr/Projects/DSD_Projects/Neuroplex_Cache/)
+[info] Compiling 1 Scala source to /home/tnr/Projects/DSD_Projects/Neuroplex_Cache/target/scala-2.12/test-classes ...
+
+================ NeuroplexConflictTraceTest ================
+[Config] Ways=4, NumSets=512, LineBytes=32, stride=16384
+[Trace ] two-app interleave: uniquePerApp=4, rounds=10, totalAccesses=80
+
+[AddrMap] Showing that all lines map to SAME index (conflict misses expected):
+  AppA[0] addr=0x04000 idx=0 tag=1
+  AppA[1] addr=0x08000 idx=0 tag=2
+  AppA[2] addr=0x0C000 idx=0 tag=3
+  AppA[3] addr=0x10000 idx=0 tag=4TraceTest 18s
+  AppB[0] addr=0x24000 idx=0 tag=9
+  AppB[1] addr=0x28000 idx=0 tag=10
+  AppB[2] addr=0x2C000 idx=0 tag=11
+  AppB[3] addr=0x30000 idx=0 tag=12
+[Expect] Total unique lines in that set = 8 > Ways=4 => thrashing
+[Op 000] A0-0 addr=0x04000 idx=0 tag=1 => MISS
+[Op 001] B0-0 addr=0x24000 idx=0 tag=9 => MISS
+[Op 002] A0-1 addr=0x08000 idx=0 tag=2 => MISS
+[Op 003] B0-1 addr=0x28000 idx=0 tag=10 => MISS
+[Op 004] A0-2 addr=0x0C000 idx=0 tag=3 => MISS
+[Op 005] B0-2 addr=0x2C000 idx=0 tag=11 => MISS
+[Op 006] A0-3 addr=0x10000 idx=0 tag=4 => MISS
+[Op 007] B0-3 addr=0x30000 idx=0 tag=12 => MISS
+[Op 008] A1-0 addr=0x04000 idx=0 tag=1 => MISS
+[Op 009] B1-0 addr=0x24000 idx=0 tag=9 => MISS
+[Op 010] A1-1 addr=0x08000 idx=0 tag=2 => MISS
+[Op 011] B1-1 addr=0x28000 idx=0 tag=10 => HIT
+[Op 012] A1-2 addr=0x0C000 idx=0 tag=3 => HIT
+[Op 013] B1-2 addr=0x2C000 idx=0 tag=11 => HIT
+[Op 014] A1-3 addr=0x10000 idx=0 tag=4 => MISS
+[Op 015] B1-3 addr=0x30000 idx=0 tag=12 => MISS
+[Op 016] A2-0 addr=0x04000 idx=0 tag=1 => MISS
+[Op 017] B2-0 addr=0x24000 idx=0 tag=9 => MISS
+[Op 018] A2-1 addr=0x08000 idx=0 tag=2 => MISS
+[Op 019] B2-1 addr=0x28000 idx=0 tag=10 => HIT
+[Op 020] A2-2 addr=0x0C000 idx=0 tag=3 => MISS
+[Op 021] B2-2 addr=0x2C000 idx=0 tag=11 => MISS
+[Op 022] A2-3 addr=0x10000 idx=0 tag=4 => MISS
+[Op 023] B2-3 addr=0x30000 idx=0 tag=12 => MISS
+
+[ConflictTrace] Results (from observed hit flag):
+  total=80 hits=14 misses=66 hitRate=0.1750 missRate=0.8250
+[Counters] Results (from cache internal counters):
+  access=80 hits=14 misses=66 evictions=62
+
+[Latency] Averages from cache cycle counters:
+  avgHitLatency=2.000 cyclesnflictTraceTest 91s
+  avgMissLatency=5.000 cycles
+  missPenalty  =3.000 cycles (avgMiss - avgHit)
+[PASS] NeuroplexConflictTraceTest
+
+[info] NeuroplexConflictTraceTest:
+[info] NeuroplexCache conflict-miss traces (multi-app)
+[info] - should show conflict misses under interleaved streams and report avg latencies
+[info] Run completed in 1 minute, 40 seconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[success] Total time: 106 s (01:46), completed Dec 28, 2025, 12:51:46 AM
+tnr@DESKTOP-RMGE825:~/Projects/DSD_Projects/Neuroplex_Cache$ sbt "testOnly neuroplex.NeuroplexCacheDataTest -- -oD"
+[info] Loading settings for project neuroplex_cache-build from plugins.sbt ...
+[info] Loading project definition from /home/tnr/Projects/DSD_Projects/Neuroplex_Cache/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to root (in build file:/home/tnr/Projects/DSD_Projects/Neuroplex_Cache/)
+
+================ NeuroplexCacheDataTest ================
+[Config] LineBytes=32, NumSets=512, Ways=4, OffsetBits=5
+
+[Txn:read-miss] READ  size=WORD addr=0x01234 expRead=0x00001234 wdata=0x00000000
+[MemModel] accepted memReq base=0x01220, will respond in 2 cycles
+[MemModel] -> memResp VALID base=0x01220 (line[255:0] generated)
+[Resp:read-miss] hit=false rdata=0x00001234
+
+[Txn:read-hit] READ  size=WORD addr=0x01234 expRead=0x00001234 wdata=0x00000000
+[Resp:read-hit] hit=true rdata=0x00001234
+
+[Txn:half-write-hit] WRITE size=HALF addr=0x01234 expRead=0x00001234 wdata=0xA1B2C3D4
+[Resp:half-write-hit] hit=true rdata=0x00000000
+
+[Txn:read-after-half] READ  size=WORD addr=0x01234 expRead=0x00001234 wdata=0x00000000
+[Resp:read-after-half] hit=true rdata=0x0000C3D4
+[Check] expected merged=0x0000C3D4 got=0x0000C3D4
+
+[Summary] access=4 hits=3 misses=1 evictions=0
+[Latency] avgHit=2.00 cyc, avgMiss=5.00 cyc, missPenalty=3.00 cyc
+[PASS] NeuroplexCacheDataTest
+
+[info] NeuroplexCacheDataTest:
+[info] NeuroplexCache (with data + miss FSM)
+[info] - should return refill data on miss-response and support byte/half/word writes via size (23 seconds, 434 milliseconds)
+[info] Run completed in 23 seconds, 713 milliseconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[success] Total time: 25 s, completed Dec 28, 2025, 12:54:50 AM
+tnr@DESKTOP-RMGE825:~/Projects/DSD_Projects/Neuroplex_Cache$ sbt "testOnly neuroplex.NeuroplexCacheTagOnlyTest -- -oD"
+[info] Loading settings for project neuroplex_cache-build from plugins.sbt ...
+[info] Loading project definition from /home/tnr/Projects/DSD_Projects/Neuroplex_Cache/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to root (in build file:/home/tnr/Projects/DSD_Projects/Neuroplex_Cache/)
+
+================ NeuroplexCacheTagOnlyTest ================
+[Config] NumSets=512, LineBytes=32, Ways=4, stride(same index)=16384 bytes
+
+[Test1] Cold miss then hit on same address
+
+[Access:base1-first] READ addr=0x00000
+[MemModel] accepted memReq base=0x00000, respond in 2 cycles
+[MemModel] -> memResp VALID base=0x00000
+[Resp:base1-first] MISS
+
+[Access:base1-second] READ addr=0x00000
+[Resp:base1-second] HIT
+
+[Test2] Conflict set thrash: 5 lines -> eviction expected on 5th
+[ConflictAddrs] a0=0x02000 a1=0x06000 a2=0x0A000 a3=0x0E000 a4=0x12000
+[Expect] First touches: all MISS. Then re-touch first 4: HIT. Then touch a4: MISS + eviction counter increments.
+
+[Access:a0-fill] READ addr=0x02000
+[MemModel] accepted memReq base=0x02000, respond in 2 cycles
+[MemModel] -> memResp VALID base=0x02000
+[Resp:a0-fill] MISS
+
+[Access:a1-fill] READ addr=0x06000
+[MemModel] accepted memReq base=0x06000, respond in 2 cycles
+[MemModel] -> memResp VALID base=0x06000
+[Resp:a1-fill] MISS
+
+[Access:a2-fill] READ addr=0x0A000
+[MemModel] accepted memReq base=0x0A000, respond in 2 cycles
+[MemModel] -> memResp VALID base=0x0A000
+[Resp:a2-fill] MISS
+
+[Access:a3-fill] READ addr=0x0E000
+[MemModel] accepted memReq base=0x0E000, respond in 2 cycles
+[MemModel] -> memResp VALID base=0x0E000
+[Resp:a3-fill] MISS
+
+[Access:a0-hit] READ addr=0x02000
+[Resp:a0-hit] HIT
+
+[Access:a1-hit] READ addr=0x06000
+[Resp:a1-hit] HIT
+
+[Access:a2-hit] READ addr=0x0A000
+[Resp:a2-hit] HIT
+
+[Access:a3-hit] READ addr=0x0E000
+[Resp:a3-hit] HIT
+
+[EvictionCounter] before a4 = 0
+
+[Access:a4-evict] READ addr=0x12000
+[MemModel] accepted memReq base=0x12000, respond in 2 cycles
+[MemModel] -> memResp VALID base=0x12000
+[Resp:a4-evict] MISS
+[EvictionCounter] after a4 = 1
+
+[Summary] access=11 hits=5 misses=6 evictions=1
+[PASS] NeuroplexCacheTagOnlyTest
+
+[info] NeuroplexCacheTagOnlyTest:
+[info] NeuroplexCache (with miss FSM)
+[info] - should miss then hit and show eviction on 5th conflicting line (28 seconds, 677 milliseconds)
+[info] Run completed in 28 seconds, 950 milliseconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[success] Total time: 30 s, completed Dec 28, 2025, 12:55:33 AM
+tnr@DESKTOP-RMGE825:~/Projects/DSD_Projects/Neuroplex_Cache$ sbt "testOnly neuroplex.AddrDecodeTest -- -oD"
+[info] Loading settings for project neuroplex_cache-build from plugins.sbt ...
+[info] Loading project definition from /home/tnr/Projects/DSD_Projects/Neuroplex_Cache/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to root (in build file:/home/tnr/Projects/DSD_Projects/Neuroplex_Cache/)
+
+================ AddrDecodeTest ================
+[Config] AddrBits=20, OffsetBits=5, IndexBits=9, TagBits=6
+[Meaning] addr -> {tag, index, offset}
+[Check] zero               addr=0x00000 -> tag=0x00 index=0x000 offset=0x00
+[Check] small +1           addr=0x00001 -> tag=0x00 index=0x000 offset=0x01
+[Check] offset max         addr=0x0001F -> tag=0x00 index=0x000 offset=0x1F
+[Check] next line          addr=0x00020 -> tag=0x00 index=0x001 offset=0x00
+[Check] next line +1       addr=0x00021 -> tag=0x00 index=0x001 offset=0x01
+[Check] tag boundary -1    addr=0x03FFF -> tag=0x00 index=0x1FF offset=0x1F
+[Check] tag boundary +0    addr=0x04000 -> tag=0x01 index=0x000 offset=0x00
+[Check] random             addr=0xABCDE -> tag=0x2A index=0x1E6 offset=0x1E
+[Check] max 20-bit         addr=0xFFFFF -> tag=0x3F index=0x1FF offset=0x1F
+[PASS] AddrDecode outputs match expected bit-splitting.
+
+[info] AddrDecodeTest:
+[info] AddrDecode
+[info] - should split tag/index/offset correctly (2 seconds, 125 milliseconds)
+[info] Run completed in 2 seconds, 399 milliseconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[success] Total time: 3 s, completed Dec 28, 2025, 12:56:12 AM
+tnr@DESKTOP-RMGE825:~/Projects/DSD_Projects/Neuroplex_Cache$ sbt "testOnly neuroplex.NeuroplexWritebackTest -- -oD"
+[info] Loading settings for project neuroplex_cache-build from plugins.sbt ...
+[info] Loading project definition from /home/tnr/Projects/DSD_Projects/Neuroplex_Cache/project
+[info] Loading settings for project root from build.sbt ...
+[info] Set current project to root (in build file:/home/tnr/Projects/DSD_Projects/Neuroplex_Cache/)
+
+================ NeuroplexWritebackTest ================
+[Config] Ways=4, NumSets=512, LineBytes=32 stride=16384
+
+[Phase 1] Fill 4 ways (reads -> misses + fills)
+[MEM] READ-REQ  addr=0x03000 idx=0x180 tag=0x00  latency=2
+[MEM] READ-RSP  addr=0x03000 (from GEN)
+[CPU][RD] fill-a0    addr=0x03000 idx=0x180 tag=0x00 => MISS rdata=0x00003000
+[MEM] READ-REQ  addr=0x07000 idx=0x180 tag=0x01  latency=2
+[MEM] READ-RSP  addr=0x07000 (from GEN)
+[CPU][RD] fill-a1    addr=0x07000 idx=0x180 tag=0x01 => MISS rdata=0x00007000
+[MEM] READ-REQ  addr=0x0B000 idx=0x180 tag=0x02  latency=2
+[MEM] READ-RSP  addr=0x0B000 (from GEN)
+[CPU][RD] fill-a2    addr=0x0B000 idx=0x180 tag=0x02 => MISS rdata=0x0000B000
+[MEM] READ-REQ  addr=0x0F000 idx=0x180 tag=0x03  latency=2
+[MEM] READ-RSP  addr=0x0F000 (from GEN)
+[CPU][RD] fill-a3    addr=0x0F000 idx=0x180 tag=0x03 => MISS rdata=0x0000F000
+
+[Phase 2] Make all dirty (writes on hits)
+[CPU][WR] dirty-a0   addr=0x03000 idx=0x180 tag=0x00 => HIT rdata=0x00000000
+[CPU][WR] dirty-a1   addr=0x07000 idx=0x180 tag=0x01 => HIT rdata=0x00000000
+[CPU][WR] dirty-a2   addr=0x0B000 idx=0x180 tag=0x02 => HIT rdata=0x00000000
+[CPU][WR] dirty-a3   addr=0x0F000 idx=0x180 tag=0x03 => HIT rdata=0x00000000
+
+[Phase 3] Thrash same set until we observe at least one WRITEBACK
+[MEM] WRITEBACK addr=0x07000 idx=0x180 tag=0x01  (store now has 1 lines)
+[MEM] READ-REQ  addr=0x13000 idx=0x180 tag=0x04  latency=2
+[MEM] READ-RSP  addr=0x13000 (from GEN)
+[CPU][RD] thrash-4   addr=0x13000 idx=0x180 tag=0x04 => MISS rdata=0x00013000
+
+[Phase 4] Re-access evicted line addr=0x07000, should MISS and refill from memStore with written data
+[MEM] WRITEBACK addr=0x0B000 idx=0x180 tag=0x02  (store now has 2 lines)
+[MEM] READ-REQ  addr=0x07000 idx=0x180 tag=0x01  latency=2
+[MEM] READ-RSP  addr=0x07000 (from STORE)
+[CPU][RD] re-read    addr=0x07000 idx=0x180 tag=0x01 => MISS rdata=0x22222222
+
+[PASS] Write-back observed + data preserved via memory store. ops=10
+
+[info] NeuroplexWritebackTest:
+[info] NeuroplexCache write-back + dirty
+[info] - should write back a dirty victim and later read the modified data from memory (28 seconds, 143 milliseconds)
+[info] Run completed in 28 seconds, 399 milliseconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[success] Total time: 29 s, completed Dec 28, 2025, 12:57:04 AM
