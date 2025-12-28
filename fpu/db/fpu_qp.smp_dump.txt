@@ -1,0 +1,81 @@
+
+State Machine - |fpu_qp|fpu_top:u_fpu|divider:u_div|state
+Name state.put_z state.pack state.round state.normalise_2 state.normalise_1 state.divide_3 state.divide_2 state.divide_1 state.divide_0 state.normalise_b state.normalise_a state.special_cases state.unpack state.get_b state.get_a 
+state.get_a 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.get_b 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.unpack 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.special_cases 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.normalise_a 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.normalise_b 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.divide_0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.divide_1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.divide_2 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.divide_3 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.normalise_1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.normalise_2 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.round 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.pack 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.put_z 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|state
+Name state.put_z state.pack state.round state.normalise_2 state.normalise_1 state.multiply_1 state.multiply_0 state.normalise_b state.normalise_a state.special_cases state.unpack state.get_b state.get_a 
+state.get_a 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.get_b 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.unpack 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.special_cases 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.normalise_a 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.normalise_b 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.multiply_0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.multiply_1 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.normalise_1 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.normalise_2 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.round 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.pack 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.put_z 1 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |fpu_qp|fpu_top:u_fpu|adder:u_add|state
+Name state.put_z state.pack state.round state.normalise_2 state.normalise_1 state.add_1 state.add_0 state.align state.special_cases state.unpack state.get_b state.get_a 
+state.get_a 0 0 0 0 0 0 0 0 0 0 0 0 
+state.get_b 0 0 0 0 0 0 0 0 0 0 1 1 
+state.unpack 0 0 0 0 0 0 0 0 0 1 0 1 
+state.special_cases 0 0 0 0 0 0 0 0 1 0 0 1 
+state.align 0 0 0 0 0 0 0 1 0 0 0 1 
+state.add_0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.add_1 0 0 0 0 0 1 0 0 0 0 0 1 
+state.normalise_1 0 0 0 0 1 0 0 0 0 0 0 1 
+state.normalise_2 0 0 0 1 0 0 0 0 0 0 0 1 
+state.round 0 0 1 0 0 0 0 0 0 0 0 1 
+state.pack 0 1 0 0 0 0 0 0 0 0 0 1 
+state.put_z 1 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |fpu_qp|fpu_uart_cmd:u_cmd|state
+Name state.S_TX_5 state.S_TX_4 state.S_TX_3 state.S_TX_2 state.S_TX_1 state.S_TX_0 state.S_WAIT_Z state.S_WAIT_AB state.S_ISSUE state.S_GET_B state.S_GET_A state.S_GET_OP state.S_WAIT_SYNC 
+state.S_WAIT_SYNC 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.S_GET_OP 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.S_GET_A 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.S_GET_B 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.S_ISSUE 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.S_WAIT_AB 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.S_WAIT_Z 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.S_TX_0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.S_TX_1 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.S_TX_2 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.S_TX_3 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.S_TX_4 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.S_TX_5 1 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |fpu_qp|uart_tx:u_tx|state
+Name state.S_STOP state.S_DATA state.S_START state.S_IDLE state.S_CLEANUP 
+state.S_IDLE 0 0 0 0 0 
+state.S_START 0 0 1 1 0 
+state.S_DATA 0 1 0 1 0 
+state.S_STOP 1 0 0 1 0 
+state.S_CLEANUP 0 0 0 1 1 
+
+State Machine - |fpu_qp|uart_rx:u_rx|state
+Name state.S_STOP state.S_DATA state.S_START state.S_IDLE state.S_CLEANUP 
+state.S_IDLE 0 0 0 0 0 
+state.S_START 0 0 1 1 0 
+state.S_DATA 0 1 0 1 0 
+state.S_STOP 1 0 0 1 0 
+state.S_CLEANUP 0 0 0 1 1 

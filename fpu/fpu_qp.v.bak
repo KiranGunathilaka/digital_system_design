@@ -1,0 +1,100 @@
+`timescale 1ns/1ps
+
+module de0nano_fpu_uart_top #(
+  parameter integer CLK_HZ = 50_000_000,
+  parameter integer BAUD   = 115200
+)(
+  input  wire CLOCK_50,
+  input  wire RESET_N,   // active-low reset from a button/switch
+
+  input  wire UART_RX,
+  output wire UART_TX
+);
+
+  wire clk = CLOCK_50;
+  wire rst = ~RESET_N;
+
+  // integer divide (rounded). For 50MHz/115200 -> 434
+  localparam integer CLKS_PER_BIT = CLK_HZ / BAUD;
+
+  // UART wires
+  wire       rx_dv;
+  wire [7:0] rx_byte;
+
+  wire       tx_active;
+  wire       tx_done;
+  wire       tx_dv;
+  wire [7:0] tx_byte;
+
+  // FPU wires
+  wire [1:0]  op;
+  wire [31:0] a, b;
+  wire        a_stb, a_ack;
+  wire        b_stb, b_ack;
+  wire [31:0] z;
+  wire        z_stb, z_ack;
+
+  uart_rx #(.CLKS_PER_BIT(CLKS_PER_BIT)) u_rx (
+    .clk(clk),
+    .rst(rst),
+    .rx(UART_RX),
+    .rx_dv(rx_dv),
+    .rx_byte(rx_byte)
+  );
+
+  uart_tx #(.CLKS_PER_BIT(CLKS_PER_BIT)) u_tx (
+    .clk(clk),
+    .rst(rst),
+    .tx_dv(tx_dv),
+    .tx_byte(tx_byte),
+    .tx_active(tx_active),
+    .tx(UART_TX),
+    .tx_done(tx_done)
+  );
+
+  fpu_uart_cmd u_cmd (
+    .clk(clk),
+    .rst(rst),
+
+    .rx_dv(rx_dv),
+    .rx_byte(rx_byte),
+
+    .tx_dv(tx_dv),
+    .tx_byte(tx_byte),
+    .tx_active(tx_active),
+    .tx_done(tx_done),
+
+    .op(op),
+    .input_a(a),
+    .input_a_stb(a_stb),
+    .input_a_ack(a_ack),
+    .input_b(b),
+    .input_b_stb(b_stb),
+    .input_b_ack(b_ack),
+
+    .output_z(z),
+    .output_z_stb(z_stb),
+    .output_z_ack(z_ack)
+  );
+
+  // Your already-made top
+  fpu_top u_fpu (
+    .clk(clk),
+    .rst(rst),
+
+    .op(op),
+
+    .input_a(a),
+    .input_a_stb(a_stb),
+    .input_a_ack(a_ack),
+
+    .input_b(b),
+    .input_b_stb(b_stb),
+    .input_b_ack(b_ack),
+
+    .output_z(z),
+    .output_z_stb(z_stb),
+    .output_z_ack(z_ack)
+  );
+
+endmodule

@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sun Dec 28 03:02:08 2025
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Revision Name : fpu_qp
+Top-level Entity Name : fpu_qp
+Family : Cyclone IV E
+Total logic elements : 2,505
+    Total combinational functions : 2,127
+    Dedicated logic registers : 1,294
+Total registers : 1294
+Total pins : 4
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 7
+Total PLLs : 0

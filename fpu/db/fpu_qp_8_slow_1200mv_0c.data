@@ -1,0 +1,68 @@
+
+
+
+TIMINGDATA
+
+ARCDATA
+pos_RESET_N__CLOCK_50__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("6.425");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("6.425");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_UART_RX__CLOCK_50__setup:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("2.718");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("2.718");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_RESET_N__CLOCK_50__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-1.808");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-1.808");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_UART_RX__CLOCK_50__hold:
+RISE_CONSTRAINT( scalar ) {
+VALUES ("-2.179");
+}
+
+FALL_CONSTRAINT( scalar ) {
+VALUES ("-2.179");
+}
+
+ENDARCDATA
+
+ARCDATA
+pos_CLOCK_50__UART_TX__delay:
+CELL_RISE( scalar ) {
+VALUES ("8.894");
+}
+
+CELL_FALL( scalar ) {
+VALUES ("8.894");
+}
+
+ENDARCDATA
+
+ENDTIMINGDATA
+
+ENDMODELDATA

@@ -1,0 +1,296 @@
+`timescale 1ns/1ps
+
+module fpu_uart_cmd #(
+  parameter integer TIMEOUT_CYCLES = 50_000_000  // ~1 second at 50 MHz
+)(
+  input  wire        clk,
+  input  wire        rst,     // active-high synchronous reset
+
+  // UART RX interface
+  input  wire        rx_dv,
+  input  wire [7:0]  rx_byte,
+
+  // UART TX interface
+  output reg         tx_dv,
+  output reg  [7:0]  tx_byte,
+  input  wire        tx_active,
+  input  wire        tx_done,   // 1-cycle pulse at end of each byte (from uart_tx)
+
+  // FPU interface (to your fpu_top)
+  output reg  [1:0]  op,
+  output reg  [31:0] input_a,
+  output reg         input_a_stb,
+  input  wire        input_a_ack,
+
+  output reg  [31:0] input_b,
+  output reg         input_b_stb,
+  input  wire        input_b_ack,
+
+  input  wire [31:0] output_z,
+  input  wire        output_z_stb,
+  output reg         output_z_ack
+);
+
+  localparam [7:0] SYNC_REQ  = 8'hA5;
+  localparam [7:0] SYNC_RESP = 8'h5A;
+
+  localparam [7:0]
+    ST_OK       = 8'h00,
+    ST_BAD_SYNC = 8'h01,
+    ST_BAD_OP   = 8'h02,
+    ST_TIMEOUT  = 8'h10;
+
+  // FSM states
+  localparam [4:0]
+    S_WAIT_SYNC = 5'd0,
+    S_GET_OP    = 5'd1,
+    S_GET_A     = 5'd2,
+    S_GET_B     = 5'd3,
+    S_ISSUE     = 5'd4,
+    S_WAIT_AB   = 5'd5,
+    S_WAIT_Z    = 5'd6,
+    S_TX_0      = 5'd7,
+    S_TX_1      = 5'd8,
+    S_TX_2      = 5'd9,
+    S_TX_3      = 5'd10,
+    S_TX_4      = 5'd11,
+    S_TX_5      = 5'd12;
+
+  reg [4:0]  state;
+  reg [7:0]  status;
+
+  reg [31:0] a_buf, b_buf, z_buf;
+  reg [2:0]  byte_idx;     // 0..3
+  reg        a_done, b_done;
+
+  reg [31:0] timeout_cnt;
+
+  // helper for TX: send one byte when TX is idle
+  function automatic can_tx;
+    input dummy;
+    begin
+      // tx_active is asserted while sending; we only launch when idle
+      can_tx = (tx_active == 1'b0);
+    end
+  endfunction
+
+  always @(posedge clk) begin
+    if (rst) begin
+      state        <= S_WAIT_SYNC;
+      status       <= ST_OK;
+
+      op           <= 2'b00;
+      input_a      <= 32'h0;
+      input_b      <= 32'h0;
+      input_a_stb  <= 1'b0;
+      input_b_stb  <= 1'b0;
+      output_z_ack <= 1'b0;
+
+      a_buf        <= 32'h0;
+      b_buf        <= 32'h0;
+      z_buf        <= 32'h0;
+
+      byte_idx     <= 3'd0;
+      a_done       <= 1'b0;
+      b_done       <= 1'b0;
+
+      tx_dv        <= 1'b0;
+      tx_byte      <= 8'h00;
+
+      timeout_cnt  <= 32'd0;
+    end else begin
+      tx_dv <= 1'b0; // default
+
+      case (state)
+        // -------------------------
+        // RX: sync
+        // -------------------------
+        S_WAIT_SYNC: begin
+          input_a_stb  <= 1'b0;
+          input_b_stb  <= 1'b0;
+          output_z_ack <= 1'b0;
+          a_done       <= 1'b0;
+          b_done       <= 1'b0;
+          byte_idx     <= 3'd0;
+          timeout_cnt  <= 32'd0;
+
+          if (rx_dv) begin
+            if (rx_byte == SYNC_REQ) begin
+              status <= ST_OK;
+              state  <= S_GET_OP;
+            end else begin
+              // Not synced; optionally you can respond BAD_SYNC, but that makes
+              // random input spam responses. So we simply keep waiting.
+              status <= ST_BAD_SYNC;
+              state  <= S_WAIT_SYNC;
+            end
+          end
+        end
+
+        S_GET_OP: begin
+          if (rx_dv) begin
+            if (rx_byte[7:2] != 6'd0) begin
+              // must be 0..3, we only accept 0..2
+              status <= ST_BAD_OP;
+              op     <= 2'b00;
+              z_buf  <= 32'h0;
+              state  <= S_TX_0;
+            end else if (rx_byte[1:0] > 2'd2) begin
+              status <= ST_BAD_OP;
+              op     <= 2'b00;
+              z_buf  <= 32'h0;
+              state  <= S_TX_0;
+            end else begin
+              status   <= ST_OK;
+              op       <= rx_byte[1:0];
+              a_buf    <= 32'h0;
+              b_buf    <= 32'h0;
+              byte_idx <= 3'd0;
+              state    <= S_GET_A;
+            end
+          end
+        end
+
+        // -------------------------
+        // RX: A (4 bytes little-endian)
+        // -------------------------
+        S_GET_A: begin
+          if (rx_dv) begin
+            a_buf <= a_buf | ({24'h0, rx_byte} << (byte_idx * 8));
+            if (byte_idx == 3'd3) begin
+              byte_idx <= 3'd0;
+              state    <= S_GET_B;
+            end else begin
+              byte_idx <= byte_idx + 1;
+            end
+          end
+        end
+
+        // -------------------------
+        // RX: B (4 bytes little-endian)
+        // -------------------------
+        S_GET_B: begin
+          if (rx_dv) begin
+            b_buf <= b_buf | ({24'h0, rx_byte} << (byte_idx * 8));
+            if (byte_idx == 3'd3) begin
+              state <= S_ISSUE;
+            end else begin
+              byte_idx <= byte_idx + 1;
+            end
+          end
+        end
+
+        // -------------------------
+        // Drive FPU inputs
+        // -------------------------
+        S_ISSUE: begin
+          input_a <= a_buf;
+          input_b <= b_buf;
+
+          // assert both; deassert each when acked
+          input_a_stb <= 1'b1;
+          input_b_stb <= 1'b1;
+
+          a_done <= 1'b0;
+          b_done <= 1'b0;
+
+          timeout_cnt <= 32'd0;
+          state <= S_WAIT_AB;
+        end
+
+        S_WAIT_AB: begin
+          // Keep op stable here (op already latched from request)
+          if (input_a_stb && input_a_ack) begin
+            input_a_stb <= 1'b0;
+            a_done <= 1'b1;
+          end
+          if (input_b_stb && input_b_ack) begin
+            input_b_stb <= 1'b0;
+            b_done <= 1'b1;
+          end
+
+          if ((a_done || (!input_a_stb)) && (b_done || (!input_b_stb))) begin
+            // Both have been accepted (or STBs already dropped)
+            output_z_ack <= 1'b1;  // we are ready immediately
+            timeout_cnt  <= 32'd0;
+            state        <= S_WAIT_Z;
+          end
+        end
+
+        // -------------------------
+        // Wait for result
+        // -------------------------
+        S_WAIT_Z: begin
+          if (output_z_stb && output_z_ack) begin
+            z_buf <= output_z;
+            output_z_ack <= 1'b0;
+            state <= S_TX_0;
+          end else begin
+            if (timeout_cnt == TIMEOUT_CYCLES) begin
+              status <= ST_TIMEOUT;
+              z_buf  <= 32'h0;
+              output_z_ack <= 1'b0;
+              state  <= S_TX_0;
+            end else begin
+              timeout_cnt <= timeout_cnt + 1;
+            end
+          end
+        end
+
+        // -------------------------
+        // TX response (6 bytes)
+        // -------------------------
+        S_TX_0: begin
+          if (can_tx(1'b0)) begin
+            tx_byte <= SYNC_RESP;
+            tx_dv   <= 1'b1;
+            state   <= S_TX_1;
+          end
+        end
+
+        S_TX_1: begin
+          if (can_tx(1'b0)) begin
+            tx_byte <= status;
+            tx_dv   <= 1'b1;
+            state   <= S_TX_2;
+          end
+        end
+
+        S_TX_2: begin
+          if (can_tx(1'b0)) begin
+            tx_byte <= z_buf[7:0];
+            tx_dv   <= 1'b1;
+            state   <= S_TX_3;
+          end
+        end
+
+        S_TX_3: begin
+          if (can_tx(1'b0)) begin
+            tx_byte <= z_buf[15:8];
+            tx_dv   <= 1'b1;
+            state   <= S_TX_4;
+          end
+        end
+
+        S_TX_4: begin
+          if (can_tx(1'b0)) begin
+            tx_byte <= z_buf[23:16];
+            tx_dv   <= 1'b1;
+            state   <= S_TX_5;
+          end
+        end
+
+        S_TX_5: begin
+          if (can_tx(1'b0)) begin
+            tx_byte <= z_buf[31:24];
+            tx_dv   <= 1'b1;
+            state   <= S_WAIT_SYNC;
+          end
+        end
+
+        default: state <= S_WAIT_SYNC;
+      endcase
+    end
+  end
+
+endmodule

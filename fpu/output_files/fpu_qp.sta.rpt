@@ -1,0 +1,1178 @@
+Timing Analyzer report for fpu_qp
+Sun Dec 28 03:02:25 2025
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow 1200mV 85C Model Fmax Summary
+  6. Timing Closure Recommendations
+  7. Slow 1200mV 85C Model Setup Summary
+  8. Slow 1200mV 85C Model Hold Summary
+  9. Slow 1200mV 85C Model Recovery Summary
+ 10. Slow 1200mV 85C Model Removal Summary
+ 11. Slow 1200mV 85C Model Minimum Pulse Width Summary
+ 12. Slow 1200mV 85C Model Setup: 'CLOCK_50'
+ 13. Slow 1200mV 85C Model Hold: 'CLOCK_50'
+ 14. Slow 1200mV 85C Model Metastability Summary
+ 15. Slow 1200mV 0C Model Fmax Summary
+ 16. Slow 1200mV 0C Model Setup Summary
+ 17. Slow 1200mV 0C Model Hold Summary
+ 18. Slow 1200mV 0C Model Recovery Summary
+ 19. Slow 1200mV 0C Model Removal Summary
+ 20. Slow 1200mV 0C Model Minimum Pulse Width Summary
+ 21. Slow 1200mV 0C Model Setup: 'CLOCK_50'
+ 22. Slow 1200mV 0C Model Hold: 'CLOCK_50'
+ 23. Slow 1200mV 0C Model Metastability Summary
+ 24. Fast 1200mV 0C Model Setup Summary
+ 25. Fast 1200mV 0C Model Hold Summary
+ 26. Fast 1200mV 0C Model Recovery Summary
+ 27. Fast 1200mV 0C Model Removal Summary
+ 28. Fast 1200mV 0C Model Minimum Pulse Width Summary
+ 29. Fast 1200mV 0C Model Setup: 'CLOCK_50'
+ 30. Fast 1200mV 0C Model Hold: 'CLOCK_50'
+ 31. Fast 1200mV 0C Model Metastability Summary
+ 32. Multicorner Timing Analysis Summary
+ 33. Board Trace Model Assignments
+ 34. Input Transition Times
+ 35. Signal Integrity Metrics (Slow 1200mv 0c Model)
+ 36. Signal Integrity Metrics (Slow 1200mv 85c Model)
+ 37. Signal Integrity Metrics (Fast 1200mv 0c Model)
+ 38. Setup Transfers
+ 39. Hold Transfers
+ 40. Report TCCS
+ 41. Report RSKM
+ 42. Unconstrained Paths Summary
+ 43. Clock Status Summary
+ 44. Unconstrained Input Ports
+ 45. Unconstrained Output Ports
+ 46. Unconstrained Input Ports
+ 47. Unconstrained Output Ports
+ 48. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-----------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                     ;
++-----------------------+-----------------------------------------------------+
+; Quartus Prime Version ; Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Timing Analyzer       ; Legacy Timing Analyzer                              ;
+; Revision Name         ; fpu_qp                                              ;
+; Device Family         ; Cyclone IV E                                        ;
+; Device Name           ; EP4CE22F17C8                                        ;
+; Timing Models         ; Final                                               ;
+; Delay Model           ; Combined                                            ;
+; Rise/Fall Delays      ; Enabled                                             ;
++-----------------------+-----------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.36        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;  14.0%      ;
+;     Processor 3            ;   8.9%      ;
+;     Processor 4            ;   7.2%      ;
+;     Processors 5-6         ;   3.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                               ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets      ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+; CLOCK_50   ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLOCK_50 } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+
+
++-------------------------------------------------+
+; Slow 1200mV 85C Model Fmax Summary              ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 89.42 MHz ; 89.42 MHz       ; CLOCK_50   ;      ;
++-----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
+----------------------------------
+; Timing Closure Recommendations ;
+----------------------------------
+HTML report is unavailable in plain text report export.
+
+
++-------------------------------------+
+; Slow 1200mV 85C Model Setup Summary ;
++----------+---------+----------------+
+; Clock    ; Slack   ; End Point TNS  ;
++----------+---------+----------------+
+; CLOCK_50 ; -10.183 ; -6326.816      ;
++----------+---------+----------------+
+
+
++------------------------------------+
+; Slow 1200mV 85C Model Hold Summary ;
++----------+-------+-----------------+
+; Clock    ; Slack ; End Point TNS   ;
++----------+-------+-----------------+
+; CLOCK_50 ; 0.454 ; 0.000           ;
++----------+-------+-----------------+
+
+
+------------------------------------------
+; Slow 1200mV 85C Model Recovery Summary ;
+------------------------------------------
+No paths to report.
+
+
+-----------------------------------------
+; Slow 1200mV 85C Model Removal Summary ;
+-----------------------------------------
+No paths to report.
+
+
++---------------------------------------------------+
+; Slow 1200mV 85C Model Minimum Pulse Width Summary ;
++----------+--------+-------------------------------+
+; Clock    ; Slack  ; End Point TNS                 ;
++----------+--------+-------------------------------+
+; CLOCK_50 ; -3.000 ; -1927.178                     ;
++----------+--------+-------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Setup: 'CLOCK_50'                                                                                                                             ;
++---------+----------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack   ; From Node                              ; To Node                                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+----------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -10.183 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.585     ;
+; -10.180 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.582     ;
+; -10.166 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.568     ;
+; -10.141 ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.543     ;
+; -10.129 ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.531     ;
+; -10.129 ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.531     ;
+; -10.095 ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.500     ;
+; -10.080 ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.485     ;
+; -10.073 ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.478     ;
+; -10.071 ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.473     ;
+; -10.037 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.439     ;
+; -10.034 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.436     ;
+; -10.020 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.422     ;
+; -10.007 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.409     ;
+; -10.004 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.406     ;
+; -10.002 ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.390      ; 11.393     ;
+; -9.995  ; fpu_top:u_fpu|multiplier:u_mul|a_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.384     ;
+; -9.995  ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.397     ;
+; -9.990  ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.392     ;
+; -9.983  ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.385     ;
+; -9.983  ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.385     ;
+; -9.983  ; fpu_top:u_fpu|multiplier:u_mul|a_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.385     ;
+; -9.965  ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.367     ;
+; -9.953  ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.355     ;
+; -9.953  ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.355     ;
+; -9.949  ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.354     ;
+; -9.943  ; fpu_top:u_fpu|multiplier:u_mul|a_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.332     ;
+; -9.940  ; fpu_top:u_fpu|multiplier:u_mul|b_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.345     ;
+; -9.934  ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.339     ;
+; -9.932  ; fpu_top:u_fpu|multiplier:u_mul|a_m[2]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.321     ;
+; -9.927  ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.332     ;
+; -9.925  ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.327     ;
+; -9.922  ; fpu_top:u_fpu|multiplier:u_mul|a_m[10] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.311     ;
+; -9.919  ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.324     ;
+; -9.917  ; fpu_top:u_fpu|multiplier:u_mul|b_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.322     ;
+; -9.914  ; fpu_top:u_fpu|multiplier:u_mul|a_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.303     ;
+; -9.904  ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.309     ;
+; -9.898  ; fpu_top:u_fpu|multiplier:u_mul|b_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.303     ;
+; -9.897  ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.302     ;
+; -9.895  ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.297     ;
+; -9.891  ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.293     ;
+; -9.888  ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.290     ;
+; -9.876  ; fpu_top:u_fpu|multiplier:u_mul|b_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.278     ;
+; -9.874  ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.276     ;
+; -9.868  ; fpu_top:u_fpu|multiplier:u_mul|b_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.270     ;
+; -9.868  ; fpu_top:u_fpu|multiplier:u_mul|b_m[4]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.273     ;
+; -9.867  ; fpu_top:u_fpu|multiplier:u_mul|b_m[13] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.269     ;
+; -9.861  ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.263     ;
+; -9.858  ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.260     ;
+; -9.856  ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.390      ; 11.247     ;
+; -9.849  ; fpu_top:u_fpu|multiplier:u_mul|a_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.238     ;
+; -9.849  ; fpu_top:u_fpu|multiplier:u_mul|b_m[2]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.251     ;
+; -9.849  ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.251     ;
+; -9.848  ; fpu_top:u_fpu|multiplier:u_mul|b_m[17] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.253     ;
+; -9.848  ; fpu_top:u_fpu|multiplier:u_mul|b_m[11] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.250     ;
+; -9.844  ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.246     ;
+; -9.843  ; fpu_top:u_fpu|multiplier:u_mul|b_m[6]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.245     ;
+; -9.843  ; fpu_top:u_fpu|multiplier:u_mul|b_m[7]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.245     ;
+; -9.840  ; fpu_top:u_fpu|multiplier:u_mul|b_m[9]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.242     ;
+; -9.837  ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.239     ;
+; -9.837  ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.239     ;
+; -9.837  ; fpu_top:u_fpu|multiplier:u_mul|a_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.239     ;
+; -9.835  ; fpu_top:u_fpu|multiplier:u_mul|b_m[10] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.237     ;
+; -9.831  ; fpu_top:u_fpu|multiplier:u_mul|b_m[15] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.233     ;
+; -9.826  ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.390      ; 11.217     ;
+; -9.819  ; fpu_top:u_fpu|multiplier:u_mul|a_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.208     ;
+; -9.819  ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.221     ;
+; -9.807  ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.209     ;
+; -9.807  ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.209     ;
+; -9.807  ; fpu_top:u_fpu|multiplier:u_mul|a_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.209     ;
+; -9.803  ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.208     ;
+; -9.797  ; fpu_top:u_fpu|multiplier:u_mul|a_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.186     ;
+; -9.794  ; fpu_top:u_fpu|multiplier:u_mul|b_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.199     ;
+; -9.789  ; fpu_top:u_fpu|multiplier:u_mul|a_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.178     ;
+; -9.788  ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.193     ;
+; -9.786  ; fpu_top:u_fpu|multiplier:u_mul|a_m[2]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.175     ;
+; -9.781  ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.186     ;
+; -9.779  ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.181     ;
+; -9.776  ; fpu_top:u_fpu|multiplier:u_mul|a_m[10] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.165     ;
+; -9.773  ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.178     ;
+; -9.771  ; fpu_top:u_fpu|multiplier:u_mul|b_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.176     ;
+; -9.768  ; fpu_top:u_fpu|multiplier:u_mul|a_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.157     ;
+; -9.767  ; fpu_top:u_fpu|multiplier:u_mul|a_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.156     ;
+; -9.764  ; fpu_top:u_fpu|multiplier:u_mul|b_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.169     ;
+; -9.760  ; fpu_top:u_fpu|multiplier:u_mul|a_m[23] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.165     ;
+; -9.758  ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.163     ;
+; -9.756  ; fpu_top:u_fpu|multiplier:u_mul|a_m[2]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.145     ;
+; -9.752  ; fpu_top:u_fpu|multiplier:u_mul|b_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.157     ;
+; -9.751  ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.156     ;
+; -9.749  ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.151     ;
+; -9.746  ; fpu_top:u_fpu|multiplier:u_mul|a_m[10] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.135     ;
+; -9.745  ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[41] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.147     ;
+; -9.742  ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[41] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.144     ;
+; -9.741  ; fpu_top:u_fpu|multiplier:u_mul|b_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.146     ;
+; -9.738  ; fpu_top:u_fpu|multiplier:u_mul|a_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.388      ; 11.127     ;
+; -9.730  ; fpu_top:u_fpu|multiplier:u_mul|b_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.132     ;
+; -9.728  ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[41] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.130     ;
+; -9.722  ; fpu_top:u_fpu|multiplier:u_mul|b_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.401      ; 11.124     ;
+; -9.722  ; fpu_top:u_fpu|multiplier:u_mul|b_m[4]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.127     ;
+; -9.722  ; fpu_top:u_fpu|multiplier:u_mul|b_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.404      ; 11.127     ;
++---------+----------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Hold: 'CLOCK_50'                                                                                                                                            ;
++-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                        ; To Node                                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.454 ; fpu_uart_cmd:u_cmd|status[0]                     ; fpu_uart_cmd:u_cmd|status[0]                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]            ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]            ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|state.S_WAIT_SYNC             ; fpu_uart_cmd:u_cmd|state.S_WAIT_SYNC             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|state.S_GET_B                 ; fpu_uart_cmd:u_cmd|state.S_GET_B                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|byte_idx[1]                   ; fpu_uart_cmd:u_cmd|byte_idx[1]                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|byte_idx[2]                   ; fpu_uart_cmd:u_cmd|byte_idx[2]                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|state.S_WAIT_Z                ; fpu_uart_cmd:u_cmd|state.S_WAIT_Z                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|state.S_WAIT_AB               ; fpu_uart_cmd:u_cmd|state.S_WAIT_AB               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|b_buf[0]                      ; fpu_uart_cmd:u_cmd|b_buf[0]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|a_buf[0]                      ; fpu_uart_cmd:u_cmd|a_buf[0]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|output_z_ack                  ; fpu_uart_cmd:u_cmd|output_z_ack                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[12]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[12]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[6]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[6]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[5]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[5]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[4]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[4]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[3]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[3]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[2]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[2]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[1]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[1]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[7]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[7]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[10]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[10]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[8]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[8]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[9]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[9]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[11]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[11]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[29]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[29]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[28]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[28]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[27]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[27]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[26]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[26]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[18]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[18]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[17]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[17]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[16]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[16]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[15]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[15]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[14]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[14]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|z_wait_cnt[13]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[13]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|input_b_stb                   ; fpu_uart_cmd:u_cmd|input_b_stb                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|input_a_stb                   ; fpu_uart_cmd:u_cmd|input_a_stb                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_rx:u_rx|data_buf[7]                         ; uart_rx:u_rx|data_buf[7]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_rx:u_rx|data_buf[1]                         ; uart_rx:u_rx|data_buf[1]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_rx:u_rx|data_buf[0]                         ; uart_rx:u_rx|data_buf[0]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_rx:u_rx|data_buf[5]                         ; uart_rx:u_rx|data_buf[5]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_rx:u_rx|data_buf[2]                         ; uart_rx:u_rx|data_buf[2]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_rx:u_rx|data_buf[6]                         ; uart_rx:u_rx|data_buf[6]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_rx:u_rx|data_buf[4]                         ; uart_rx:u_rx|data_buf[4]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_rx:u_rx|data_buf[3]                         ; uart_rx:u_rx|data_buf[3]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_rx:u_rx|bit_idx[0]                          ; uart_rx:u_rx|bit_idx[0]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_rx:u_rx|bit_idx[1]                          ; uart_rx:u_rx|bit_idx[1]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_rx:u_rx|bit_idx[2]                          ; uart_rx:u_rx|bit_idx[2]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_rx:u_rx|state.S_IDLE                        ; uart_rx:u_rx|state.S_IDLE                        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_rx:u_rx|state.S_START                       ; uart_rx:u_rx|state.S_START                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_top:u_fpu|divider:u_div|z[22]                ; fpu_top:u_fpu|divider:u_div|z[22]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_top:u_fpu|divider:u_div|s_input_b_ack        ; fpu_top:u_fpu|divider:u_div|s_input_b_ack        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_top:u_fpu|busy                               ; fpu_top:u_fpu|busy                               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_top:u_fpu|divider:u_div|state.put_z          ; fpu_top:u_fpu|divider:u_div|state.put_z          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_top:u_fpu|divider:u_div|s_output_z_stb       ; fpu_top:u_fpu|divider:u_div|s_output_z_stb       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_top:u_fpu|divider:u_div|a_m[0]               ; fpu_top:u_fpu|divider:u_div|a_m[0]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_top:u_fpu|divider:u_div|round_bit            ; fpu_top:u_fpu|divider:u_div|round_bit            ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_top:u_fpu|divider:u_div|state.normalise_1    ; fpu_top:u_fpu|divider:u_div|state.normalise_1    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|b_buf[15]                     ; fpu_uart_cmd:u_cmd|b_buf[15]                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_uart_cmd:u_cmd|a_buf[15]                     ; fpu_uart_cmd:u_cmd|a_buf[15]                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_tx:u_tx|bit_idx[2]                          ; uart_tx:u_tx|bit_idx[2]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_tx:u_tx|state.S_STOP                        ; uart_tx:u_tx|state.S_STOP                        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_tx:u_tx|state.S_START                       ; uart_tx:u_tx|state.S_START                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_tx:u_tx|state.S_IDLE                        ; uart_tx:u_tx|state.S_IDLE                        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_tx:u_tx|bit_idx[0]                          ; uart_tx:u_tx|bit_idx[0]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; uart_tx:u_tx|tx_active                           ; uart_tx:u_tx|tx_active                           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.454 ; fpu_top:u_fpu|adder:u_add|a_m[26]                ; fpu_top:u_fpu|adder:u_add|a_m[26]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.746      ;
+; 0.455 ; fpu_uart_cmd:u_cmd|status[1]                     ; fpu_uart_cmd:u_cmd|status[1]                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_uart_cmd:u_cmd|z_wait_cnt[0]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[0]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_uart_cmd:u_cmd|z_wait_cnt[31]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[31]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_uart_cmd:u_cmd|z_wait_cnt[30]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[30]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_uart_cmd:u_cmd|z_wait_cnt[25]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[25]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_uart_cmd:u_cmd|z_wait_cnt[24]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[24]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_uart_cmd:u_cmd|z_wait_cnt[23]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[23]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_uart_cmd:u_cmd|z_wait_cnt[22]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[22]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_uart_cmd:u_cmd|z_wait_cnt[21]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[21]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_uart_cmd:u_cmd|z_wait_cnt[20]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[20]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_uart_cmd:u_cmd|z_wait_cnt[19]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[19]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|divider:u_div|z[31]                ; fpu_top:u_fpu|divider:u_div|z[31]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|divider:u_div|state.get_b          ; fpu_top:u_fpu|divider:u_div|state.get_b          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|divider:u_div|state.normalise_b    ; fpu_top:u_fpu|divider:u_div|state.normalise_b    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|divider:u_div|state.get_a          ; fpu_top:u_fpu|divider:u_div|state.get_a          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|divider:u_div|state.round          ; fpu_top:u_fpu|divider:u_div|state.round          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|divider:u_div|state.divide_0       ; fpu_top:u_fpu|divider:u_div|state.divide_0       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|divider:u_div|state.normalise_2    ; fpu_top:u_fpu|divider:u_div|state.normalise_2    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|divider:u_div|state.unpack         ; fpu_top:u_fpu|divider:u_div|state.unpack         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|divider:u_div|s_input_a_ack        ; fpu_top:u_fpu|divider:u_div|s_input_a_ack        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|divider:u_div|guard                ; fpu_top:u_fpu|divider:u_div|guard                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|divider:u_div|count[0]             ; fpu_top:u_fpu|divider:u_div|count[0]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|divider:u_div|count[1]             ; fpu_top:u_fpu|divider:u_div|count[1]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|multiplier:u_mul|s_output_z_stb    ; fpu_top:u_fpu|multiplier:u_mul|s_output_z_stb    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|multiplier:u_mul|state.get_a       ; fpu_top:u_fpu|multiplier:u_mul|state.get_a       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_2 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_2 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_b ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_b ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|multiplier:u_mul|state.get_b       ; fpu_top:u_fpu|multiplier:u_mul|state.get_b       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|multiplier:u_mul|s_input_b_ack     ; fpu_top:u_fpu|multiplier:u_mul|s_input_b_ack     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|multiplier:u_mul|s_input_a_ack     ; fpu_top:u_fpu|multiplier:u_mul|s_input_a_ack     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_1 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_1 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|adder:u_add|state.get_a            ; fpu_top:u_fpu|adder:u_add|state.get_a            ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|adder:u_add|state.normalise_2      ; fpu_top:u_fpu|adder:u_add|state.normalise_2      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|adder:u_add|state.get_b            ; fpu_top:u_fpu|adder:u_add|state.get_b            ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
+; 0.455 ; fpu_top:u_fpu|adder:u_add|s_output_z_stb         ; fpu_top:u_fpu|adder:u_add|s_output_z_stb         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.746      ;
++-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
+-----------------------------------------------
+; Slow 1200mV 85C Model Metastability Summary ;
+-----------------------------------------------
+No synchronizer chains to report.
+
+
++-------------------------------------------------+
+; Slow 1200mV 0C Model Fmax Summary               ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 97.89 MHz ; 97.89 MHz       ; CLOCK_50   ;      ;
++-----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++------------------------------------+
+; Slow 1200mV 0C Model Setup Summary ;
++----------+--------+----------------+
+; Clock    ; Slack  ; End Point TNS  ;
++----------+--------+----------------+
+; CLOCK_50 ; -9.216 ; -5828.456      ;
++----------+--------+----------------+
+
+
++-----------------------------------+
+; Slow 1200mV 0C Model Hold Summary ;
++----------+-------+----------------+
+; Clock    ; Slack ; End Point TNS  ;
++----------+-------+----------------+
+; CLOCK_50 ; 0.402 ; 0.000          ;
++----------+-------+----------------+
+
+
+-----------------------------------------
+; Slow 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Slow 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Slow 1200mV 0C Model Minimum Pulse Width Summary ;
++----------+--------+------------------------------+
+; Clock    ; Slack  ; End Point TNS                ;
++----------+--------+------------------------------+
+; CLOCK_50 ; -3.000 ; -1927.178                    ;
++----------+--------+------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Setup: 'CLOCK_50'                                                                                                                             ;
++--------+----------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                              ; To Node                                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -9.216 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.593     ;
+; -9.216 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.593     ;
+; -9.197 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.574     ;
+; -9.191 ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.568     ;
+; -9.181 ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.558     ;
+; -9.159 ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.536     ;
+; -9.158 ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.537     ;
+; -9.148 ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.527     ;
+; -9.142 ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.521     ;
+; -9.108 ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.485     ;
+; -9.090 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.467     ;
+; -9.090 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.467     ;
+; -9.071 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.448     ;
+; -9.065 ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.442     ;
+; -9.055 ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.432     ;
+; -9.051 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.428     ;
+; -9.051 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.428     ;
+; -9.042 ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.366      ; 10.410     ;
+; -9.037 ; fpu_top:u_fpu|multiplier:u_mul|a_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.402     ;
+; -9.033 ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.410     ;
+; -9.032 ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.411     ;
+; -9.032 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.409     ;
+; -9.026 ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.403     ;
+; -9.026 ; fpu_top:u_fpu|multiplier:u_mul|a_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.403     ;
+; -9.022 ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.401     ;
+; -9.016 ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.395     ;
+; -9.016 ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.393     ;
+; -8.994 ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.371     ;
+; -8.993 ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.372     ;
+; -8.985 ; fpu_top:u_fpu|multiplier:u_mul|a_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.350     ;
+; -8.983 ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.362     ;
+; -8.982 ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.359     ;
+; -8.980 ; fpu_top:u_fpu|multiplier:u_mul|a_m[2]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.345     ;
+; -8.977 ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.356     ;
+; -8.975 ; fpu_top:u_fpu|multiplier:u_mul|b_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.354     ;
+; -8.972 ; fpu_top:u_fpu|multiplier:u_mul|a_m[10] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.337     ;
+; -8.964 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.341     ;
+; -8.964 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.341     ;
+; -8.961 ; fpu_top:u_fpu|multiplier:u_mul|a_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.326     ;
+; -8.951 ; fpu_top:u_fpu|multiplier:u_mul|b_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.330     ;
+; -8.945 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.322     ;
+; -8.943 ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.320     ;
+; -8.941 ; fpu_top:u_fpu|multiplier:u_mul|b_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.320     ;
+; -8.939 ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.316     ;
+; -8.936 ; fpu_top:u_fpu|multiplier:u_mul|a_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.301     ;
+; -8.929 ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.306     ;
+; -8.928 ; fpu_top:u_fpu|multiplier:u_mul|b_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.305     ;
+; -8.925 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.302     ;
+; -8.925 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.302     ;
+; -8.916 ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.366      ; 10.284     ;
+; -8.913 ; fpu_top:u_fpu|multiplier:u_mul|b_m[4]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.292     ;
+; -8.912 ; fpu_top:u_fpu|multiplier:u_mul|b_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.289     ;
+; -8.911 ; fpu_top:u_fpu|multiplier:u_mul|a_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.276     ;
+; -8.908 ; fpu_top:u_fpu|multiplier:u_mul|b_m[13] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.285     ;
+; -8.907 ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.284     ;
+; -8.906 ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.285     ;
+; -8.906 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.283     ;
+; -8.900 ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.277     ;
+; -8.900 ; fpu_top:u_fpu|multiplier:u_mul|a_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.277     ;
+; -8.899 ; fpu_top:u_fpu|multiplier:u_mul|b_m[11] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.276     ;
+; -8.896 ; fpu_top:u_fpu|multiplier:u_mul|b_m[17] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.275     ;
+; -8.896 ; fpu_top:u_fpu|multiplier:u_mul|b_m[2]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.273     ;
+; -8.896 ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.275     ;
+; -8.890 ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.269     ;
+; -8.890 ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.267     ;
+; -8.889 ; fpu_top:u_fpu|multiplier:u_mul|b_m[9]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.266     ;
+; -8.883 ; fpu_top:u_fpu|multiplier:u_mul|b_m[6]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.260     ;
+; -8.881 ; fpu_top:u_fpu|multiplier:u_mul|b_m[15] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.258     ;
+; -8.881 ; fpu_top:u_fpu|multiplier:u_mul|b_m[7]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.258     ;
+; -8.877 ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.366      ; 10.245     ;
+; -8.877 ; fpu_top:u_fpu|multiplier:u_mul|b_m[10] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.254     ;
+; -8.872 ; fpu_top:u_fpu|multiplier:u_mul|a_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.237     ;
+; -8.868 ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.245     ;
+; -8.867 ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.246     ;
+; -8.861 ; fpu_top:u_fpu|multiplier:u_mul|a_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.238     ;
+; -8.859 ; fpu_top:u_fpu|multiplier:u_mul|a_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.224     ;
+; -8.857 ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.236     ;
+; -8.856 ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.233     ;
+; -8.854 ; fpu_top:u_fpu|multiplier:u_mul|a_m[2]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.219     ;
+; -8.851 ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.230     ;
+; -8.849 ; fpu_top:u_fpu|multiplier:u_mul|b_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.228     ;
+; -8.846 ; fpu_top:u_fpu|multiplier:u_mul|a_m[10] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.211     ;
+; -8.838 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[41] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.215     ;
+; -8.838 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[41] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.215     ;
+; -8.835 ; fpu_top:u_fpu|multiplier:u_mul|a_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.200     ;
+; -8.825 ; fpu_top:u_fpu|multiplier:u_mul|b_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.204     ;
+; -8.820 ; fpu_top:u_fpu|multiplier:u_mul|a_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.185     ;
+; -8.819 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[41] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.196     ;
+; -8.817 ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.194     ;
+; -8.815 ; fpu_top:u_fpu|multiplier:u_mul|a_m[2]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.180     ;
+; -8.815 ; fpu_top:u_fpu|multiplier:u_mul|b_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.194     ;
+; -8.813 ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[41] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.190     ;
+; -8.810 ; fpu_top:u_fpu|multiplier:u_mul|a_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.175     ;
+; -8.810 ; fpu_top:u_fpu|multiplier:u_mul|b_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.377      ; 10.189     ;
+; -8.807 ; fpu_top:u_fpu|multiplier:u_mul|a_m[10] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.172     ;
+; -8.803 ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[41] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.180     ;
+; -8.802 ; fpu_top:u_fpu|multiplier:u_mul|b_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.179     ;
+; -8.799 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[42] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.176     ;
+; -8.799 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[42] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.375      ; 10.176     ;
+; -8.796 ; fpu_top:u_fpu|multiplier:u_mul|a_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.363      ; 10.161     ;
++--------+----------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Hold: 'CLOCK_50'                                                                                                                                             ;
++-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                        ; To Node                                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.402 ; fpu_uart_cmd:u_cmd|status[0]                     ; fpu_uart_cmd:u_cmd|status[0]                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]            ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]            ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|state.S_WAIT_SYNC             ; fpu_uart_cmd:u_cmd|state.S_WAIT_SYNC             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|state.S_GET_B                 ; fpu_uart_cmd:u_cmd|state.S_GET_B                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|byte_idx[1]                   ; fpu_uart_cmd:u_cmd|byte_idx[1]                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|byte_idx[2]                   ; fpu_uart_cmd:u_cmd|byte_idx[2]                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|state.S_WAIT_Z                ; fpu_uart_cmd:u_cmd|state.S_WAIT_Z                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|state.S_WAIT_AB               ; fpu_uart_cmd:u_cmd|state.S_WAIT_AB               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|b_buf[0]                      ; fpu_uart_cmd:u_cmd|b_buf[0]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|a_buf[0]                      ; fpu_uart_cmd:u_cmd|a_buf[0]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|output_z_ack                  ; fpu_uart_cmd:u_cmd|output_z_ack                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[12]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[12]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[6]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[6]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[5]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[5]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[4]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[4]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[3]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[3]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[2]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[2]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[1]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[1]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[0]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[0]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[7]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[7]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[10]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[10]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[8]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[8]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[9]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[9]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[11]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[11]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[31]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[31]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[30]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[30]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[29]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[29]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[28]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[28]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[27]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[27]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[26]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[26]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[25]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[25]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[24]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[24]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[23]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[23]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[22]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[22]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[21]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[21]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[20]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[20]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[19]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[19]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[18]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[18]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[17]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[17]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[16]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[16]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[15]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[15]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[14]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[14]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|z_wait_cnt[13]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[13]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|input_b_stb                   ; fpu_uart_cmd:u_cmd|input_b_stb                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|input_a_stb                   ; fpu_uart_cmd:u_cmd|input_a_stb                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_rx:u_rx|data_buf[7]                         ; uart_rx:u_rx|data_buf[7]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_rx:u_rx|data_buf[1]                         ; uart_rx:u_rx|data_buf[1]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_rx:u_rx|data_buf[0]                         ; uart_rx:u_rx|data_buf[0]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_rx:u_rx|data_buf[5]                         ; uart_rx:u_rx|data_buf[5]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_rx:u_rx|data_buf[2]                         ; uart_rx:u_rx|data_buf[2]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_rx:u_rx|data_buf[6]                         ; uart_rx:u_rx|data_buf[6]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_rx:u_rx|data_buf[4]                         ; uart_rx:u_rx|data_buf[4]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_rx:u_rx|data_buf[3]                         ; uart_rx:u_rx|data_buf[3]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_rx:u_rx|bit_idx[0]                          ; uart_rx:u_rx|bit_idx[0]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_rx:u_rx|bit_idx[1]                          ; uart_rx:u_rx|bit_idx[1]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_rx:u_rx|bit_idx[2]                          ; uart_rx:u_rx|bit_idx[2]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_rx:u_rx|state.S_IDLE                        ; uart_rx:u_rx|state.S_IDLE                        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_rx:u_rx|state.S_START                       ; uart_rx:u_rx|state.S_START                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|z[22]                ; fpu_top:u_fpu|divider:u_div|z[22]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|z[31]                ; fpu_top:u_fpu|divider:u_div|z[31]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|state.get_b          ; fpu_top:u_fpu|divider:u_div|state.get_b          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|state.normalise_b    ; fpu_top:u_fpu|divider:u_div|state.normalise_b    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|state.get_a          ; fpu_top:u_fpu|divider:u_div|state.get_a          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|state.round          ; fpu_top:u_fpu|divider:u_div|state.round          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|state.divide_0       ; fpu_top:u_fpu|divider:u_div|state.divide_0       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|state.normalise_2    ; fpu_top:u_fpu|divider:u_div|state.normalise_2    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|state.unpack         ; fpu_top:u_fpu|divider:u_div|state.unpack         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|s_input_a_ack        ; fpu_top:u_fpu|divider:u_div|s_input_a_ack        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|busy                               ; fpu_top:u_fpu|busy                               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|a_m[0]               ; fpu_top:u_fpu|divider:u_div|a_m[0]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|guard                ; fpu_top:u_fpu|divider:u_div|guard                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|round_bit            ; fpu_top:u_fpu|divider:u_div|round_bit            ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_top:u_fpu|divider:u_div|state.normalise_1    ; fpu_top:u_fpu|divider:u_div|state.normalise_1    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|b_buf[15]                     ; fpu_uart_cmd:u_cmd|b_buf[15]                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; fpu_uart_cmd:u_cmd|a_buf[15]                     ; fpu_uart_cmd:u_cmd|a_buf[15]                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_tx:u_tx|state.S_STOP                        ; uart_tx:u_tx|state.S_STOP                        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_tx:u_tx|state.S_START                       ; uart_tx:u_tx|state.S_START                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_tx:u_tx|state.S_IDLE                        ; uart_tx:u_tx|state.S_IDLE                        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_tx:u_tx|bit_idx[0]                          ; uart_tx:u_tx|bit_idx[0]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.402 ; uart_tx:u_tx|tx_active                           ; uart_tx:u_tx|tx_active                           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.669      ;
+; 0.403 ; fpu_uart_cmd:u_cmd|status[1]                     ; fpu_uart_cmd:u_cmd|status[1]                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|divider:u_div|s_input_b_ack        ; fpu_top:u_fpu|divider:u_div|s_input_b_ack        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|divider:u_div|state.put_z          ; fpu_top:u_fpu|divider:u_div|state.put_z          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|divider:u_div|s_output_z_stb       ; fpu_top:u_fpu|divider:u_div|s_output_z_stb       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|divider:u_div|count[0]             ; fpu_top:u_fpu|divider:u_div|count[0]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|divider:u_div|count[1]             ; fpu_top:u_fpu|divider:u_div|count[1]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; uart_tx:u_tx|bit_idx[2]                          ; uart_tx:u_tx|bit_idx[2]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|multiplier:u_mul|s_output_z_stb    ; fpu_top:u_fpu|multiplier:u_mul|s_output_z_stb    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|multiplier:u_mul|state.get_a       ; fpu_top:u_fpu|multiplier:u_mul|state.get_a       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_2 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_2 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_b ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_b ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|multiplier:u_mul|state.get_b       ; fpu_top:u_fpu|multiplier:u_mul|state.get_b       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|multiplier:u_mul|s_input_b_ack     ; fpu_top:u_fpu|multiplier:u_mul|s_input_b_ack     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|multiplier:u_mul|s_input_a_ack     ; fpu_top:u_fpu|multiplier:u_mul|s_input_a_ack     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_1 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_1 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|adder:u_add|state.get_a            ; fpu_top:u_fpu|adder:u_add|state.get_a            ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|adder:u_add|state.normalise_2      ; fpu_top:u_fpu|adder:u_add|state.normalise_2      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|adder:u_add|state.get_b            ; fpu_top:u_fpu|adder:u_add|state.get_b            ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|adder:u_add|s_output_z_stb         ; fpu_top:u_fpu|adder:u_add|s_output_z_stb         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
+; 0.403 ; fpu_top:u_fpu|adder:u_add|a_m[26]                ; fpu_top:u_fpu|adder:u_add|a_m[26]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.669      ;
++-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
+----------------------------------------------
+; Slow 1200mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++------------------------------------+
+; Fast 1200mV 0C Model Setup Summary ;
++----------+--------+----------------+
+; Clock    ; Slack  ; End Point TNS  ;
++----------+--------+----------------+
+; CLOCK_50 ; -3.851 ; -2043.827      ;
++----------+--------+----------------+
+
+
++-----------------------------------+
+; Fast 1200mV 0C Model Hold Summary ;
++----------+-------+----------------+
+; Clock    ; Slack ; End Point TNS  ;
++----------+-------+----------------+
+; CLOCK_50 ; 0.186 ; 0.000          ;
++----------+-------+----------------+
+
+
+-----------------------------------------
+; Fast 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Fast 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Fast 1200mV 0C Model Minimum Pulse Width Summary ;
++----------+--------+------------------------------+
+; Clock    ; Slack  ; End Point TNS                ;
++----------+--------+------------------------------+
+; CLOCK_50 ; -3.000 ; -1369.126                    ;
++----------+--------+------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Setup: 'CLOCK_50'                                                                                                                             ;
++--------+----------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                              ; To Node                                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -3.851 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.993      ;
+; -3.848 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.990      ;
+; -3.844 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.986      ;
+; -3.835 ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.977      ;
+; -3.833 ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.975      ;
+; -3.830 ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.972      ;
+; -3.819 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.961      ;
+; -3.816 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.958      ;
+; -3.812 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.954      ;
+; -3.808 ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.953      ;
+; -3.805 ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.950      ;
+; -3.803 ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.948      ;
+; -3.803 ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.945      ;
+; -3.801 ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.946      ;
+; -3.801 ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.943      ;
+; -3.798 ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.940      ;
+; -3.796 ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.152      ; 4.935      ;
+; -3.795 ; fpu_top:u_fpu|multiplier:u_mul|a_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.937      ;
+; -3.789 ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.931      ;
+; -3.783 ; fpu_top:u_fpu|multiplier:u_mul|a_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.920      ;
+; -3.783 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.925      ;
+; -3.780 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.922      ;
+; -3.776 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.918      ;
+; -3.773 ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.918      ;
+; -3.771 ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.916      ;
+; -3.767 ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.909      ;
+; -3.765 ; fpu_top:u_fpu|multiplier:u_mul|a_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.902      ;
+; -3.765 ; fpu_top:u_fpu|multiplier:u_mul|b_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.910      ;
+; -3.765 ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.907      ;
+; -3.764 ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.152      ; 4.903      ;
+; -3.763 ; fpu_top:u_fpu|multiplier:u_mul|a_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.905      ;
+; -3.762 ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.904      ;
+; -3.757 ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.899      ;
+; -3.751 ; fpu_top:u_fpu|multiplier:u_mul|a_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.888      ;
+; -3.751 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.893      ;
+; -3.751 ; fpu_top:u_fpu|multiplier:u_mul|b_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.896      ;
+; -3.748 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.890      ;
+; -3.745 ; fpu_top:u_fpu|multiplier:u_mul|a_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.882      ;
+; -3.744 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.886      ;
+; -3.743 ; fpu_top:u_fpu|multiplier:u_mul|a_m[10] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.880      ;
+; -3.740 ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.885      ;
+; -3.738 ; fpu_top:u_fpu|multiplier:u_mul|a_m[2]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.875      ;
+; -3.737 ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.882      ;
+; -3.735 ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.880      ;
+; -3.735 ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.877      ;
+; -3.733 ; fpu_top:u_fpu|multiplier:u_mul|a_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.870      ;
+; -3.733 ; fpu_top:u_fpu|multiplier:u_mul|b_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.878      ;
+; -3.733 ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.878      ;
+; -3.733 ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.875      ;
+; -3.730 ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.872      ;
+; -3.728 ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.152      ; 4.867      ;
+; -3.727 ; fpu_top:u_fpu|multiplier:u_mul|a_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.869      ;
+; -3.724 ; fpu_top:u_fpu|multiplier:u_mul|b_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.869      ;
+; -3.721 ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.863      ;
+; -3.719 ; fpu_top:u_fpu|multiplier:u_mul|b_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.864      ;
+; -3.715 ; fpu_top:u_fpu|multiplier:u_mul|a_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.852      ;
+; -3.715 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.857      ;
+; -3.715 ; fpu_top:u_fpu|multiplier:u_mul|b_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.857      ;
+; -3.713 ; fpu_top:u_fpu|multiplier:u_mul|a_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.850      ;
+; -3.712 ; fpu_top:u_fpu|multiplier:u_mul|b_m[13] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.854      ;
+; -3.712 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.854      ;
+; -3.711 ; fpu_top:u_fpu|multiplier:u_mul|a_m[10] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.848      ;
+; -3.711 ; fpu_top:u_fpu|multiplier:u_mul|b_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.853      ;
+; -3.711 ; fpu_top:u_fpu|multiplier:u_mul|b_m[4]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.856      ;
+; -3.708 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.850      ;
+; -3.706 ; fpu_top:u_fpu|multiplier:u_mul|a_m[2]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.843      ;
+; -3.705 ; fpu_top:u_fpu|multiplier:u_mul|b_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.850      ;
+; -3.704 ; fpu_top:u_fpu|multiplier:u_mul|b_m[17] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.849      ;
+; -3.704 ; fpu_top:u_fpu|multiplier:u_mul|b_m[2]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.846      ;
+; -3.704 ; fpu_top:u_fpu|multiplier:u_mul|b_m[11] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.846      ;
+; -3.703 ; fpu_top:u_fpu|multiplier:u_mul|b_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.848      ;
+; -3.702 ; fpu_top:u_fpu|multiplier:u_mul|b_m[7]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.844      ;
+; -3.701 ; fpu_top:u_fpu|multiplier:u_mul|b_m[6]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.843      ;
+; -3.700 ; fpu_top:u_fpu|multiplier:u_mul|b_m[9]  ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.842      ;
+; -3.699 ; fpu_top:u_fpu|multiplier:u_mul|b_m[12] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.841      ;
+; -3.698 ; fpu_top:u_fpu|multiplier:u_mul|b_m[10] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.840      ;
+; -3.697 ; fpu_top:u_fpu|multiplier:u_mul|a_m[1]  ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.834      ;
+; -3.697 ; fpu_top:u_fpu|multiplier:u_mul|b_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.842      ;
+; -3.697 ; fpu_top:u_fpu|multiplier:u_mul|a_m[21] ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.839      ;
+; -3.696 ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.152      ; 4.835      ;
+; -3.695 ; fpu_top:u_fpu|multiplier:u_mul|a_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.837      ;
+; -3.694 ; fpu_top:u_fpu|multiplier:u_mul|b_m[15] ; fpu_top:u_fpu|multiplier:u_mul|product[47] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.836      ;
+; -3.694 ; fpu_top:u_fpu|multiplier:u_mul|b_m[8]  ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.836      ;
+; -3.692 ; fpu_top:u_fpu|multiplier:u_mul|b_m[0]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.837      ;
+; -3.689 ; fpu_top:u_fpu|multiplier:u_mul|a_m[19] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.831      ;
+; -3.683 ; fpu_top:u_fpu|multiplier:u_mul|a_m[16] ; fpu_top:u_fpu|multiplier:u_mul|product[44] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.820      ;
+; -3.683 ; fpu_top:u_fpu|multiplier:u_mul|a_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[42] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.825      ;
+; -3.683 ; fpu_top:u_fpu|multiplier:u_mul|b_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.825      ;
+; -3.683 ; fpu_top:u_fpu|multiplier:u_mul|b_m[20] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.828      ;
+; -3.680 ; fpu_top:u_fpu|multiplier:u_mul|b_m[13] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.822      ;
+; -3.680 ; fpu_top:u_fpu|multiplier:u_mul|a_m[18] ; fpu_top:u_fpu|multiplier:u_mul|product[42] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.822      ;
+; -3.679 ; fpu_top:u_fpu|multiplier:u_mul|b_m[3]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.821      ;
+; -3.679 ; fpu_top:u_fpu|multiplier:u_mul|b_m[4]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.824      ;
+; -3.677 ; fpu_top:u_fpu|multiplier:u_mul|a_m[14] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.814      ;
+; -3.676 ; fpu_top:u_fpu|multiplier:u_mul|a_m[22] ; fpu_top:u_fpu|multiplier:u_mul|product[42] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.818      ;
+; -3.675 ; fpu_top:u_fpu|multiplier:u_mul|a_m[10] ; fpu_top:u_fpu|multiplier:u_mul|product[45] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.150      ; 4.812      ;
+; -3.672 ; fpu_top:u_fpu|multiplier:u_mul|b_m[17] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.817      ;
+; -3.672 ; fpu_top:u_fpu|multiplier:u_mul|b_m[2]  ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.814      ;
+; -3.672 ; fpu_top:u_fpu|multiplier:u_mul|b_m[11] ; fpu_top:u_fpu|multiplier:u_mul|product[46] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.155      ; 4.814      ;
+; -3.672 ; fpu_top:u_fpu|multiplier:u_mul|b_m[5]  ; fpu_top:u_fpu|multiplier:u_mul|product[43] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.158      ; 4.817      ;
++--------+----------------------------------------+--------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Hold: 'CLOCK_50'                                                                                                                                             ;
++-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                        ; To Node                                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.186 ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]            ; fpu_top:u_fpu|multiplier:u_mul|a_m[0]            ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|state.S_GET_B                 ; fpu_uart_cmd:u_cmd|state.S_GET_B                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|byte_idx[1]                   ; fpu_uart_cmd:u_cmd|byte_idx[1]                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|byte_idx[2]                   ; fpu_uart_cmd:u_cmd|byte_idx[2]                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|b_buf[0]                      ; fpu_uart_cmd:u_cmd|b_buf[0]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|a_buf[0]                      ; fpu_uart_cmd:u_cmd|a_buf[0]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[12]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[12]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[3]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[3]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[0]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[0]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[10]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[10]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[8]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[8]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[9]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[9]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[11]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[11]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[31]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[31]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[30]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[30]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[29]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[29]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[28]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[28]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[27]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[27]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[26]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[26]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[25]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[25]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[24]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[24]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[23]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[23]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[22]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[22]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[21]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[21]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[20]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[20]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[19]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[19]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[18]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[18]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[17]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[17]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[16]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[16]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[15]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[15]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[14]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[14]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|z_wait_cnt[13]                ; fpu_uart_cmd:u_cmd|z_wait_cnt[13]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_rx:u_rx|data_buf[1]                         ; uart_rx:u_rx|data_buf[1]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_rx:u_rx|data_buf[0]                         ; uart_rx:u_rx|data_buf[0]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_rx:u_rx|data_buf[5]                         ; uart_rx:u_rx|data_buf[5]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_rx:u_rx|data_buf[2]                         ; uart_rx:u_rx|data_buf[2]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_rx:u_rx|data_buf[4]                         ; uart_rx:u_rx|data_buf[4]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_rx:u_rx|data_buf[3]                         ; uart_rx:u_rx|data_buf[3]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_rx:u_rx|bit_idx[0]                          ; uart_rx:u_rx|bit_idx[0]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_rx:u_rx|bit_idx[1]                          ; uart_rx:u_rx|bit_idx[1]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_rx:u_rx|bit_idx[2]                          ; uart_rx:u_rx|bit_idx[2]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_rx:u_rx|state.S_IDLE                        ; uart_rx:u_rx|state.S_IDLE                        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|z[22]                ; fpu_top:u_fpu|divider:u_div|z[22]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|z[31]                ; fpu_top:u_fpu|divider:u_div|z[31]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|state.get_b          ; fpu_top:u_fpu|divider:u_div|state.get_b          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|state.normalise_b    ; fpu_top:u_fpu|divider:u_div|state.normalise_b    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|state.get_a          ; fpu_top:u_fpu|divider:u_div|state.get_a          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|state.round          ; fpu_top:u_fpu|divider:u_div|state.round          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|state.divide_0       ; fpu_top:u_fpu|divider:u_div|state.divide_0       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|state.normalise_2    ; fpu_top:u_fpu|divider:u_div|state.normalise_2    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|state.unpack         ; fpu_top:u_fpu|divider:u_div|state.unpack         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|s_input_a_ack        ; fpu_top:u_fpu|divider:u_div|s_input_a_ack        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|busy                               ; fpu_top:u_fpu|busy                               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|a_m[0]               ; fpu_top:u_fpu|divider:u_div|a_m[0]               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|guard                ; fpu_top:u_fpu|divider:u_div|guard                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|b_buf[15]                     ; fpu_uart_cmd:u_cmd|b_buf[15]                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_uart_cmd:u_cmd|a_buf[15]                     ; fpu_uart_cmd:u_cmd|a_buf[15]                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|count[0]             ; fpu_top:u_fpu|divider:u_div|count[0]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; fpu_top:u_fpu|divider:u_div|count[1]             ; fpu_top:u_fpu|divider:u_div|count[1]             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_tx:u_tx|state.S_STOP                        ; uart_tx:u_tx|state.S_STOP                        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_tx:u_tx|state.S_START                       ; uart_tx:u_tx|state.S_START                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_tx:u_tx|state.S_IDLE                        ; uart_tx:u_tx|state.S_IDLE                        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_tx:u_tx|bit_idx[0]                          ; uart_tx:u_tx|bit_idx[0]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; uart_tx:u_tx|tx_active                           ; uart_tx:u_tx|tx_active                           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.037      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|status[1]                     ; fpu_uart_cmd:u_cmd|status[1]                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|status[0]                     ; fpu_uart_cmd:u_cmd|status[0]                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|state.S_WAIT_SYNC             ; fpu_uart_cmd:u_cmd|state.S_WAIT_SYNC             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|state.S_WAIT_Z                ; fpu_uart_cmd:u_cmd|state.S_WAIT_Z                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|state.S_WAIT_AB               ; fpu_uart_cmd:u_cmd|state.S_WAIT_AB               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|output_z_ack                  ; fpu_uart_cmd:u_cmd|output_z_ack                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|z_wait_cnt[6]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[6]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|z_wait_cnt[5]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[5]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|z_wait_cnt[4]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[4]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|z_wait_cnt[2]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[2]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|z_wait_cnt[1]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[1]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|z_wait_cnt[7]                 ; fpu_uart_cmd:u_cmd|z_wait_cnt[7]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|input_b_stb                   ; fpu_uart_cmd:u_cmd|input_b_stb                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_uart_cmd:u_cmd|input_a_stb                   ; fpu_uart_cmd:u_cmd|input_a_stb                   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; uart_rx:u_rx|data_buf[7]                         ; uart_rx:u_rx|data_buf[7]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; uart_rx:u_rx|data_buf[6]                         ; uart_rx:u_rx|data_buf[6]                         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; uart_rx:u_rx|state.S_START                       ; uart_rx:u_rx|state.S_START                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|divider:u_div|s_input_b_ack        ; fpu_top:u_fpu|divider:u_div|s_input_b_ack        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|divider:u_div|state.put_z          ; fpu_top:u_fpu|divider:u_div|state.put_z          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|divider:u_div|s_output_z_stb       ; fpu_top:u_fpu|divider:u_div|s_output_z_stb       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|divider:u_div|round_bit            ; fpu_top:u_fpu|divider:u_div|round_bit            ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|divider:u_div|state.normalise_1    ; fpu_top:u_fpu|divider:u_div|state.normalise_1    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; uart_tx:u_tx|bit_idx[2]                          ; uart_tx:u_tx|bit_idx[2]                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|multiplier:u_mul|s_output_z_stb    ; fpu_top:u_fpu|multiplier:u_mul|s_output_z_stb    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|multiplier:u_mul|state.get_a       ; fpu_top:u_fpu|multiplier:u_mul|state.get_a       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_2 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_2 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_b ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_b ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|multiplier:u_mul|state.get_b       ; fpu_top:u_fpu|multiplier:u_mul|state.get_b       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|multiplier:u_mul|s_input_b_ack     ; fpu_top:u_fpu|multiplier:u_mul|s_input_b_ack     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|multiplier:u_mul|s_input_a_ack     ; fpu_top:u_fpu|multiplier:u_mul|s_input_a_ack     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_1 ; fpu_top:u_fpu|multiplier:u_mul|state.normalise_1 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|adder:u_add|state.get_a            ; fpu_top:u_fpu|adder:u_add|state.get_a            ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|adder:u_add|state.normalise_2      ; fpu_top:u_fpu|adder:u_add|state.normalise_2      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|adder:u_add|state.get_b            ; fpu_top:u_fpu|adder:u_add|state.get_b            ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|adder:u_add|s_output_z_stb         ; fpu_top:u_fpu|adder:u_add|s_output_z_stb         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; fpu_top:u_fpu|adder:u_add|a_m[26]                ; fpu_top:u_fpu|adder:u_add|a_m[26]                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.036      ; 0.307      ;
++-------+--------------------------------------------------+--------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
+----------------------------------------------
+; Fast 1200mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++---------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                             ;
++------------------+-----------+-------+----------+---------+---------------------+
+; Clock            ; Setup     ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+-----------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -10.183   ; 0.186 ; N/A      ; N/A     ; -3.000              ;
+;  CLOCK_50        ; -10.183   ; 0.186 ; N/A      ; N/A     ; -3.000              ;
+; Design-wide TNS  ; -6326.816 ; 0.0   ; 0.0      ; 0.0     ; -1927.178           ;
+;  CLOCK_50        ; -6326.816 ; 0.000 ; N/A      ; N/A     ; -1927.178           ;
++------------------+-----------+-------+----------+---------+---------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Board Trace Model Assignments                                                                                                                                                                                                                                                                                                                                                                                    ;
++---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Pin           ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
++---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; UART_TX       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ~ALTERA_DCLK~ ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ~ALTERA_nCEO~ ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
++---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+
+
++----------------------------------------------------------------------------+
+; Input Transition Times                                                     ;
++-------------------------+--------------+-----------------+-----------------+
+; Pin                     ; I/O Standard ; 10-90 Rise Time ; 90-10 Fall Time ;
++-------------------------+--------------+-----------------+-----------------+
+; CLOCK_50                ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; RESET_N                 ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; UART_RX                 ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_ASDO_DATA1~     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_FLASH_nCE_nCSO~ ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_DATA0~          ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
++-------------------------+--------------+-----------------+-----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; UART_TX       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.8e-09 V                    ; 2.37 V              ; -0.00373 V          ; 0.104 V                              ; 0.011 V                              ; 4.34e-10 s                  ; 3.82e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 2.8e-09 V                   ; 2.37 V             ; -0.00373 V         ; 0.104 V                             ; 0.011 V                             ; 4.34e-10 s                 ; 3.82e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_DCLK~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.74e-09 V                   ; 2.37 V              ; -0.0346 V           ; 0.198 V                              ; 0.094 V                              ; 3.14e-10 s                  ; 2.92e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 1.74e-09 V                  ; 2.37 V             ; -0.0346 V          ; 0.198 V                             ; 0.094 V                             ; 3.14e-10 s                 ; 2.92e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_nCEO~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.57e-09 V                   ; 2.37 V              ; -0.00683 V          ; 0.171 V                              ; 0.018 V                              ; 4.97e-10 s                  ; 6.66e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 2.57e-09 V                  ; 2.37 V             ; -0.00683 V         ; 0.171 V                             ; 0.018 V                             ; 4.97e-10 s                 ; 6.66e-10 s                 ; Yes                       ; Yes                       ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; UART_TX       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.85e-07 V                   ; 2.35 V              ; -0.0123 V           ; 0.144 V                              ; 0.042 V                              ; 4.81e-10 s                  ; 4.81e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 2.85e-07 V                  ; 2.35 V             ; -0.0123 V          ; 0.144 V                             ; 0.042 V                             ; 4.81e-10 s                 ; 4.81e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_DCLK~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.55e-07 V                   ; 2.35 V              ; -0.00221 V          ; 0.097 V                              ; 0.005 V                              ; 4.49e-10 s                  ; 3.85e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 1.55e-07 V                  ; 2.35 V             ; -0.00221 V         ; 0.097 V                             ; 0.005 V                             ; 4.49e-10 s                 ; 3.85e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_nCEO~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.54e-07 V                   ; 2.34 V              ; -0.00774 V          ; 0.109 V                              ; 0.026 V                              ; 6.58e-10 s                  ; 8.24e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 2.54e-07 V                  ; 2.34 V             ; -0.00774 V         ; 0.109 V                             ; 0.026 V                             ; 6.58e-10 s                 ; 8.24e-10 s                 ; Yes                       ; Yes                       ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; UART_TX       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 4.05e-08 V                   ; 2.72 V              ; -0.0349 V           ; 0.173 V                              ; 0.1 V                                ; 2.72e-10 s                  ; 2.69e-10 s                  ; Yes                        ; Yes                        ; 2.62 V                      ; 4.05e-08 V                  ; 2.72 V             ; -0.0349 V          ; 0.173 V                             ; 0.1 V                               ; 2.72e-10 s                 ; 2.69e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_DCLK~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 2.22e-08 V                   ; 2.74 V              ; -0.06 V             ; 0.158 V                              ; 0.08 V                               ; 2.68e-10 s                  ; 2.19e-10 s                  ; Yes                        ; Yes                        ; 2.62 V                      ; 2.22e-08 V                  ; 2.74 V             ; -0.06 V            ; 0.158 V                             ; 0.08 V                              ; 2.68e-10 s                 ; 2.19e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_nCEO~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 3.54e-08 V                   ; 2.7 V               ; -0.00943 V          ; 0.276 V                              ; 0.035 V                              ; 3.19e-10 s                  ; 4.99e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 3.54e-08 V                  ; 2.7 V              ; -0.00943 V         ; 0.276 V                             ; 0.035 V                             ; 3.19e-10 s                 ; 4.99e-10 s                 ; No                        ; Yes                       ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLOCK_50   ; CLOCK_50 ; 296149   ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLOCK_50   ; CLOCK_50 ; 296149   ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 2     ; 2    ;
+; Unconstrained Input Port Paths  ; 373   ; 373  ;
+; Unconstrained Output Ports      ; 1     ; 1    ;
+; Unconstrained Output Port Paths ; 1     ; 1    ;
++---------------------------------+-------+------+
+
+
++------------------------------------------+
+; Clock Status Summary                     ;
++----------+----------+------+-------------+
+; Target   ; Clock    ; Type ; Status      ;
++----------+----------+------+-------------+
+; CLOCK_50 ; CLOCK_50 ; Base ; Constrained ;
++----------+----------+------+-------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; RESET_N    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; UART_RX    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; UART_TX     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; RESET_N    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; UART_RX    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; UART_TX     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Sun Dec 28 03:02:23 2025
+Info: Command: quartus_sta fpu_qp -c fpu_qp
+Info: qsta_default_script.tcl version: #1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'fpu_qp.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name CLOCK_50 CLOCK_50
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 1200mV 85C Model
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
+Info (332146): Worst-case setup slack is -10.183
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -10.183           -6326.816 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.454
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.454               0.000 CLOCK_50 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000           -1927.178 CLOCK_50 
+Info: Analyzing Slow 1200mV 0C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
+Info (332146): Worst-case setup slack is -9.216
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -9.216           -5828.456 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.402
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.402               0.000 CLOCK_50 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000           -1927.178 CLOCK_50 
+Info: Analyzing Fast 1200mV 0C Model
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
+Info (332146): Worst-case setup slack is -3.851
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.851           -2043.827 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.186
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.186               0.000 CLOCK_50 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000           -1369.126 CLOCK_50 
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4831 megabytes
+    Info: Processing ended: Sun Dec 28 03:02:25 2025
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
+
+

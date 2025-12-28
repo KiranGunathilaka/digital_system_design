@@ -1,0 +1,860 @@
+Analysis & Synthesis report for fpu_qp
+Sun Dec 28 03:02:08 2025
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. State Machine - |fpu_qp|fpu_top:u_fpu|divider:u_div|state
+ 10. State Machine - |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|state
+ 11. State Machine - |fpu_qp|fpu_top:u_fpu|adder:u_add|state
+ 12. State Machine - |fpu_qp|fpu_uart_cmd:u_cmd|state
+ 13. State Machine - |fpu_qp|uart_tx:u_tx|state
+ 14. State Machine - |fpu_qp|uart_rx:u_rx|state
+ 15. Registers Removed During Synthesis
+ 16. Removed Registers Triggering Further Register Optimizations
+ 17. General Register Statistics
+ 18. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 19. Parameter Settings for User Entity Instance: Top-level Entity: |fpu_qp
+ 20. Parameter Settings for User Entity Instance: uart_rx:u_rx
+ 21. Parameter Settings for User Entity Instance: uart_tx:u_tx
+ 22. Parameter Settings for User Entity Instance: fpu_uart_cmd:u_cmd
+ 23. Parameter Settings for User Entity Instance: fpu_top:u_fpu|adder:u_add
+ 24. Parameter Settings for User Entity Instance: fpu_top:u_fpu|multiplier:u_mul
+ 25. Parameter Settings for User Entity Instance: fpu_top:u_fpu|divider:u_div
+ 26. Parameter Settings for Inferred Entity Instance: fpu_top:u_fpu|multiplier:u_mul|lpm_mult:Mult0
+ 27. lpm_mult Parameter Settings by Entity Instance
+ 28. Post-Synthesis Netlist Statistics for Top Partition
+ 29. Elapsed Time Per Partition
+ 30. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Dec 28 03:02:08 2025       ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                      ; fpu_qp                                      ;
+; Top-level Entity Name              ; fpu_qp                                      ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 2,505                                       ;
+;     Total combinational functions  ; 2,127                                       ;
+;     Dedicated logic registers      ; 1,294                                       ;
+; Total registers                    ; 1294                                        ;
+; Total pins                         ; 4                                           ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 7                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE22F17C8       ;                    ;
+; Top-level entity name                                            ; fpu_qp             ; fpu_qp             ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 6           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
+;     Processor 5            ;   0.1%      ;
+;     Processor 6            ;   0.1%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                               ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                           ; Library ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------+---------+
+; fpu_top.v                        ; yes             ; User Verilog HDL File        ; D:/IntelFPGA/sem_5/fpu/fpu_top.v                                       ;         ;
+; multiplier/multiplier.v          ; yes             ; User Verilog HDL File        ; D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v                         ;         ;
+; divider/divider.v                ; yes             ; User Verilog HDL File        ; D:/IntelFPGA/sem_5/fpu/divider/divider.v                               ;         ;
+; adder/adder.v                    ; yes             ; User Verilog HDL File        ; D:/IntelFPGA/sem_5/fpu/adder/adder.v                                   ;         ;
+; uart_rx.v                        ; yes             ; User Verilog HDL File        ; D:/IntelFPGA/sem_5/fpu/uart_rx.v                                       ;         ;
+; uart_tx.v                        ; yes             ; User Verilog HDL File        ; D:/IntelFPGA/sem_5/fpu/uart_tx.v                                       ;         ;
+; fpu_uart_cmd.v                   ; yes             ; User Verilog HDL File        ; D:/IntelFPGA/sem_5/fpu/fpu_uart_cmd.v                                  ;         ;
+; fpu_qp.v                         ; yes             ; User Verilog HDL File        ; D:/IntelFPGA/sem_5/fpu/fpu_qp.v                                        ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_mult.tdf    ;         ;
+; aglobal201.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/aglobal201.inc  ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_add_sub.inc ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/multcore.inc    ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/bypassff.inc    ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altshift.inc    ;         ;
+; db/mult_bdt.tdf                  ; yes             ; Auto-Generated Megafunction  ; D:/IntelFPGA/sem_5/fpu/db/mult_bdt.tdf                                 ;         ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimated Total logic elements              ; 2,505          ;
+;                                             ;                ;
+; Total combinational functions               ; 2127           ;
+; Logic element usage by number of LUT inputs ;                ;
+;     -- 4 input functions                    ; 733            ;
+;     -- 3 input functions                    ; 700            ;
+;     -- <=2 input functions                  ; 694            ;
+;                                             ;                ;
+; Logic elements by mode                      ;                ;
+;     -- normal mode                          ; 1531           ;
+;     -- arithmetic mode                      ; 596            ;
+;                                             ;                ;
+; Total registers                             ; 1294           ;
+;     -- Dedicated logic registers            ; 1294           ;
+;     -- I/O registers                        ; 0              ;
+;                                             ;                ;
+; I/O pins                                    ; 4              ;
+;                                             ;                ;
+; Embedded Multiplier 9-bit elements          ; 7              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 1294           ;
+; Total fan-out                               ; 10842          ;
+; Average fan-out                             ; 3.15           ;
++---------------------------------------------+----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                            ;
++---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------+--------------+--------------+
+; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                           ; Entity Name  ; Library Name ;
++---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------+--------------+--------------+
+; |fpu_qp                               ; 2127 (0)            ; 1294 (0)                  ; 0           ; 7            ; 1       ; 3         ; 4    ; 0            ; |fpu_qp                                                                       ; fpu_qp       ; work         ;
+;    |fpu_top:u_fpu|                    ; 1617 (12)           ; 974 (3)                   ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fpu_qp|fpu_top:u_fpu                                                         ; fpu_top      ; work         ;
+;       |adder:u_add|                   ; 578 (578)           ; 285 (285)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpu_qp|fpu_top:u_fpu|adder:u_add                                             ; adder        ; work         ;
+;       |divider:u_div|                 ; 597 (597)           ; 386 (386)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpu_qp|fpu_top:u_fpu|divider:u_div                                           ; divider      ; work         ;
+;       |multiplier:u_mul|              ; 430 (405)           ; 300 (300)                 ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fpu_qp|fpu_top:u_fpu|multiplier:u_mul                                        ; multiplier   ; work         ;
+;          |lpm_mult:Mult0|             ; 25 (0)              ; 0 (0)                     ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|lpm_mult:Mult0                         ; lpm_mult     ; work         ;
+;             |mult_bdt:auto_generated| ; 25 (25)             ; 0 (0)                     ; 0           ; 7            ; 1       ; 3         ; 0    ; 0            ; |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|lpm_mult:Mult0|mult_bdt:auto_generated ; mult_bdt     ; work         ;
+;    |fpu_uart_cmd:u_cmd|               ; 396 (396)           ; 257 (257)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpu_qp|fpu_uart_cmd:u_cmd                                                    ; fpu_uart_cmd ; work         ;
+;    |uart_rx:u_rx|                     ; 65 (65)             ; 36 (36)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpu_qp|uart_rx:u_rx                                                          ; uart_rx      ; work         ;
+;    |uart_tx:u_tx|                     ; 49 (49)             ; 27 (27)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |fpu_qp|uart_tx:u_tx                                                          ; uart_tx      ; work         ;
++---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------+--------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 1           ;
+; Simple Multipliers (18-bit)           ; 3           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 7           ;
+; Signed Embedded Multipliers           ; 0           ;
+; Unsigned Embedded Multipliers         ; 4           ;
+; Mixed Sign Embedded Multipliers       ; 0           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |fpu_qp|fpu_top:u_fpu|divider:u_div|state                                                                                                                                                                                                                         ;
++---------------------+-------------+------------+-------------+-------------------+-------------------+----------------+----------------+----------------+----------------+-------------------+-------------------+---------------------+--------------+-------------+-------------+
+; Name                ; state.put_z ; state.pack ; state.round ; state.normalise_2 ; state.normalise_1 ; state.divide_3 ; state.divide_2 ; state.divide_1 ; state.divide_0 ; state.normalise_b ; state.normalise_a ; state.special_cases ; state.unpack ; state.get_b ; state.get_a ;
++---------------------+-------------+------------+-------------+-------------------+-------------------+----------------+----------------+----------------+----------------+-------------------+-------------------+---------------------+--------------+-------------+-------------+
+; state.get_a         ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 0           ;
+; state.get_b         ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0                 ; 0                   ; 0            ; 1           ; 1           ;
+; state.unpack        ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0                 ; 0                   ; 1            ; 0           ; 1           ;
+; state.special_cases ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0                 ; 1                   ; 0            ; 0           ; 1           ;
+; state.normalise_a   ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0                 ; 1                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.normalise_b   ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 1                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.divide_0      ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 1              ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.divide_1      ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0              ; 0              ; 1              ; 0              ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.divide_2      ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0              ; 1              ; 0              ; 0              ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.divide_3      ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 1              ; 0              ; 0              ; 0              ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.normalise_1   ; 0           ; 0          ; 0           ; 0                 ; 1                 ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.normalise_2   ; 0           ; 0          ; 0           ; 1                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.round         ; 0           ; 0          ; 1           ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.pack          ; 0           ; 1          ; 0           ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.put_z         ; 1           ; 0          ; 0           ; 0                 ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
++---------------------+-------------+------------+-------------+-------------------+-------------------+----------------+----------------+----------------+----------------+-------------------+-------------------+---------------------+--------------+-------------+-------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|state                                                                                                                                                                                        ;
++---------------------+-------------+------------+-------------+-------------------+-------------------+------------------+------------------+-------------------+-------------------+---------------------+--------------+-------------+-------------+
+; Name                ; state.put_z ; state.pack ; state.round ; state.normalise_2 ; state.normalise_1 ; state.multiply_1 ; state.multiply_0 ; state.normalise_b ; state.normalise_a ; state.special_cases ; state.unpack ; state.get_b ; state.get_a ;
++---------------------+-------------+------------+-------------+-------------------+-------------------+------------------+------------------+-------------------+-------------------+---------------------+--------------+-------------+-------------+
+; state.get_a         ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0                ; 0                ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 0           ;
+; state.get_b         ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0                ; 0                ; 0                 ; 0                 ; 0                   ; 0            ; 1           ; 1           ;
+; state.unpack        ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0                ; 0                ; 0                 ; 0                 ; 0                   ; 1            ; 0           ; 1           ;
+; state.special_cases ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0                ; 0                ; 0                 ; 0                 ; 1                   ; 0            ; 0           ; 1           ;
+; state.normalise_a   ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0                ; 0                ; 0                 ; 1                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.normalise_b   ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0                ; 0                ; 1                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.multiply_0    ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0                ; 1                ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.multiply_1    ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 1                ; 0                ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.normalise_1   ; 0           ; 0          ; 0           ; 0                 ; 1                 ; 0                ; 0                ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.normalise_2   ; 0           ; 0          ; 0           ; 1                 ; 0                 ; 0                ; 0                ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.round         ; 0           ; 0          ; 1           ; 0                 ; 0                 ; 0                ; 0                ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.pack          ; 0           ; 1          ; 0           ; 0                 ; 0                 ; 0                ; 0                ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
+; state.put_z         ; 1           ; 0          ; 0           ; 0                 ; 0                 ; 0                ; 0                ; 0                 ; 0                 ; 0                   ; 0            ; 0           ; 1           ;
++---------------------+-------------+------------+-------------+-------------------+-------------------+------------------+------------------+-------------------+-------------------+---------------------+--------------+-------------+-------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |fpu_qp|fpu_top:u_fpu|adder:u_add|state                                                                                                                                                         ;
++---------------------+-------------+------------+-------------+-------------------+-------------------+-------------+-------------+-------------+---------------------+--------------+-------------+-------------+
+; Name                ; state.put_z ; state.pack ; state.round ; state.normalise_2 ; state.normalise_1 ; state.add_1 ; state.add_0 ; state.align ; state.special_cases ; state.unpack ; state.get_b ; state.get_a ;
++---------------------+-------------+------------+-------------+-------------------+-------------------+-------------+-------------+-------------+---------------------+--------------+-------------+-------------+
+; state.get_a         ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0           ; 0           ; 0           ; 0                   ; 0            ; 0           ; 0           ;
+; state.get_b         ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0           ; 0           ; 0           ; 0                   ; 0            ; 1           ; 1           ;
+; state.unpack        ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0           ; 0           ; 0           ; 0                   ; 1            ; 0           ; 1           ;
+; state.special_cases ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0           ; 0           ; 0           ; 1                   ; 0            ; 0           ; 1           ;
+; state.align         ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0           ; 0           ; 1           ; 0                   ; 0            ; 0           ; 1           ;
+; state.add_0         ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 0           ; 1           ; 0           ; 0                   ; 0            ; 0           ; 1           ;
+; state.add_1         ; 0           ; 0          ; 0           ; 0                 ; 0                 ; 1           ; 0           ; 0           ; 0                   ; 0            ; 0           ; 1           ;
+; state.normalise_1   ; 0           ; 0          ; 0           ; 0                 ; 1                 ; 0           ; 0           ; 0           ; 0                   ; 0            ; 0           ; 1           ;
+; state.normalise_2   ; 0           ; 0          ; 0           ; 1                 ; 0                 ; 0           ; 0           ; 0           ; 0                   ; 0            ; 0           ; 1           ;
+; state.round         ; 0           ; 0          ; 1           ; 0                 ; 0                 ; 0           ; 0           ; 0           ; 0                   ; 0            ; 0           ; 1           ;
+; state.pack          ; 0           ; 1          ; 0           ; 0                 ; 0                 ; 0           ; 0           ; 0           ; 0                   ; 0            ; 0           ; 1           ;
+; state.put_z         ; 1           ; 0          ; 0           ; 0                 ; 0                 ; 0           ; 0           ; 0           ; 0                   ; 0            ; 0           ; 1           ;
++---------------------+-------------+------------+-------------+-------------------+-------------------+-------------+-------------+-------------+---------------------+--------------+-------------+-------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |fpu_qp|fpu_uart_cmd:u_cmd|state                                                                                                                                                                                    ;
++-------------------+--------------+--------------+--------------+--------------+--------------+--------------+----------------+-----------------+---------------+---------------+---------------+----------------+-------------------+
+; Name              ; state.S_TX_5 ; state.S_TX_4 ; state.S_TX_3 ; state.S_TX_2 ; state.S_TX_1 ; state.S_TX_0 ; state.S_WAIT_Z ; state.S_WAIT_AB ; state.S_ISSUE ; state.S_GET_B ; state.S_GET_A ; state.S_GET_OP ; state.S_WAIT_SYNC ;
++-------------------+--------------+--------------+--------------+--------------+--------------+--------------+----------------+-----------------+---------------+---------------+---------------+----------------+-------------------+
+; state.S_WAIT_SYNC ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0              ; 0               ; 0             ; 0             ; 0             ; 0              ; 0                 ;
+; state.S_GET_OP    ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0              ; 0               ; 0             ; 0             ; 0             ; 1              ; 1                 ;
+; state.S_GET_A     ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0              ; 0               ; 0             ; 0             ; 1             ; 0              ; 1                 ;
+; state.S_GET_B     ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0              ; 0               ; 0             ; 1             ; 0             ; 0              ; 1                 ;
+; state.S_ISSUE     ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0              ; 0               ; 1             ; 0             ; 0             ; 0              ; 1                 ;
+; state.S_WAIT_AB   ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0              ; 1               ; 0             ; 0             ; 0             ; 0              ; 1                 ;
+; state.S_WAIT_Z    ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 1              ; 0               ; 0             ; 0             ; 0             ; 0              ; 1                 ;
+; state.S_TX_0      ; 0            ; 0            ; 0            ; 0            ; 0            ; 1            ; 0              ; 0               ; 0             ; 0             ; 0             ; 0              ; 1                 ;
+; state.S_TX_1      ; 0            ; 0            ; 0            ; 0            ; 1            ; 0            ; 0              ; 0               ; 0             ; 0             ; 0             ; 0              ; 1                 ;
+; state.S_TX_2      ; 0            ; 0            ; 0            ; 1            ; 0            ; 0            ; 0              ; 0               ; 0             ; 0             ; 0             ; 0              ; 1                 ;
+; state.S_TX_3      ; 0            ; 0            ; 1            ; 0            ; 0            ; 0            ; 0              ; 0               ; 0             ; 0             ; 0             ; 0              ; 1                 ;
+; state.S_TX_4      ; 0            ; 1            ; 0            ; 0            ; 0            ; 0            ; 0              ; 0               ; 0             ; 0             ; 0             ; 0              ; 1                 ;
+; state.S_TX_5      ; 1            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0              ; 0               ; 0             ; 0             ; 0             ; 0              ; 1                 ;
++-------------------+--------------+--------------+--------------+--------------+--------------+--------------+----------------+-----------------+---------------+---------------+---------------+----------------+-------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------+
+; State Machine - |fpu_qp|uart_tx:u_tx|state                                                     ;
++-----------------+--------------+--------------+---------------+--------------+-----------------+
+; Name            ; state.S_STOP ; state.S_DATA ; state.S_START ; state.S_IDLE ; state.S_CLEANUP ;
++-----------------+--------------+--------------+---------------+--------------+-----------------+
+; state.S_IDLE    ; 0            ; 0            ; 0             ; 0            ; 0               ;
+; state.S_START   ; 0            ; 0            ; 1             ; 1            ; 0               ;
+; state.S_DATA    ; 0            ; 1            ; 0             ; 1            ; 0               ;
+; state.S_STOP    ; 1            ; 0            ; 0             ; 1            ; 0               ;
+; state.S_CLEANUP ; 0            ; 0            ; 0             ; 1            ; 1               ;
++-----------------+--------------+--------------+---------------+--------------+-----------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------+
+; State Machine - |fpu_qp|uart_rx:u_rx|state                                                     ;
++-----------------+--------------+--------------+---------------+--------------+-----------------+
+; Name            ; state.S_STOP ; state.S_DATA ; state.S_START ; state.S_IDLE ; state.S_CLEANUP ;
++-----------------+--------------+--------------+---------------+--------------+-----------------+
+; state.S_IDLE    ; 0            ; 0            ; 0             ; 0            ; 0               ;
+; state.S_START   ; 0            ; 0            ; 1             ; 1            ; 0               ;
+; state.S_DATA    ; 0            ; 1            ; 0             ; 1            ; 0               ;
+; state.S_STOP    ; 1            ; 0            ; 0             ; 1            ; 0               ;
+; state.S_CLEANUP ; 0            ; 0            ; 0             ; 1            ; 1               ;
++-----------------+--------------+--------------+---------------+--------------+-----------------+
+
+
++----------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                     ;
++---------------------------------------------+------------------------------------------+
+; Register name                               ; Reason for Removal                       ;
++---------------------------------------------+------------------------------------------+
+; fpu_top:u_fpu|divider:u_div|divisor[24..50] ; Stuck at GND due to stuck port data_in   ;
+; fpu_top:u_fpu|divider:u_div|dividend[0]     ; Stuck at GND due to stuck port data_in   ;
+; fpu_uart_cmd:u_cmd|status[3,5..7]           ; Merged with fpu_uart_cmd:u_cmd|status[2] ;
+; fpu_top:u_fpu|divider:u_div|dividend[1..26] ; Stuck at GND due to stuck port data_in   ;
+; fpu_uart_cmd:u_cmd|status[2]                ; Stuck at GND due to stuck port data_in   ;
+; fpu_top:u_fpu|divider:u_div|state~17        ; Lost fanout                              ;
+; fpu_top:u_fpu|divider:u_div|state~18        ; Lost fanout                              ;
+; fpu_top:u_fpu|divider:u_div|state~19        ; Lost fanout                              ;
+; fpu_top:u_fpu|divider:u_div|state~20        ; Lost fanout                              ;
+; fpu_top:u_fpu|multiplier:u_mul|state~15     ; Lost fanout                              ;
+; fpu_top:u_fpu|multiplier:u_mul|state~16     ; Lost fanout                              ;
+; fpu_top:u_fpu|multiplier:u_mul|state~17     ; Lost fanout                              ;
+; fpu_top:u_fpu|multiplier:u_mul|state~18     ; Lost fanout                              ;
+; fpu_top:u_fpu|adder:u_add|state~14          ; Lost fanout                              ;
+; fpu_top:u_fpu|adder:u_add|state~15          ; Lost fanout                              ;
+; fpu_top:u_fpu|adder:u_add|state~16          ; Lost fanout                              ;
+; fpu_top:u_fpu|adder:u_add|state~17          ; Lost fanout                              ;
+; fpu_uart_cmd:u_cmd|state~12                 ; Lost fanout                              ;
+; fpu_uart_cmd:u_cmd|state~13                 ; Lost fanout                              ;
+; fpu_uart_cmd:u_cmd|state~14                 ; Lost fanout                              ;
+; fpu_uart_cmd:u_cmd|state~15                 ; Lost fanout                              ;
+; fpu_uart_cmd:u_cmd|state~16                 ; Lost fanout                              ;
+; uart_tx:u_tx|state~7                        ; Lost fanout                              ;
+; uart_tx:u_tx|state~8                        ; Lost fanout                              ;
+; uart_rx:u_rx|state~7                        ; Lost fanout                              ;
+; uart_rx:u_rx|state~8                        ; Lost fanout                              ;
+; Total Number of Removed Registers = 80      ;                                          ;
++---------------------------------------------+------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                               ;
++-----------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; Register name                           ; Reason for Removal        ; Registers Removed due to This Register                                              ;
++-----------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; fpu_top:u_fpu|divider:u_div|dividend[0] ; Stuck at GND              ; fpu_top:u_fpu|divider:u_div|dividend[1], fpu_top:u_fpu|divider:u_div|dividend[2],   ;
+;                                         ; due to stuck port data_in ; fpu_top:u_fpu|divider:u_div|dividend[3], fpu_top:u_fpu|divider:u_div|dividend[4],   ;
+;                                         ;                           ; fpu_top:u_fpu|divider:u_div|dividend[5], fpu_top:u_fpu|divider:u_div|dividend[6],   ;
+;                                         ;                           ; fpu_top:u_fpu|divider:u_div|dividend[7], fpu_top:u_fpu|divider:u_div|dividend[8],   ;
+;                                         ;                           ; fpu_top:u_fpu|divider:u_div|dividend[9], fpu_top:u_fpu|divider:u_div|dividend[10],  ;
+;                                         ;                           ; fpu_top:u_fpu|divider:u_div|dividend[11], fpu_top:u_fpu|divider:u_div|dividend[12], ;
+;                                         ;                           ; fpu_top:u_fpu|divider:u_div|dividend[13], fpu_top:u_fpu|divider:u_div|dividend[14], ;
+;                                         ;                           ; fpu_top:u_fpu|divider:u_div|dividend[15], fpu_top:u_fpu|divider:u_div|dividend[16], ;
+;                                         ;                           ; fpu_top:u_fpu|divider:u_div|dividend[17], fpu_top:u_fpu|divider:u_div|dividend[18], ;
+;                                         ;                           ; fpu_top:u_fpu|divider:u_div|dividend[19], fpu_top:u_fpu|divider:u_div|dividend[20], ;
+;                                         ;                           ; fpu_top:u_fpu|divider:u_div|dividend[21], fpu_top:u_fpu|divider:u_div|dividend[22], ;
+;                                         ;                           ; fpu_top:u_fpu|divider:u_div|dividend[23], fpu_top:u_fpu|divider:u_div|dividend[24], ;
+;                                         ;                           ; fpu_top:u_fpu|divider:u_div|dividend[25], fpu_top:u_fpu|divider:u_div|dividend[26]  ;
++-----------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1294  ;
+; Number of registers using Synchronous Clear  ; 196   ;
+; Number of registers using Synchronous Load   ; 223   ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1133  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
+; 3:1                ; 64 bits   ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|input_b[11]            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |fpu_qp|fpu_top:u_fpu|op_lat[1]                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |fpu_qp|uart_rx:u_rx|rx_byte[7]                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |fpu_qp|uart_tx:u_tx|data_buf[3]                  ;
+; 3:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; Yes        ; |fpu_qp|fpu_top:u_fpu|adder:u_add|sum[8]          ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|divider:u_div|dividend[50]  ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|op[0]                  ;
+; 4:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|divider:u_div|a_m[18]       ;
+; 4:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|divider:u_div|b_m[22]       ;
+; 4:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|adder:u_add|b_m[15]         ;
+; 4:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|adder:u_add|a_m[11]         ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 32 LEs               ; 64 LEs                 ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|rx_gap_cnt[0]          ;
+; 5:1                ; 51 bits   ; 153 LEs       ; 102 LEs              ; 51 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|divider:u_div|remainder[50] ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|divider:u_div|a_e[1]        ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|divider:u_div|b_e[4]        ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|a_e[7]     ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|b_e[3]     ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|adder:u_add|b_e[6]          ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|adder:u_add|a_e[5]          ;
+; 5:1                ; 9 bits    ; 27 LEs        ; 9 LEs                ; 18 LEs                 ; Yes        ; |fpu_qp|uart_tx:u_tx|clk_cnt[5]                   ;
+; 7:1                ; 7 bits    ; 28 LEs        ; 7 LEs                ; 21 LEs                 ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|a_buf[8]               ;
+; 7:1                ; 7 bits    ; 28 LEs        ; 7 LEs                ; 21 LEs                 ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|b_buf[10]              ;
+; 7:1                ; 7 bits    ; 28 LEs        ; 7 LEs                ; 21 LEs                 ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|a_buf[22]              ;
+; 7:1                ; 7 bits    ; 28 LEs        ; 7 LEs                ; 21 LEs                 ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|b_buf[17]              ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|a_buf[28]              ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 8 LEs                ; 24 LEs                 ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|b_buf[28]              ;
+; 7:1                ; 7 bits    ; 28 LEs        ; 7 LEs                ; 21 LEs                 ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|a_buf[7]               ;
+; 7:1                ; 7 bits    ; 28 LEs        ; 7 LEs                ; 21 LEs                 ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|b_buf[3]               ;
+; 8:1                ; 23 bits   ; 115 LEs       ; 46 LEs               ; 69 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|divider:u_div|z_m[22]       ;
+; 8:1                ; 10 bits   ; 50 LEs        ; 10 LEs               ; 40 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|divider:u_div|z_e[4]        ;
+; 8:1                ; 23 bits   ; 115 LEs       ; 46 LEs               ; 69 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|z_m[22]    ;
+; 8:1                ; 10 bits   ; 50 LEs        ; 10 LEs               ; 40 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|z_e[0]     ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 3 LEs                ; 12 LEs                 ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|byte_idx[2]            ;
+; 8:1                ; 9 bits    ; 45 LEs        ; 9 LEs                ; 36 LEs                 ; Yes        ; |fpu_qp|uart_rx:u_rx|clk_cnt[0]                   ;
+; 9:1                ; 23 bits   ; 138 LEs       ; 69 LEs               ; 69 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|adder:u_add|z_m[18]         ;
+; 9:1                ; 22 bits   ; 132 LEs       ; 22 LEs               ; 110 LEs                ; Yes        ; |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|z[14]      ;
+; 9:1                ; 22 bits   ; 132 LEs       ; 44 LEs               ; 88 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|adder:u_add|z[14]           ;
+; 10:1               ; 10 bits   ; 60 LEs        ; 20 LEs               ; 40 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|adder:u_add|z_e[1]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|z[24]      ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|adder:u_add|z[29]           ;
+; 10:1               ; 22 bits   ; 132 LEs       ; 22 LEs               ; 110 LEs                ; Yes        ; |fpu_qp|fpu_top:u_fpu|divider:u_div|z[10]         ;
+; 11:1               ; 8 bits    ; 56 LEs        ; 48 LEs               ; 8 LEs                  ; Yes        ; |fpu_qp|fpu_top:u_fpu|divider:u_div|z[29]         ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|status[4]              ;
+; 14:1               ; 8 bits    ; 72 LEs        ; 40 LEs               ; 32 LEs                 ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|tx_byte[3]             ;
+; 13:1               ; 32 bits   ; 256 LEs       ; 64 LEs               ; 192 LEs                ; Yes        ; |fpu_qp|fpu_uart_cmd:u_cmd|z_buf[0]               ;
+; 4:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|a_m[1]     ;
+; 4:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|b_m[20]    ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |fpu_qp|fpu_top:u_fpu|input_a_ack                 ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |fpu_qp|uart_tx:u_tx|bit_idx                      ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |fpu_qp|uart_rx:u_rx|bit_idx                      ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |fpu_qp|uart_tx:u_tx|state                        ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |fpu_qp|uart_tx:u_tx|state                        ;
+; 10:1               ; 3 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; No         ; |fpu_qp|uart_rx:u_rx|state                        ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; No         ; |fpu_qp|uart_rx:u_rx|state                        ;
+; 14:1               ; 6 bits    ; 54 LEs        ; 36 LEs               ; 18 LEs                 ; No         ; |fpu_qp|fpu_top:u_fpu|adder:u_add|state           ;
+; 16:1               ; 7 bits    ; 70 LEs        ; 42 LEs               ; 28 LEs                 ; No         ; |fpu_qp|fpu_top:u_fpu|divider:u_div|state         ;
+; 16:1               ; 7 bits    ; 70 LEs        ; 42 LEs               ; 28 LEs                 ; No         ; |fpu_qp|fpu_top:u_fpu|multiplier:u_mul|state      ;
+; 15:1               ; 2 bits    ; 20 LEs        ; 6 LEs                ; 14 LEs                 ; No         ; |fpu_qp|fpu_uart_cmd:u_cmd|state                  ;
+; 17:1               ; 2 bits    ; 22 LEs        ; 10 LEs               ; 12 LEs                 ; No         ; |fpu_qp|fpu_uart_cmd:u_cmd|state                  ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 10 LEs               ; 14 LEs                 ; No         ; |fpu_qp|fpu_uart_cmd:u_cmd|state                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
+
+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |fpu_qp ;
++----------------+----------+--------------------------------------------+
+; Parameter Name ; Value    ; Type                                       ;
++----------------+----------+--------------------------------------------+
+; CLK_HZ         ; 50000000 ; Signed Integer                             ;
+; BAUD           ; 115200   ; Signed Integer                             ;
++----------------+----------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_rx:u_rx ;
++----------------+-------+----------------------------------+
+; Parameter Name ; Value ; Type                             ;
++----------------+-------+----------------------------------+
+; CLKS_PER_BIT   ; 434   ; Signed Integer                   ;
++----------------+-------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_tx:u_tx ;
++----------------+-------+----------------------------------+
+; Parameter Name ; Value ; Type                             ;
++----------------+-------+----------------------------------+
+; CLKS_PER_BIT   ; 434   ; Signed Integer                   ;
++----------------+-------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpu_uart_cmd:u_cmd ;
++-------------------+----------+----------------------------------+
+; Parameter Name    ; Value    ; Type                             ;
++-------------------+----------+----------------------------------+
+; RX_TIMEOUT_CYCLES ; 2000000  ; Signed Integer                   ;
+; Z_TIMEOUT_CYCLES  ; 50000000 ; Signed Integer                   ;
++-------------------+----------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpu_top:u_fpu|adder:u_add ;
++----------------+-------+-----------------------------------------------+
+; Parameter Name ; Value ; Type                                          ;
++----------------+-------+-----------------------------------------------+
+; get_a          ; 0000  ; Unsigned Binary                               ;
+; get_b          ; 0001  ; Unsigned Binary                               ;
+; unpack         ; 0010  ; Unsigned Binary                               ;
+; special_cases  ; 0011  ; Unsigned Binary                               ;
+; align          ; 0100  ; Unsigned Binary                               ;
+; add_0          ; 0101  ; Unsigned Binary                               ;
+; add_1          ; 0110  ; Unsigned Binary                               ;
+; normalise_1    ; 0111  ; Unsigned Binary                               ;
+; normalise_2    ; 1000  ; Unsigned Binary                               ;
+; round          ; 1001  ; Unsigned Binary                               ;
+; pack           ; 1010  ; Unsigned Binary                               ;
+; put_z          ; 1011  ; Unsigned Binary                               ;
++----------------+-------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpu_top:u_fpu|multiplier:u_mul ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; get_a          ; 0000  ; Unsigned Binary                                    ;
+; get_b          ; 0001  ; Unsigned Binary                                    ;
+; unpack         ; 0010  ; Unsigned Binary                                    ;
+; special_cases  ; 0011  ; Unsigned Binary                                    ;
+; normalise_a    ; 0100  ; Unsigned Binary                                    ;
+; normalise_b    ; 0101  ; Unsigned Binary                                    ;
+; multiply_0     ; 0110  ; Unsigned Binary                                    ;
+; multiply_1     ; 0111  ; Unsigned Binary                                    ;
+; normalise_1    ; 1000  ; Unsigned Binary                                    ;
+; normalise_2    ; 1001  ; Unsigned Binary                                    ;
+; round          ; 1010  ; Unsigned Binary                                    ;
+; pack           ; 1011  ; Unsigned Binary                                    ;
+; put_z          ; 1100  ; Unsigned Binary                                    ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fpu_top:u_fpu|divider:u_div ;
++----------------+-------+-------------------------------------------------+
+; Parameter Name ; Value ; Type                                            ;
++----------------+-------+-------------------------------------------------+
+; get_a          ; 0000  ; Unsigned Binary                                 ;
+; get_b          ; 0001  ; Unsigned Binary                                 ;
+; unpack         ; 0010  ; Unsigned Binary                                 ;
+; special_cases  ; 0011  ; Unsigned Binary                                 ;
+; normalise_a    ; 0100  ; Unsigned Binary                                 ;
+; normalise_b    ; 0101  ; Unsigned Binary                                 ;
+; divide_0       ; 0110  ; Unsigned Binary                                 ;
+; divide_1       ; 0111  ; Unsigned Binary                                 ;
+; divide_2       ; 1000  ; Unsigned Binary                                 ;
+; divide_3       ; 1001  ; Unsigned Binary                                 ;
+; normalise_1    ; 1010  ; Unsigned Binary                                 ;
+; normalise_2    ; 1011  ; Unsigned Binary                                 ;
+; round          ; 1100  ; Unsigned Binary                                 ;
+; pack           ; 1101  ; Unsigned Binary                                 ;
+; put_z          ; 1110  ; Unsigned Binary                                 ;
++----------------+-------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: fpu_top:u_fpu|multiplier:u_mul|lpm_mult:Mult0 ;
++------------------------------------------------+--------------+--------------------------------+
+; Parameter Name                                 ; Value        ; Type                           ;
++------------------------------------------------+--------------+--------------------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY                     ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY                   ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE                   ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE                 ;
+; LPM_WIDTHA                                     ; 24           ; Untyped                        ;
+; LPM_WIDTHB                                     ; 24           ; Untyped                        ;
+; LPM_WIDTHP                                     ; 48           ; Untyped                        ;
+; LPM_WIDTHR                                     ; 48           ; Untyped                        ;
+; LPM_WIDTHS                                     ; 1            ; Untyped                        ;
+; LPM_REPRESENTATION                             ; UNSIGNED     ; Untyped                        ;
+; LPM_PIPELINE                                   ; 0            ; Untyped                        ;
+; LATENCY                                        ; 0            ; Untyped                        ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                        ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                        ;
+; USE_EAB                                        ; OFF          ; Untyped                        ;
+; MAXIMIZE_SPEED                                 ; 5            ; Untyped                        ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                        ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped                        ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K            ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                        ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                        ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                        ;
+; CBXI_PARAMETER                                 ; mult_bdt     ; Untyped                        ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                        ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                        ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                        ;
++------------------------------------------------+--------------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                                        ;
++---------------------------------------+-----------------------------------------------+
+; Name                                  ; Value                                         ;
++---------------------------------------+-----------------------------------------------+
+; Number of entity instances            ; 1                                             ;
+; Entity Instance                       ; fpu_top:u_fpu|multiplier:u_mul|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 24                                            ;
+;     -- LPM_WIDTHB                     ; 24                                            ;
+;     -- LPM_WIDTHP                     ; 48                                            ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                                      ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                            ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                            ;
+;     -- USE_EAB                        ; OFF                                           ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                          ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                            ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                            ;
++---------------------------------------+-----------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 4                           ;
+; cycloneiii_ff         ; 1294                        ;
+;     ENA               ; 853                         ;
+;     ENA SCLR          ; 61                          ;
+;     ENA SCLR SLD      ; 54                          ;
+;     ENA SLD           ; 165                         ;
+;     SCLR              ; 81                          ;
+;     SLD               ; 4                           ;
+;     plain             ; 76                          ;
+; cycloneiii_lcell_comb ; 2127                        ;
+;     arith             ; 596                         ;
+;         2 data inputs ; 356                         ;
+;         3 data inputs ; 240                         ;
+;     normal            ; 1531                        ;
+;         0 data inputs ; 10                          ;
+;         1 data inputs ; 25                          ;
+;         2 data inputs ; 303                         ;
+;         3 data inputs ; 460                         ;
+;         4 data inputs ; 733                         ;
+; cycloneiii_mac_mult   ; 4                           ;
+; cycloneiii_mac_out    ; 4                           ;
+;                       ;                             ;
+; Max LUT depth         ; 9.10                        ;
+; Average LUT depth     ; 3.48                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:03     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Sun Dec 28 03:01:58 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fpu_qp -c fpu_qp
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file fpu_top.v
+    Info (12023): Found entity 1: fpu_top File: D:/IntelFPGA/sem_5/fpu/fpu_top.v Line: 14
+Info (12021): Found 1 design units, including 1 entities, in source file multiplier/multiplier.v
+    Info (12023): Found entity 1: multiplier File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file divider/divider.v
+    Info (12023): Found entity 1: divider File: D:/IntelFPGA/sem_5/fpu/divider/divider.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file adder/adder.v
+    Info (12023): Found entity 1: adder File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file uart_rx.v
+    Info (12023): Found entity 1: uart_rx File: D:/IntelFPGA/sem_5/fpu/uart_rx.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file uart_tx.v
+    Info (12023): Found entity 1: uart_tx File: D:/IntelFPGA/sem_5/fpu/uart_tx.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file fpu_uart_cmd.v
+    Info (12023): Found entity 1: fpu_uart_cmd File: D:/IntelFPGA/sem_5/fpu/fpu_uart_cmd.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file fpu_qp.v
+    Info (12023): Found entity 1: fpu_qp File: D:/IntelFPGA/sem_5/fpu/fpu_qp.v Line: 3
+Info (12127): Elaborating entity "fpu_qp" for the top level hierarchy
+Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:u_rx" File: D:/IntelFPGA/sem_5/fpu/fpu_qp.v Line: 43
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(70): truncated value with size 32 to match size of target (9) File: D:/IntelFPGA/sem_5/fpu/uart_rx.v Line: 70
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(82): truncated value with size 32 to match size of target (3) File: D:/IntelFPGA/sem_5/fpu/uart_rx.v Line: 82
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(85): truncated value with size 32 to match size of target (9) File: D:/IntelFPGA/sem_5/fpu/uart_rx.v Line: 85
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(99): truncated value with size 32 to match size of target (9) File: D:/IntelFPGA/sem_5/fpu/uart_rx.v Line: 99
+Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:u_tx" File: D:/IntelFPGA/sem_5/fpu/fpu_qp.v Line: 53
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(61): truncated value with size 32 to match size of target (9) File: D:/IntelFPGA/sem_5/fpu/uart_tx.v Line: 61
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(73): truncated value with size 32 to match size of target (3) File: D:/IntelFPGA/sem_5/fpu/uart_tx.v Line: 73
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(76): truncated value with size 32 to match size of target (9) File: D:/IntelFPGA/sem_5/fpu/uart_tx.v Line: 76
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(87): truncated value with size 32 to match size of target (9) File: D:/IntelFPGA/sem_5/fpu/uart_tx.v Line: 87
+Info (12128): Elaborating entity "fpu_uart_cmd" for hierarchy "fpu_uart_cmd:u_cmd" File: D:/IntelFPGA/sem_5/fpu/fpu_qp.v Line: 78
+Warning (10230): Verilog HDL assignment warning at fpu_uart_cmd.v(161): truncated value with size 32 to match size of target (3) File: D:/IntelFPGA/sem_5/fpu/fpu_uart_cmd.v Line: 161
+Warning (10230): Verilog HDL assignment warning at fpu_uart_cmd.v(177): truncated value with size 32 to match size of target (3) File: D:/IntelFPGA/sem_5/fpu/fpu_uart_cmd.v Line: 177
+Info (12128): Elaborating entity "fpu_top" for hierarchy "fpu_top:u_fpu" File: D:/IntelFPGA/sem_5/fpu/fpu_qp.v Line: 98
+Info (12128): Elaborating entity "adder" for hierarchy "fpu_top:u_fpu|adder:u_add" File: D:/IntelFPGA/sem_5/fpu/fpu_top.v Line: 103
+Warning (10230): Verilog HDL assignment warning at adder.v(86): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 86
+Warning (10230): Verilog HDL assignment warning at adder.v(87): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 87
+Warning (10230): Verilog HDL assignment warning at adder.v(124): truncated value with size 32 to match size of target (8) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 124
+Warning (10230): Verilog HDL assignment warning at adder.v(125): truncated value with size 24 to match size of target (23) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 125
+Warning (10230): Verilog HDL assignment warning at adder.v(130): truncated value with size 32 to match size of target (8) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 130
+Warning (10230): Verilog HDL assignment warning at adder.v(131): truncated value with size 24 to match size of target (23) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 131
+Warning (10230): Verilog HDL assignment warning at adder.v(136): truncated value with size 32 to match size of target (8) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 136
+Warning (10230): Verilog HDL assignment warning at adder.v(137): truncated value with size 24 to match size of target (23) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 137
+Warning (10230): Verilog HDL assignment warning at adder.v(142): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 142
+Warning (10230): Verilog HDL assignment warning at adder.v(148): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 148
+Warning (10230): Verilog HDL assignment warning at adder.v(159): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 159
+Warning (10230): Verilog HDL assignment warning at adder.v(163): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 163
+Warning (10230): Verilog HDL assignment warning at adder.v(196): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 196
+Warning (10230): Verilog HDL assignment warning at adder.v(209): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 209
+Warning (10230): Verilog HDL assignment warning at adder.v(222): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 222
+Warning (10230): Verilog HDL assignment warning at adder.v(235): truncated value with size 32 to match size of target (24) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 235
+Warning (10230): Verilog HDL assignment warning at adder.v(237): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 237
+Warning (10230): Verilog HDL assignment warning at adder.v(246): truncated value with size 32 to match size of target (8) File: D:/IntelFPGA/sem_5/fpu/adder/adder.v Line: 246
+Info (12128): Elaborating entity "multiplier" for hierarchy "fpu_top:u_fpu|multiplier:u_mul" File: D:/IntelFPGA/sem_5/fpu/fpu_top.v Line: 117
+Warning (10230): Verilog HDL assignment warning at multiplier.v(86): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 86
+Warning (10230): Verilog HDL assignment warning at multiplier.v(87): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 87
+Warning (10230): Verilog HDL assignment warning at multiplier.v(143): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 143
+Warning (10230): Verilog HDL assignment warning at multiplier.v(149): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 149
+Warning (10230): Verilog HDL assignment warning at multiplier.v(163): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 163
+Warning (10230): Verilog HDL assignment warning at multiplier.v(173): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 173
+Warning (10230): Verilog HDL assignment warning at multiplier.v(180): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 180
+Warning (10230): Verilog HDL assignment warning at multiplier.v(197): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 197
+Warning (10230): Verilog HDL assignment warning at multiplier.v(210): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 210
+Warning (10230): Verilog HDL assignment warning at multiplier.v(223): truncated value with size 32 to match size of target (24) File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 223
+Warning (10230): Verilog HDL assignment warning at multiplier.v(225): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 225
+Warning (10230): Verilog HDL assignment warning at multiplier.v(234): truncated value with size 32 to match size of target (8) File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 234
+Info (12128): Elaborating entity "divider" for hierarchy "fpu_top:u_fpu|divider:u_div" File: D:/IntelFPGA/sem_5/fpu/fpu_top.v Line: 131
+Warning (10230): Verilog HDL assignment warning at divider.v(89): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/divider/divider.v Line: 89
+Warning (10230): Verilog HDL assignment warning at divider.v(90): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/divider/divider.v Line: 90
+Warning (10230): Verilog HDL assignment warning at divider.v(155): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/divider/divider.v Line: 155
+Warning (10230): Verilog HDL assignment warning at divider.v(161): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/divider/divider.v Line: 161
+Warning (10230): Verilog HDL assignment warning at divider.v(175): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/divider/divider.v Line: 175
+Warning (10230): Verilog HDL assignment warning at divider.v(185): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/divider/divider.v Line: 185
+Warning (10230): Verilog HDL assignment warning at divider.v(219): truncated value with size 32 to match size of target (6) File: D:/IntelFPGA/sem_5/fpu/divider/divider.v Line: 219
+Warning (10230): Verilog HDL assignment warning at divider.v(236): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/divider/divider.v Line: 236
+Warning (10230): Verilog HDL assignment warning at divider.v(249): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/divider/divider.v Line: 249
+Warning (10230): Verilog HDL assignment warning at divider.v(262): truncated value with size 32 to match size of target (24) File: D:/IntelFPGA/sem_5/fpu/divider/divider.v Line: 262
+Warning (10230): Verilog HDL assignment warning at divider.v(264): truncated value with size 32 to match size of target (10) File: D:/IntelFPGA/sem_5/fpu/divider/divider.v Line: 264
+Warning (10230): Verilog HDL assignment warning at divider.v(273): truncated value with size 32 to match size of target (8) File: D:/IntelFPGA/sem_5/fpu/divider/divider.v Line: 273
+Info (278001): Inferred 1 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "fpu_top:u_fpu|multiplier:u_mul|Mult0" File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 181
+Info (12130): Elaborated megafunction instantiation "fpu_top:u_fpu|multiplier:u_mul|lpm_mult:Mult0" File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 181
+Info (12133): Instantiated megafunction "fpu_top:u_fpu|multiplier:u_mul|lpm_mult:Mult0" with the following parameter: File: D:/IntelFPGA/sem_5/fpu/multiplier/multiplier.v Line: 181
+    Info (12134): Parameter "LPM_WIDTHA" = "24"
+    Info (12134): Parameter "LPM_WIDTHB" = "24"
+    Info (12134): Parameter "LPM_WIDTHP" = "48"
+    Info (12134): Parameter "LPM_WIDTHR" = "48"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_bdt.tdf
+    Info (12023): Found entity 1: mult_bdt File: D:/IntelFPGA/sem_5/fpu/db/mult_bdt.tdf Line: 31
+Info (13014): Ignored 128 buffer(s)
+    Info (13019): Ignored 128 SOFT buffer(s)
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 21 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 2534 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 1 output pins
+    Info (21061): Implemented 2523 logic cells
+    Info (21062): Implemented 7 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 53 warnings
+    Info: Peak virtual memory: 4811 megabytes
+    Info: Processing ended: Sun Dec 28 03:02:08 2025
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:19
+
+
